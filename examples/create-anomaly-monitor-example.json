@@ -1,0 +1,27 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://ce.us-east-1.amazonaws.com/CreateAnomalyMonitor",
+    "headers": {
+      "Content-Type": "application/x-amz-json-1.1",
+      "X-Amz-Target": "AWSInsightsIndexService.CreateAnomalyMonitor",
+      "Authorization": "AWS4-HMAC-SHA256 Credential=..."
+    },
+    "body": {
+      "AnomalyMonitor": {
+        "MonitorName": "ServiceAnomalyMonitor",
+        "MonitorType": "DIMENSIONAL",
+        "MonitorDimension": "SERVICE"
+      },
+      "ResourceTags": [
+        { "Key": "Environment", "Value": "Production" }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "MonitorArn": "arn:aws:ce::123456789012:anomalymonitor/mon-abc123def456"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+vocabulary:
+  domain: AWS Billing and Cost Management
+  description: >-
+    Taxonomy and vocabulary for AWS Billing and Cost Management covering
+    FinOps, cost analysis, budgeting, anomaly detection, and cost optimization.
+
+  concepts:
+    - term: Cost Explorer
+      definition: >-
+        AWS tool for visualizing and analyzing AWS costs and usage over
+        time with filtering, grouping, and forecasting capabilities.
+
+    - term: Budget
+      definition: >-
+        A defined spending or usage limit with notification thresholds that
+        alerts stakeholders when actual or forecasted spend approaches or
+        exceeds the limit.
+
+    - term: Budget Action
+      definition: >-
+        An automated response to a budget threshold breach, such as applying
+        an IAM policy to restrict resource provisioning or running an SSM
+        automation document.
+
+    - term: Cost Anomaly Detection
+      definition: >-
+        An ML-powered service that identifies unusual spending patterns
+        across AWS accounts, services, or cost categories and sends alerts.
+
+    - term: Cost Category
+      definition: >-
+        A user-defined mapping of AWS costs to organizational dimensions
+        (teams, projects, environments) for chargeback and showback reporting.
+
+    - term: Cost Allocation Tag
+      definition: >-
+        A metadata key-value pair applied to AWS resources that appears
+        in cost reports for tracking costs by resource.
+
+    - term: Chargeback
+      definition: >-
+        A cost accounting practice where AWS costs are allocated and
+        charged back to the business units or teams that incurred them.
+
+    - term: Showback
+      definition: >-
+        A cost transparency practice where AWS costs are reported to
+        business units without direct financial charging.
+
+    - term: Rightsizing
+      definition: >-
+        The process of analyzing and adjusting resource configurations
+        to eliminate idle or underutilized capacity while maintaining
+        performance requirements.
+
+    - term: Savings Plans
+      definition: >-
+        A flexible pricing model offering lower prices in exchange for
+        a usage commitment ($/hour) over a 1 or 3-year term for compute,
+        SageMaker, or Lambda workloads.
+
+    - term: Reserved Instance
+      definition: >-
+        A billing discount applied to On-Demand instance usage in exchange
+        for a 1 or 3-year commitment for EC2, RDS, Redshift, and other services.
+
+    - term: Blended Cost
+      definition: >-
+        The average cost per unit across all usage within a consolidated
+        billing family, blending On-Demand and Reserved Instance rates.
+
+    - term: Unblended Cost
+      definition: >-
+        The actual per-resource cost at the rate applied to each individual
+        resource usage record.
+
+    - term: Amortized Cost
+      definition: >-
+        Cost representation that spreads upfront Reserved Instance or
+        Savings Plans fees evenly across the commitment period.
+
+    - term: Granularity
+      definition: >-
+        The time resolution for cost data: HOURLY, DAILY, or MONTHLY.
+
+    - term: FinOps
+      label: Financial Operations
+      definition: >-
+        A practice combining financial accountability with engineering
+        efficiency to optimize cloud spending while maintaining performance.
+
+  dimensions:
+    - SERVICE
+    - LINKED_ACCOUNT
+    - REGION
+    - AZ
+    - INSTANCE_TYPE
+    - USAGE_TYPE
+    - OPERATION
+    - TAG
+    - COST_CATEGORY
+
+  tags:
+    - Billing
+    - Cost Management
+    - FinOps
+    - Cloud Financial Management
+    - Cost Optimization
+    - Budgets
+    - Cost Explorer
+    - AWS
+    - Amazon Web Services
+    - Reserved Instances
+    - Savings Plans
+    - Anomaly Detection

@@ -1,0 +1,65 @@
+{
+  "title": "AWS Billing and Cost Management Resource Structure",
+  "description": "Structural documentation for key resources across AWS Billing and Cost Management APIs",
+  "resources": {
+    "Budget": {
+      "description": "Tracks AWS cost or usage against a defined limit with notification thresholds",
+      "identifiers": ["BudgetName", "AccountId"],
+      "fields": {
+        "BudgetName": { "type": "string", "required": true },
+        "BudgetLimit": { "type": "object", "required": false },
+        "TimeUnit": { "type": "enum[DAILY|MONTHLY|QUARTERLY|ANNUALLY]", "required": true },
+        "BudgetType": { "type": "enum[COST|USAGE|RI_UTILIZATION|RI_COVERAGE|SAVINGS_PLANS_UTILIZATION|SAVINGS_PLANS_COVERAGE]", "required": true },
+        "CostFilters": { "type": "object" },
+        "CostTypes": { "type": "object" },
+        "CalculatedSpend": { "type": "object", "readOnly": true }
+      },
+      "relationships": {
+        "hasMany": ["Notification", "BudgetAction"]
+      }
+    },
+    "Notification": {
+      "description": "Alert trigger attached to a budget for threshold-based notifications",
+      "fields": {
+        "NotificationType": { "type": "enum[ACTUAL|FORECASTED]", "required": true },
+        "ComparisonOperator": { "type": "enum[GREATER_THAN|LESS_THAN|EQUAL_TO]", "required": true },
+        "Threshold": { "type": "number", "required": true },
+        "ThresholdType": { "type": "enum[PERCENTAGE|ABSOLUTE_VALUE]" }
+      },
+      "relationships": {
+        "hasMany": ["Subscriber"],
+        "belongsTo": ["Budget"]
+      }
+    },
+    "AnomalyMonitor": {
+      "description": "ML-powered monitor that detects unusual cost patterns",
+      "identifiers": ["MonitorArn"],
+      "fields": {
+        "MonitorArn": { "type": "string", "readOnly": true },
+        "MonitorName": { "type": "string", "required": true },
+        "MonitorType": { "type": "enum[DIMENSIONAL|CUSTOM]", "required": true },
+        "MonitorDimension": { "type": "enum[SERVICE]" },
+        "MonitorSpecification": { "type": "object" },
+        "CreationDate": { "type": "date", "readOnly": true },
+        "LastUpdatedDate": { "type": "date", "readOnly": true },
+        "LastEvaluatedDate": { "type": "date", "readOnly": true }
+      },
+      "relationships": {
+        "hasMany": ["AnomalySubscription", "Anomaly"]
+      }
+    },
+    "CostCategory": {
+      "description": "Maps AWS costs to user-defined categories for chargeback/showback",
+      "identifiers": ["CostCategoryArn"],
+      "fields": {
+        "CostCategoryArn": { "type": "string", "readOnly": true },
+        "Name": { "type": "string", "required": true },
+        "EffectiveStart": { "type": "string" },
+        "EffectiveEnd": { "type": "string" },
+        "Rules": { "type": "array", "required": true },
+        "SplitChargeRules": { "type": "array" },
+        "DefaultValue": { "type": "string" }
+      }
+    }
+  }
+}

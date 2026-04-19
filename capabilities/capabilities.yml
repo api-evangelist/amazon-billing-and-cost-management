@@ -1,0 +1,177 @@
+capabilities:
+  - id: query-cost-and-usage
+    name: Query Cost And Usage
+    description: >-
+      Query AWS cost and usage data with filtering, grouping, and aggregation
+      by service, account, tag, region, and other dimensions.
+    operations:
+      - GetCostAndUsage
+      - GetCostAndUsageWithResources
+      - GetDimensionValues
+      - GetTags
+    tags:
+      - Cost Analysis
+      - Usage Data
+      - Reporting
+
+  - id: forecast-costs
+    name: Forecast Costs
+    description: >-
+      Generate cost and usage forecasts based on historical spending patterns
+      for future time periods.
+    operations:
+      - GetCostForecast
+      - GetUsageForecast
+    tags:
+      - Forecasting
+      - Planning
+      - FinOps
+
+  - id: detect-cost-anomalies
+    name: Detect Cost Anomalies
+    description: >-
+      Create ML-powered anomaly monitors and subscriptions to detect unusual
+      spending patterns and receive automated alerts.
+    operations:
+      - CreateAnomalyMonitor
+      - GetAnomalyMonitors
+      - UpdateAnomalyMonitor
+      - DeleteAnomalyMonitor
+      - GetAnomalies
+      - ProvideAnomalyFeedback
+      - CreateAnomalySubscription
+      - GetAnomalySubscriptions
+      - UpdateAnomalySubscription
+      - DeleteAnomalySubscription
+    tags:
+      - Anomaly Detection
+      - Alerts
+      - Machine Learning
+
+  - id: get-cost-recommendations
+    name: Get Cost Recommendations
+    description: >-
+      Retrieve rightsizing, Savings Plans, and Reserved Instance purchase
+      recommendations to optimize AWS spending.
+    operations:
+      - GetRightsizingRecommendation
+      - GetSavingsPlansPurchaseRecommendation
+      - GetSavingsPlansCoverage
+      - GetSavingsPlansUtilization
+      - GetSavingsPlansUtilizationDetails
+      - GetReservationPurchaseRecommendation
+      - GetReservationCoverage
+      - GetReservationUtilization
+    tags:
+      - Recommendations
+      - Cost Optimization
+      - Savings Plans
+      - Reserved Instances
+
+  - id: manage-budgets
+    name: Manage Budgets
+    description: >-
+      Create and manage custom cost, usage, RI utilization, and Savings Plans
+      coverage budgets with threshold-based notifications.
+    operations:
+      - CreateBudget
+      - DescribeBudget
+      - DescribeBudgets
+      - UpdateBudget
+      - DeleteBudget
+      - CreateNotification
+      - DescribeNotificationsForBudget
+      - UpdateNotification
+      - DeleteNotification
+    tags:
+      - Budgets
+      - Notifications
+      - Cost Control
+
+  - id: manage-budget-actions
+    name: Manage Budget Actions
+    description: >-
+      Create automated actions (apply IAM policy, SCP policy, or SSM
+      automation) that execute when a budget threshold is exceeded.
+    operations:
+      - CreateBudgetAction
+      - DescribeBudgetAction
+      - DescribeBudgetActionsForBudget
+      - DescribeBudgetActionsForAccount
+      - UpdateBudgetAction
+      - DeleteBudgetAction
+      - ExecuteBudgetAction
+    tags:
+      - Budget Actions
+      - Automation
+      - Governance
+
+  - id: manage-cost-categories
+    name: Manage Cost Categories
+    description: >-
+      Create and manage cost categories to map, organize, and split AWS
+      costs across teams, projects, environments, and business units.
+    operations:
+      - CreateCostCategoryDefinition
+      - DescribeCostCategoryDefinition
+      - UpdateCostCategoryDefinition
+      - DeleteCostCategoryDefinition
+      - ListCostCategoryDefinitions
+    tags:
+      - Cost Categories
+      - Chargeback
+      - Showback
+
+  - id: manage-cost-allocation-tags
+    name: Manage Cost Allocation Tags
+    description: >-
+      Activate and manage cost allocation tags to track AWS costs by
+      resource-level metadata.
+    operations:
+      - ListCostAllocationTags
+      - UpdateCostAllocationTagsStatus
+      - GetTags
+    tags:
+      - Tags
+      - Cost Allocation
+      - Governance
+
+compositions:
+  - id: finops-cost-monitoring
+    name: FinOps Cost Monitoring
+    description: >-
+      Set up comprehensive cost monitoring: query costs by service and team,
+      create anomaly monitors, configure budget alerts, and enable
+      rightsizing recommendations.
+    steps:
+      - capability: query-cost-and-usage
+        operation: GetCostAndUsage
+      - capability: detect-cost-anomalies
+        operation: CreateAnomalyMonitor
+      - capability: detect-cost-anomalies
+        operation: CreateAnomalySubscription
+      - capability: manage-budgets
+        operation: CreateBudget
+      - capability: get-cost-recommendations
+        operation: GetRightsizingRecommendation
+    tags:
+      - FinOps
+      - Monitoring
+      - Workflow
+
+  - id: cost-chargeback-workflow
+    name: Cost Chargeback Workflow
+    description: >-
+      Implement cost chargeback by creating cost categories to allocate costs
+      to teams, then querying costs grouped by cost category.
+    steps:
+      - capability: manage-cost-categories
+        operation: CreateCostCategoryDefinition
+      - capability: query-cost-and-usage
+        operation: GetCostAndUsage
+      - capability: forecast-costs
+        operation: GetCostForecast
+    tags:
+      - Chargeback
+      - FinOps
+      - Workflow

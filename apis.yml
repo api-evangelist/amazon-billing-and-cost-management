@@ -1,16 +1,172 @@
 aid: amazon-billing-and-cost-management
-name: Amazon Billing and Cost Management
+name: Amazon Billing And Cost Management
 description: >-
-  Amazon Billing And Cost Management provides API capabilities.
+  AWS Billing and Cost Management is a suite of tools and APIs that enables
+  organizations to view, analyze, forecast, budget, and optimize their AWS
+  spending. It includes AWS Cost Explorer for cost analysis, AWS Budgets for
+  budget tracking and alerts, Cost Anomaly Detection for ML-powered anomaly
+  identification, Cost Categories for spend organization, and the AWS Price
+  List API for programmatic pricing queries. The suite supports consolidated
+  billing across AWS Organizations and chargeback/showback workflows.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags: []
+tags:
+  - Billing
+  - Cost Management
+  - Cost Explorer
+  - Budgets
+  - Cost Optimization
+  - FinOps
+  - Amazon Web Services
+  - AWS
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-03-16'
+modified: '2026-04-19'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: amazon-billing-and-cost-management:aws-cost-explorer-api
+    name: AWS Cost Explorer API
+    description: >-
+      The AWS Cost Explorer API provides programmatic access to cost and usage
+      data. Query aggregated or granular cost data, filter and group by service,
+      account, tag, or region, and retrieve cost forecasts and rightsizing
+      recommendations.
+    humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+    baseURL: https://ce.us-east-1.amazonaws.com
+    tags:
+      - Cost Explorer
+      - Cost Analysis
+      - Forecasting
+      - Cost Optimization
+    properties:
+      - type: Documentation
+        url: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+      - type: APIReference
+        url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/openapi/aws-cost-explorer-api-openapi.yml
+      - type: SpectralRuleset
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/spectral/ruleset.yml
+      - type: Capabilities
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/capabilities/capabilities.yml
+      - type: Vocabulary
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
+    contact:
+      - FN: AWS Support
+        url: https://aws.amazon.com/contact-us/
+    features:
+      - name: Cost and Usage Queries
+        description: >-
+          Query cost and usage data with filtering by service, account, tag,
+          region, and time range at daily or monthly granularity.
+      - name: Cost Forecasting
+        description: >-
+          Generate cost forecasts for future time periods based on historical
+          spending patterns.
+      - name: Cost Anomaly Detection
+        description: >-
+          ML-powered detection of unusual spending patterns with configurable
+          alerts and root cause analysis.
+      - name: Rightsizing Recommendations
+        description: >-
+          Identify EC2 instance rightsizing opportunities to reduce costs
+          without impacting performance.
+      - name: Savings Plans Recommendations
+        description: >-
+          Get recommendations for Savings Plans purchases to reduce compute
+          costs based on usage patterns.
+      - name: Reservation Recommendations
+        description: >-
+          Receive recommendations for Reserved Instance purchases across
+          EC2, RDS, Redshift, and other services.
+    useCases:
+      - name: FinOps Cost Analysis
+        description: >-
+          Build custom dashboards and reports querying cost and usage data
+          by team, project, service, or environment using cost allocation tags.
+      - name: Budget Tracking Automation
+        description: >-
+          Automate budget monitoring with programmatic budget creation, alert
+          configuration, and cost anomaly subscriptions.
+      - name: Chargeback and Showback
+        description: >-
+          Allocate and distribute AWS costs to internal teams and business
+          units using cost categories and split charge rules.
+    integrations:
+      - name: AWS Organizations
+        description: Consolidated billing and multi-account cost analysis
+      - name: Amazon QuickSight
+        description: Visualize cost and usage data with QuickSight dashboards
+      - name: Amazon SNS
+        description: Receive budget and anomaly alert notifications via SNS
+      - name: AWS Lambda
+        description: Trigger automated cost remediation workflows from budget actions
+
+  - aid: amazon-billing-and-cost-management:aws-budgets-api
+    name: AWS Budgets API
+    description: >-
+      The AWS Budgets API enables programmatic creation and management of
+      custom budgets that track cost, usage, coverage, and utilization.
+      Supports budget actions that automatically respond when thresholds are
+      exceeded.
+    humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
+    baseURL: https://budgets.amazonaws.com
+    tags:
+      - Budgets
+      - Cost Tracking
+      - Alerts
+    properties:
+      - type: Documentation
+        url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/openapi/aws-budgets-api-openapi.yml
+
+  - aid: amazon-billing-and-cost-management:aws-price-list-api
+    name: AWS Price List API
+    description: >-
+      The AWS Price List API allows programmatic querying of AWS service
+      pricing information in JSON or CSV format. Retrieve price lists for
+      all AWS services, filter by region and attributes, and stay current
+      with pricing changes via SNS notifications.
+    humanURL: https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html
+    baseURL: https://pricing.us-east-1.amazonaws.com
+    tags:
+      - Pricing
+      - Price List
+      - Cost Estimation
+    properties:
+      - type: Documentation
+        url: https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html
+
+common:
+  - type: Portal
+    url: https://aws.amazon.com/
+  - type: Website
+    url: https://aws.amazon.com/aws-cost-management/
+  - type: Console
+    url: https://console.aws.amazon.com/cost-management/
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/
+  - type: TermsOfService
+    url: https://aws.amazon.com/service-terms/
+  - type: PrivacyPolicy
+    url: https://aws.amazon.com/privacy/
+  - type: Pricing
+    url: https://aws.amazon.com/aws-cost-management/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/aws-cost-management/faqs/
+  - type: Blog
+    url: https://aws.amazon.com/blogs/aws-cloud-financial-management/
+  - type: GitHubOrganization
+    url: https://github.com/aws
+  - type: Contact
+    url: https://aws.amazon.com/contact-us/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

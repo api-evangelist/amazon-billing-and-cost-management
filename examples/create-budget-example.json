@@ -1,0 +1,65 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://budgets.amazonaws.com/CreateBudget",
+    "headers": {
+      "Content-Type": "application/x-amz-json-1.1",
+      "X-Amz-Target": "AWSBudgetServiceGateway.CreateBudget",
+      "Authorization": "AWS4-HMAC-SHA256 Credential=..."
+    },
+    "body": {
+      "AccountId": "123456789012",
+      "Budget": {
+        "BudgetName": "MonthlyEC2Budget",
+        "BudgetLimit": {
+          "Amount": "1000.00",
+          "Unit": "USD"
+        },
+        "CostFilters": {
+          "Service": ["Amazon Elastic Compute Cloud - Compute"]
+        },
+        "CostTypes": {
+          "IncludeTax": true,
+          "IncludeSubscription": true,
+          "UseBlended": false
+        },
+        "TimeUnit": "MONTHLY",
+        "BudgetType": "COST"
+      },
+      "NotificationsWithSubscribers": [
+        {
+          "Notification": {
+            "NotificationType": "ACTUAL",
+            "ComparisonOperator": "GREATER_THAN",
+            "Threshold": 80,
+            "ThresholdType": "PERCENTAGE"
+          },
+          "Subscribers": [
+            {
+              "SubscriptionType": "EMAIL",
+              "Address": "team@example.com"
+            }
+          ]
+        },
+        {
+          "Notification": {
+            "NotificationType": "FORECASTED",
+            "ComparisonOperator": "GREATER_THAN",
+            "Threshold": 100,
+            "ThresholdType": "PERCENTAGE"
+          },
+          "Subscribers": [
+            {
+              "SubscriptionType": "SNS",
+              "Address": "arn:aws:sns:us-east-1:123456789012:budget-alerts"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {}
+  }
+}

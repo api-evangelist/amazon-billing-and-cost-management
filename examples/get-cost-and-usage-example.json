@@ -1,0 +1,57 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://ce.us-east-1.amazonaws.com/GetCostAndUsage",
+    "headers": {
+      "Content-Type": "application/x-amz-json-1.1",
+      "X-Amz-Target": "AWSInsightsIndexService.GetCostAndUsage",
+      "Authorization": "AWS4-HMAC-SHA256 Credential=..."
+    },
+    "body": {
+      "TimePeriod": {
+        "Start": "2026-01-01",
+        "End": "2026-04-01"
+      },
+      "Granularity": "MONTHLY",
+      "Metrics": ["UnblendedCost", "UsageQuantity"],
+      "GroupBy": [
+        { "Type": "DIMENSION", "Key": "SERVICE" }
+      ],
+      "Filter": {
+        "Dimensions": {
+          "Key": "LINKED_ACCOUNT",
+          "Values": ["123456789012"]
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "ResultsByTime": [
+        {
+          "TimePeriod": { "Start": "2026-01-01", "End": "2026-02-01" },
+          "Total": {},
+          "Groups": [
+            {
+              "Keys": ["Amazon EC2"],
+              "Metrics": {
+                "UnblendedCost": { "Amount": "1234.56", "Unit": "USD" },
+                "UsageQuantity": { "Amount": "8760.00", "Unit": "Hrs" }
+              }
+            },
+            {
+              "Keys": ["Amazon S3"],
+              "Metrics": {
+                "UnblendedCost": { "Amount": "45.23", "Unit": "USD" },
+                "UsageQuantity": { "Amount": "1024.00", "Unit": "GB" }
+              }
+            }
+          ],
+          "Estimated": false
+        }
+      ],
+      "DimensionValueAttributes": []
+    }
+  }
+}

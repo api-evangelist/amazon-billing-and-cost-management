@@ -1,0 +1,40 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "aws-billing": "https://aws.amazon.com/billing/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Budget": "aws-billing:Budget",
+    "BudgetName": "aws-billing:budgetName",
+    "BudgetType": "aws-billing:budgetType",
+    "BudgetLimit": "aws-billing:budgetLimit",
+    "TimeUnit": "aws-billing:timeUnit",
+    "TimePeriod": "aws-billing:timePeriod",
+    "CalculatedSpend": "aws-billing:calculatedSpend",
+    "ActualSpend": "aws-billing:actualSpend",
+    "ForecastedSpend": "aws-billing:forecastedSpend",
+
+    "AnomalyMonitor": "aws-billing:AnomalyMonitor",
+    "MonitorArn": "aws-billing:monitorArn",
+    "MonitorName": "aws-billing:monitorName",
+    "MonitorType": "aws-billing:monitorType",
+
+    "CostCategory": "aws-billing:CostCategory",
+    "CostCategoryArn": "aws-billing:costCategoryArn",
+
+    "Amount": "schema:price",
+    "Unit": "schema:priceCurrency",
+
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "modifiedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "name": "schema:name",
+    "description": "schema:description"
+  }
+}

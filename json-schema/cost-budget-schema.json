@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/main/json-schema/cost-budget-schema.json",
+  "title": "AWS Budget",
+  "description": "An AWS Budget that tracks cost, usage, RI utilization, or Savings Plans coverage",
+  "type": "object",
+  "properties": {
+    "BudgetName": {
+      "type": "string",
+      "description": "The name of the budget. Must be unique within an account.",
+      "maxLength": 100
+    },
+    "BudgetLimit": {
+      "type": "object",
+      "description": "The total amount of cost, usage, RI utilization, or Savings Plans coverage that you want to track",
+      "properties": {
+        "Amount": { "type": "string", "description": "The cost or usage amount" },
+        "Unit": { "type": "string", "description": "Currency unit (e.g., USD)" }
+      },
+      "required": ["Amount", "Unit"]
+    },
+    "CostFilters": {
+      "type": "object",
+      "description": "Filters to apply to the budget (e.g., by service, region, tag)"
+    },
+    "CostTypes": {
+      "type": "object",
+      "description": "Cost types to include in the budget calculation",
+      "properties": {
+        "IncludeTax": { "type": "boolean" },
+        "IncludeSubscription": { "type": "boolean" },
+        "UseBlended": { "type": "boolean" },
+        "IncludeRefund": { "type": "boolean" },
+        "IncludeCredit": { "type": "boolean" },
+        "IncludeUpfront": { "type": "boolean" },
+        "IncludeRecurring": { "type": "boolean" },
+        "IncludeOtherSubscription": { "type": "boolean" },
+        "IncludeSupport": { "type": "boolean" },
+        "IncludeDiscount": { "type": "boolean" },
+        "UseAmortized": { "type": "boolean" }
+      }
+    },
+    "TimeUnit": {
+      "type": "string",
+      "enum": ["DAILY", "MONTHLY", "QUARTERLY", "ANNUALLY"],
+      "description": "The period covered by a budget"
+    },
+    "TimePeriod": {
+      "type": "object",
+      "properties": {
+        "Start": { "type": "string", "format": "date-time" },
+        "End": { "type": "string", "format": "date-time" }
+      }
+    },
+    "BudgetType": {
+      "type": "string",
+      "enum": ["USAGE", "COST", "RI_UTILIZATION", "RI_COVERAGE", "SAVINGS_PLANS_UTILIZATION", "SAVINGS_PLANS_COVERAGE"],
+      "description": "The type of budget"
+    },
+    "CalculatedSpend": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "ActualSpend": {
+          "type": "object",
+          "properties": {
+            "Amount": { "type": "string" },
+            "Unit": { "type": "string" }
+          }
+        },
+        "ForecastedSpend": {
+          "type": "object",
+          "properties": {
+            "Amount": { "type": "string" },
+            "Unit": { "type": "string" }
+          }
+        }
+      }
+    }
+  },
+  "required": ["BudgetName", "TimeUnit", "BudgetType"]
+}

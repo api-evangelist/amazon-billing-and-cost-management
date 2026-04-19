@@ -1,0 +1,499 @@
+openapi: 3.1.0
+info:
+  title: AWS Budgets API
+  description: >-
+    The AWS Budgets API enables programmatic creation and management of custom
+    budgets that track AWS cost, usage, coverage, and utilization. Supports
+    budget actions that automatically respond when thresholds are exceeded.
+  version: '2016-10-20'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+externalDocs:
+  description: AWS Budgets API Reference
+  url: https://docs.aws.amazon.com/budgets/latest/APIReference/
+servers:
+  - url: https://budgets.amazonaws.com
+    description: AWS Budgets (Global endpoint)
+tags:
+  - name: Budgets
+    description: Create and manage cost budgets
+  - name: Budget Actions
+    description: Automated actions when budget thresholds are exceeded
+  - name: Notifications
+    description: Manage budget alert notifications
+paths:
+  /CreateBudget:
+    post:
+      operationId: CreateBudget
+      summary: Create Budget
+      description: >-
+        Creates a budget and, if included, notifications and subscribers.
+        A budget can track cost, usage, RI utilization, RI coverage,
+        Savings Plans utilization, or Savings Plans coverage.
+      tags:
+        - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBudgetRequest'
+      responses:
+        '200':
+          description: Budget created successfully
+        '400':
+          $ref: '#/components/responses/InvalidParameterException'
+        '403':
+          $ref: '#/components/responses/AccessDeniedException'
+        '429':
+          $ref: '#/components/responses/CreationLimitExceededException'
+  /DescribeBudget:
+    post:
+      operationId: DescribeBudget
+      summary: Describe Budget
+      description: Describes a budget.
+      tags:
+        - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - AccountId
+                - BudgetName
+              properties:
+                AccountId:
+                  type: string
+                BudgetName:
+                  type: string
+      responses:
+        '200':
+          description: Budget details returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+  /DescribeBudgets:
+    post:
+      operationId: DescribeBudgets
+      summary: Describe Budgets
+      description: Lists the budgets that are associated with an account.
+      tags:
+        - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - AccountId
+              properties:
+                AccountId:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Budgets returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Budgets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Budget'
+                  NextToken:
+                    type: string
+  /UpdateBudget:
+    post:
+      operationId: UpdateBudget
+      summary: Update Budget
+      description: Updates a budget. You can change every part of a budget except for the BudgetName and the CalculatedSpend.
+      tags:
+        - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - AccountId
+                - NewBudget
+              properties:
+                AccountId:
+                  type: string
+                NewBudget:
+                  $ref: '#/components/schemas/Budget'
+      responses:
+        '200':
+          description: Budget updated successfully
+  /DeleteBudget:
+    post:
+      operationId: DeleteBudget
+      summary: Delete Budget
+      description: Deletes a budget. You can delete your budget at any time.
+      tags:
+        - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - AccountId
+                - BudgetName
+              properties:
+                AccountId:
+                  type: string
+                BudgetName:
+                  type: string
+      responses:
+        '200':
+          description: Budget deleted successfully
+  /CreateBudgetAction:
+    post:
+      operationId: CreateBudgetAction
+      summary: Create Budget Action
+      description: >-
+        Creates a budget action. Budget actions are automated responses that
+        execute when a budget exceeds a threshold, such as applying an IAM
+        policy or running an SSM automation.
+      tags:
+        - Budget Actions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBudgetActionRequest'
+      responses:
+        '200':
+          description: Budget action created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  AccountId:
+                    type: string
+                  BudgetName:
+                    type: string
+                  ActionId:
+                    type: string
+  /DescribeBudgetActionsForBudget:
+    post:
+      operationId: DescribeBudgetActionsForBudget
+      summary: Describe Budget Actions For Budget
+      description: Describes all of the budget actions for a budget.
+      tags:
+        - Budget Actions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - AccountId
+                - BudgetName
+              properties:
+                AccountId:
+                  type: string
+                BudgetName:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Budget actions returned
+          content:
+            application/json:
+              schema:
+                type: object
+  /CreateNotification:
+    post:
+      operationId: CreateNotification
+      summary: Create Notification
+      description: Creates a notification. You must create the budget before you create the associated notification.
+      tags:
+        - Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - AccountId
+                - BudgetName
+                - Notification
+                - Subscribers
+              properties:
+                AccountId:
+                  type: string
+                BudgetName:
+                  type: string
+                Notification:
+                  $ref: '#/components/schemas/Notification'
+                Subscribers:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Subscriber'
+      responses:
+        '200':
+          description: Notification created successfully
+  /DescribeNotificationsForBudget:
+    post:
+      operationId: DescribeNotificationsForBudget
+      summary: Describe Notifications For Budget
+      description: Lists the notifications that are associated with a budget.
+      tags:
+        - Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - AccountId
+                - BudgetName
+              properties:
+                AccountId:
+                  type: string
+                BudgetName:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Notifications returned
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    Budget:
+      type: object
+      required:
+        - BudgetName
+        - TimeUnit
+        - BudgetType
+      properties:
+        BudgetName:
+          type: string
+        BudgetLimit:
+          type: object
+          properties:
+            Amount:
+              type: string
+            Unit:
+              type: string
+        PlannedBudgetLimits:
+          type: object
+        CostFilters:
+          type: object
+        CostTypes:
+          type: object
+          properties:
+            IncludeTax:
+              type: boolean
+            IncludeSubscription:
+              type: boolean
+            UseBlended:
+              type: boolean
+            IncludeRefund:
+              type: boolean
+            IncludeCredit:
+              type: boolean
+        TimeUnit:
+          type: string
+          enum:
+            - DAILY
+            - MONTHLY
+            - QUARTERLY
+            - ANNUALLY
+        TimePeriod:
+          type: object
+          properties:
+            Start:
+              type: string
+              format: date-time
+            End:
+              type: string
+              format: date-time
+        BudgetType:
+          type: string
+          enum:
+            - USAGE
+            - COST
+            - RI_UTILIZATION
+            - RI_COVERAGE
+            - SAVINGS_PLANS_UTILIZATION
+            - SAVINGS_PLANS_COVERAGE
+        CalculatedSpend:
+          type: object
+          properties:
+            ActualSpend:
+              type: object
+            ForecastedSpend:
+              type: object
+        LastUpdatedTime:
+          type: string
+          format: date-time
+    Notification:
+      type: object
+      required:
+        - NotificationType
+        - ComparisonOperator
+        - Threshold
+      properties:
+        NotificationType:
+          type: string
+          enum:
+            - ACTUAL
+            - FORECASTED
+        ComparisonOperator:
+          type: string
+          enum:
+            - GREATER_THAN
+            - LESS_THAN
+            - EQUAL_TO
+        Threshold:
+          type: number
+          minimum: 0
+          maximum: 15000000000000
+        ThresholdType:
+          type: string
+          enum:
+            - PERCENTAGE
+            - ABSOLUTE_VALUE
+    Subscriber:
+      type: object
+      required:
+        - SubscriptionType
+        - Address
+      properties:
+        SubscriptionType:
+          type: string
+          enum:
+            - SNS
+            - EMAIL
+        Address:
+          type: string
+    CreateBudgetRequest:
+      type: object
+      required:
+        - AccountId
+        - Budget
+      properties:
+        AccountId:
+          type: string
+        Budget:
+          $ref: '#/components/schemas/Budget'
+        NotificationsWithSubscribers:
+          type: array
+          items:
+            type: object
+            properties:
+              Notification:
+                $ref: '#/components/schemas/Notification'
+              Subscribers:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscriber'
+    CreateBudgetActionRequest:
+      type: object
+      required:
+        - AccountId
+        - BudgetName
+        - NotificationType
+        - ActionType
+        - ActionThreshold
+        - Definition
+        - ExecutionRoleArn
+        - ApprovalModel
+        - Subscribers
+      properties:
+        AccountId:
+          type: string
+        BudgetName:
+          type: string
+        NotificationType:
+          type: string
+          enum:
+            - ACTUAL
+            - FORECASTED
+        ActionType:
+          type: string
+          enum:
+            - APPLY_IAM_POLICY
+            - APPLY_SCP_POLICY
+            - RUN_SSM_DOCUMENTS
+        ActionThreshold:
+          type: object
+          properties:
+            ActionThresholdValue:
+              type: number
+            ActionThresholdType:
+              type: string
+        Definition:
+          type: object
+        ExecutionRoleArn:
+          type: string
+        ApprovalModel:
+          type: string
+          enum:
+            - AUTOMATIC
+            - MANUAL
+        Subscribers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscriber'
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+  responses:
+    InvalidParameterException:
+      description: An error on the client occurred. Typically, the cause is an invalid input value.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AccessDeniedException:
+      description: You are not authorized to use this operation with the given parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    CreationLimitExceededException:
+      description: You've exceeded the notification or subscriber limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+security:
+  - aws_iam: []
