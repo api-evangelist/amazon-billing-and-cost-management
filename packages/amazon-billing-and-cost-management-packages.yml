@@ -1,0 +1,143 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  AWS SDK client libraries published to public registries (npm, PyPI, Maven
+  Central, NuGet, Go modules, RubyGems). AWS APIs are accessed through the
+  unified AWS SDKs; per-service clients for Cost Explorer, Budgets, and Pricing
+  are shipped as official first-party packages.
+packages:
+  # ---- JavaScript / TypeScript (AWS SDK for JavaScript v3) ----
+  - language: javascript
+    registry: npm
+    name: '@aws-sdk/client-cost-explorer'
+    url: https://www.npmjs.com/package/@aws-sdk/client-cost-explorer
+    install: npm install @aws-sdk/client-cost-explorer
+    api: AWS Cost Explorer API
+    official: true
+  - language: javascript
+    registry: npm
+    name: '@aws-sdk/client-budgets'
+    url: https://www.npmjs.com/package/@aws-sdk/client-budgets
+    install: npm install @aws-sdk/client-budgets
+    api: AWS Budgets API
+    official: true
+  - language: javascript
+    registry: npm
+    name: '@aws-sdk/client-pricing'
+    url: https://www.npmjs.com/package/@aws-sdk/client-pricing
+    install: npm install @aws-sdk/client-pricing
+    api: AWS Price List API
+    official: true
+  # ---- Python (AWS SDK for Python - Boto3) ----
+  - language: python
+    registry: pypi
+    name: boto3
+    url: https://pypi.org/project/boto3/
+    install: pip install boto3
+    note: >-
+      Single AWS SDK for Python; exposes ce, budgets, and pricing clients via
+      boto3.client('ce' | 'budgets' | 'pricing').
+    official: true
+  - language: python
+    registry: pypi
+    name: botocore
+    url: https://pypi.org/project/botocore/
+    install: pip install botocore
+    note: Low-level core that backs boto3; ships the service models for ce, budgets, pricing.
+    official: true
+  # ---- Go (AWS SDK for Go v2) ----
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/aws/aws-sdk-go-v2/service/costexplorer
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/costexplorer
+    install: go get github.com/aws/aws-sdk-go-v2/service/costexplorer
+    api: AWS Cost Explorer API
+    official: true
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/aws/aws-sdk-go-v2/service/budgets
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/budgets
+    install: go get github.com/aws/aws-sdk-go-v2/service/budgets
+    api: AWS Budgets API
+    official: true
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/aws/aws-sdk-go-v2/service/pricing
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/pricing
+    install: go get github.com/aws/aws-sdk-go-v2/service/pricing
+    api: AWS Price List API
+    official: true
+  # ---- .NET (AWS SDK for .NET) ----
+  - language: dotnet
+    registry: nuget
+    name: AWSSDK.CostExplorer
+    url: https://www.nuget.org/packages/AWSSDK.CostExplorer
+    install: dotnet add package AWSSDK.CostExplorer
+    api: AWS Cost Explorer API
+    official: true
+  - language: dotnet
+    registry: nuget
+    name: AWSSDK.Budgets
+    url: https://www.nuget.org/packages/AWSSDK.Budgets
+    install: dotnet add package AWSSDK.Budgets
+    api: AWS Budgets API
+    official: true
+  - language: dotnet
+    registry: nuget
+    name: AWSSDK.Pricing
+    url: https://www.nuget.org/packages/AWSSDK.Pricing
+    install: dotnet add package AWSSDK.Pricing
+    api: AWS Price List API
+    official: true
+  # ---- Ruby (AWS SDK for Ruby v3) ----
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-costexplorer
+    url: https://rubygems.org/gems/aws-sdk-costexplorer
+    install: gem install aws-sdk-costexplorer
+    api: AWS Cost Explorer API
+    official: true
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-budgets
+    url: https://rubygems.org/gems/aws-sdk-budgets
+    install: gem install aws-sdk-budgets
+    api: AWS Budgets API
+    official: true
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-pricing
+    url: https://rubygems.org/gems/aws-sdk-pricing
+    install: gem install aws-sdk-pricing
+    api: AWS Price List API
+    official: true
+  # ---- Java (AWS SDK for Java v2) ----
+  - language: java
+    registry: maven
+    name: software.amazon.awssdk:costexplorer
+    url: https://central.sonatype.com/artifact/software.amazon.awssdk/costexplorer
+    install: 'implementation("software.amazon.awssdk:costexplorer")'
+    api: AWS Cost Explorer API
+    official: true
+  - language: java
+    registry: maven
+    name: software.amazon.awssdk:budgets
+    url: https://central.sonatype.com/artifact/software.amazon.awssdk/budgets
+    install: 'implementation("software.amazon.awssdk:budgets")'
+    api: AWS Budgets API
+    official: true
+  - language: java
+    registry: maven
+    name: software.amazon.awssdk:pricing
+    url: https://central.sonatype.com/artifact/software.amazon.awssdk/pricing
+    install: 'implementation("software.amazon.awssdk:pricing")'
+    api: AWS Price List API
+    official: true
+cli:
+  - name: AWS CLI
+    url: https://docs.aws.amazon.com/cli/latest/reference/ce/
+    commands:
+      - aws ce get-cost-and-usage
+      - aws budgets describe-budgets
+      - aws pricing get-products
+    official: true

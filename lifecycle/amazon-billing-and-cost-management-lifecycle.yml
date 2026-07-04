@@ -1,0 +1,36 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  Versioning derived from OpenAPI info.version (AWS API version dates) and
+  service endpoints; status page and deprecation posture from AWS public
+  documentation. AWS does not publish RFC 8594 Sunset/Deprecation headers for
+  these APIs.
+versioning:
+  scheme: api-version-date
+  note: >-
+    AWS services are versioned by an API version date sent with each request
+    (the AWS JSON protocol), not by a URI path version. SDKs pin the version.
+  apis:
+    - name: AWS Cost Explorer API
+      version: '2017-10-25'
+    - name: AWS Budgets API
+      version: '2016-10-20'
+    - name: AWS Price List API
+      note: Bulk/query price list served via versioned offer files and the pricing endpoint.
+deprecation:
+  policy_url: https://docs.aws.amazon.com/general/latest/gr/aws-general-faqs.html
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    AWS communicates API deprecations through service documentation, the AWS
+    Health Dashboard, and customer notifications rather than HTTP Sunset headers.
+  deprecated_operations: []
+sla:
+  url: https://aws.amazon.com/legal/service-level-agreements/
+  note: >-
+    No dedicated published SLA specific to the Cost Explorer / Budgets APIs;
+    covered under general AWS service terms.
+status_page: https://health.aws.amazon.com/health/status
+support:
+  url: https://aws.amazon.com/contact-us/
+changelog: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/CommonErrors.html

@@ -1,0 +1,63 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  Probed /.well-known/ discovery paths on the API base hosts (ce, budgets,
+  pricing endpoints) and the AWS corporate/docs hosts.
+hosts:
+  - host: https://aws.amazon.com
+    documents:
+      - path: /.well-known/security.txt          # RFC 9116
+        status: 200
+        file: amazon-billing-and-cost-management-security.txt
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://ce.us-east-1.amazonaws.com
+    note: AWS Cost Explorer API endpoint; no /.well-known surface (SigV4 / IAM auth).
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://budgets.amazonaws.com
+    note: AWS Budgets API endpoint; no /.well-known surface (SigV4 / IAM auth).
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://pricing.us-east-1.amazonaws.com
+    note: AWS Price List API endpoint; no /.well-known surface (SigV4 / IAM auth).
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://docs.aws.amazon.com
+    note: Documentation host; publishes llms.txt (see llms/ artifact) but no /.well-known documents.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404

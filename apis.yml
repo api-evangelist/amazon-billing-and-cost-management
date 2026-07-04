@@ -22,7 +22,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-04-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
   - aid: amazon-billing-and-cost-management:aws-cost-explorer-api
@@ -56,6 +56,8 @@ apis:
       - type: Vocabulary
         url: >-
           https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
+      - type: Overlay
+        url: overlays/amazon-billing-and-cost-management-aws-cost-explorer-api-overlay.yaml
     contact:
       - FN: AWS Support
         url: https://aws.amazon.com/contact-us/
@@ -126,6 +128,8 @@ apis:
       - type: OpenAPI
         url: >-
           https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/openapi/aws-budgets-api-openapi.yml
+      - type: Overlay
+        url: overlays/amazon-billing-and-cost-management-aws-budgets-api-overlay.yaml
 
   - aid: amazon-billing-and-cost-management:aws-price-list-api
     name: AWS Price List API
@@ -167,6 +171,22 @@ common:
     url: https://github.com/aws
   - type: Contact
     url: https://aws.amazon.com/contact-us/
+  - type: Packages
+    url: packages/amazon-billing-and-cost-management-packages.yml
+  - type: WellKnown
+    url: well-known/amazon-billing-and-cost-management-well-known.yml
+  - type: SecurityTxt
+    url: well-known/amazon-billing-and-cost-management-security.txt
+  - type: MCPServer
+    url: mcp/amazon-billing-and-cost-management-mcp.yml
+  - type: LLMsTxt
+    url: llms/amazon-billing-and-cost-management-llms.txt
+  - type: Conformance
+    url: conformance/amazon-billing-and-cost-management-conformance.yml
+  - type: ErrorCatalog
+    url: errors/amazon-billing-and-cost-management-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/amazon-billing-and-cost-management-lifecycle.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

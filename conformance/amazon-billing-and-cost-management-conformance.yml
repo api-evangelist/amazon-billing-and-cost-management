@@ -1,0 +1,50 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  Derived from the OpenAPI security schemes, protocol, and response shapes of
+  the AWS Cost Explorer and AWS Budgets APIs, plus documented AWS auth model.
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: >-
+      AWS uses Signature Version 4 (SigV4) request signing over IAM credentials,
+      not OAuth 2.0.
+  - id: oidc
+    conforms: false
+    evidence: No OpenID Connect discovery or ID tokens; auth is IAM/SigV4.
+  - id: aws-sigv4
+    conforms: true
+    evidence: >-
+      securitySchemes.aws_iam requires AWS Signature Version 4 (X-Amz-Date /
+      Authorization header) as documented in the API Reference.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors are returned as AWS JSON exception objects ({"__type","message"}),
+      not application/problem+json.
+  - id: json-api
+    conforms: false
+    evidence: Responses are AWS JSON 1.1, not the JSON:API media type.
+  - id: odata
+    conforms: false
+  - id: fhir
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: psd2
+    conforms: false
+  - id: pagination
+    conforms: true
+    evidence: >-
+      Token-based pagination via NextPageToken / NextToken across list and query
+      operations (e.g. GetCostAndUsage, ListCostCategoryDefinitions).
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No idempotency-key header defined; mutating operations (CreateBudget,
+      CreateAnomalyMonitor) are not documented as idempotent.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset/Deprecation header usage documented for these endpoints.

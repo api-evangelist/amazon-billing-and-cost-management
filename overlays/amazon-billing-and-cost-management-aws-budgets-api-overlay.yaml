@@ -1,0 +1,31 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for AWS Budgets API
+  version: 1.0.0
+# generated: '2026-06-20'
+# method: generated
+# source: openapi/aws-budgets-api-openapi.yml
+extends: openapi/aws-budgets-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-aid: amazon-billing-and-cost-management:aws-budgets-api
+      x-apievangelist-topics:
+        - Budgets
+        - Cost Tracking
+        - Alerts
+        - FinOps
+      x-apievangelist-auth: AWS Signature Version 4 (SigV4) over IAM credentials
+      x-apievangelist-protocol: AWS JSON 1.1 (POST to service endpoint with X-Amz-Target header)
+  - target: $.info
+    update:
+      x-apievangelist-artifacts:
+        packages: packages/amazon-billing-and-cost-management-packages.yml
+        mcp: mcp/amazon-billing-and-cost-management-mcp.yml
+        llms: llms/amazon-billing-and-cost-management-llms.txt
+        conformance: conformance/amazon-billing-and-cost-management-conformance.yml
+        errors: errors/amazon-billing-and-cost-management-problem-types.yml
+        lifecycle: lifecycle/amazon-billing-and-cost-management-lifecycle.yml
+  - target: $.externalDocs
+    update:
+      x-apievangelist-llms-txt: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/llms.txt

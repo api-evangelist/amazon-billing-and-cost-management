@@ -1,0 +1,76 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  Derived from the 4xx/5xx responses defined in openapi/aws-cost-explorer-api-openapi.yml
+  and openapi/aws-budgets-api-openapi.yml, enriched with titles from the AWS
+  Billing and Cost Management API Reference. AWS services return service-specific
+  exceptions as an AWS JSON error object ({"__type": "...", "message": "..."}),
+  not RFC 9457 application/problem+json.
+format: aws-json-error
+problems:
+  # ---- AWS Cost Explorer API ----
+  - name: DataUnavailableException
+    status: 400
+    title: The requested data is unavailable
+    remediation: >-
+      Adjust the requested time period or dimensions; cost data may not yet be
+      available for very recent periods.
+    source_api: AWS Cost Explorer API
+    source_operations:
+      - openapi/aws-cost-explorer-api-openapi.yml#GetCostAndUsage
+      - openapi/aws-cost-explorer-api-openapi.yml#GetCostAndUsageWithResources
+      - openapi/aws-cost-explorer-api-openapi.yml#GetCostForecast
+      - openapi/aws-cost-explorer-api-openapi.yml#GetUsageForecast
+      - openapi/aws-cost-explorer-api-openapi.yml#GetDimensionValues
+  - name: LimitExceededException
+    status: 400
+    title: You've exceeded the limit for this resource
+    remediation: >-
+      Reduce request frequency or the number of resources; request a service
+      quota increase if the limit is a hard cap.
+    source_api: AWS Cost Explorer API
+    source_operations:
+      - openapi/aws-cost-explorer-api-openapi.yml#GetCostAndUsage
+      - openapi/aws-cost-explorer-api-openapi.yml#CreateAnomalyMonitor
+      - openapi/aws-cost-explorer-api-openapi.yml#CreateAnomalySubscription
+      - openapi/aws-cost-explorer-api-openapi.yml#GetRightsizingRecommendation
+      - openapi/aws-cost-explorer-api-openapi.yml#GetReservationPurchaseRecommendation
+      - openapi/aws-cost-explorer-api-openapi.yml#ListCostAllocationTags
+      - openapi/aws-cost-explorer-api-openapi.yml#GetTags
+      - openapi/aws-cost-explorer-api-openapi.yml#CreateCostCategoryDefinition
+      - openapi/aws-cost-explorer-api-openapi.yml#GetDimensionValues
+  - name: InvalidNextTokenException
+    status: 400
+    title: The pagination token is invalid
+    remediation: >-
+      Do not modify the NextPageToken between calls; restart pagination from the
+      first page if the token has expired.
+    source_api: AWS Cost Explorer API
+    source_operations:
+      - openapi/aws-cost-explorer-api-openapi.yml#GetSavingsPlansPurchaseRecommendation
+  # ---- AWS Budgets API ----
+  - name: InvalidParameterException
+    status: 400
+    title: An error on the client occurred. Typically, the cause is an invalid input value.
+    remediation: Validate request parameters against the API Reference and retry.
+    source_api: AWS Budgets API
+    source_operations:
+      - openapi/aws-budgets-api-openapi.yml#CreateBudget
+  - name: AccessDeniedException
+    status: 403
+    title: You are not authorized to use this operation with the given parameters.
+    remediation: >-
+      Verify the caller's IAM policy grants the required budgets action on the
+      target resource.
+    source_api: AWS Budgets API
+    source_operations:
+      - openapi/aws-budgets-api-openapi.yml#CreateBudget
+  - name: CreationLimitExceededException
+    status: 429
+    title: You've exceeded the notification or subscriber limit.
+    remediation: >-
+      Reduce the number of notifications/subscribers on the budget or request a
+      service quota increase.
+    source_api: AWS Budgets API
+    source_operations:
+      - openapi/aws-budgets-api-openapi.yml#CreateBudget

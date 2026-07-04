@@ -1,0 +1,877 @@
+# AWS Billing and Cost Management API Reference
+
+## [AWS Cost Explorer](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_AWS_Cost_Explorer_Service.md)
+
+You can use the Cost Explorer API to programmatically query your cost and usage data. You can query for aggregated data such as total monthly costs or total daily usage. You can also query for granular data. This might include the number of daily write operations for Amazon DynamoDB database tables in your production environment.
+
+Service Endpoint
+
+The Cost Explorer API provides the following endpoint:
+
+- `https://ce.us-east-1.amazonaws.com`
+
+For information about the costs that are associated with the Cost Explorer API, see [AWS Cost Management Pricing](http://aws.amazon.com/aws-cost-management/pricing/).
+
+### Actions
+
+- [CreateAnomalyMonitor](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CreateAnomalyMonitor.md): Creates a new cost anomaly detection monitor with the requested type and monitor specification.
+- [CreateAnomalySubscription](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CreateAnomalySubscription.md): Adds an alert subscription to a cost anomaly detection monitor.
+- [CreateCostCategoryDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CreateCostCategoryDefinition.md): Creates a new cost category with the requested name and rules.
+- [DeleteAnomalyMonitor](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DeleteAnomalyMonitor.md): Deletes a cost anomaly monitor.
+- [DeleteAnomalySubscription](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DeleteAnomalySubscription.md): Deletes a cost anomaly subscription.
+- [DeleteCostCategoryDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DeleteCostCategoryDefinition.md): Deletes a cost category.
+- [DescribeCostCategoryDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DescribeCostCategoryDefinition.md): Returns the name, Amazon Resource Name (ARN), rules, definition, and effective dates of a cost category that's defined in the account.
+- [GetAnomalies](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetAnomalies.md): Retrieves all of the cost anomalies detected on your account during the time period that's specified by the DateInterval object.
+- [GetAnomalyMonitors](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetAnomalyMonitors.md): Retrieves the cost anomaly monitor definitions for your account.
+- [GetAnomalySubscriptions](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetAnomalySubscriptions.md): Retrieves the cost anomaly subscription objects for your account.
+- [GetApproximateUsageRecords](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetApproximateUsageRecords.md): Retrieves estimated usage records for hourly granularity or resource-level data at daily granularity.
+- [GetCommitmentPurchaseAnalysis](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetCommitmentPurchaseAnalysis.md): Retrieves a commitment purchase analysis result based on the AnalysisId.
+- [GetCostAndUsage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetCostAndUsage.md): Retrieves cost and usage metrics for your account.
+- [GetCostAndUsageComparisons](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetCostAndUsageComparisons.md): Retrieves cost and usage comparisons for your account between two periods within the last 13 months.
+- [GetCostAndUsageWithResources](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetCostAndUsageWithResources.md): Retrieves cost and usage metrics with resources for your account.
+- [GetCostCategories](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetCostCategories.md): Retrieves an array of cost category names and values incurred cost.
+- [GetCostComparisonDrivers](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetCostComparisonDrivers.md): Retrieves key factors driving cost changes between two time periods within the last 13 months, such as usage changes, discount changes, and commitment-based savings.
+- [GetCostForecast](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetCostForecast.md): Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs.
+- [GetDimensionValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.md): Retrieves all available filter values for a specified filter over a period of time.
+- [GetReservationCoverage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetReservationCoverage.md): Retrieves the reservation coverage for your account, which you can use to see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache, Amazon Relational Database Service, or Amazon Redshift usage is covered by a reservation.
+- [GetReservationPurchaseRecommendation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetReservationPurchaseRecommendation.md): Gets recommendations for reservation purchases.
+- [GetReservationUtilization](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetReservationUtilization.md): Retrieves the reservation utilization for your account.
+- [GetRightsizingRecommendation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetRightsizingRecommendation.md): Creates recommendations that help you save cost by identifying idle and underutilized Amazon EC2 instances.
+- [GetSavingsPlanPurchaseRecommendationDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetSavingsPlanPurchaseRecommendationDetails.md): Retrieves the details for a Savings Plan recommendation.
+- [GetSavingsPlansCoverage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetSavingsPlansCoverage.md): Retrieves the Savings Plans covered for your account.
+- [GetSavingsPlansPurchaseRecommendation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetSavingsPlansPurchaseRecommendation.md): Retrieves the Savings Plans recommendations for your account.
+- [GetSavingsPlansUtilization](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetSavingsPlansUtilization.md): Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity.
+- [GetSavingsPlansUtilizationDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetSavingsPlansUtilizationDetails.md): Retrieves attribute data along with aggregate utilization and savings data for a given time period.
+- [GetTags](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetTags.md): Queries for available tag keys and tag values for a specified period.
+- [GetUsageForecast](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetUsageForecast.md): Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage.
+- [ListCommitmentPurchaseAnalyses](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ListCommitmentPurchaseAnalyses.md): Lists the commitment purchase analyses for your account.
+- [ListCostAllocationTagBackfillHistory](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ListCostAllocationTagBackfillHistory.md): Retrieves a list of your historical cost allocation tag backfill requests.
+- [ListCostAllocationTags](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ListCostAllocationTags.md): Get a list of cost allocation tags.
+- [ListCostCategoryDefinitions](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ListCostCategoryDefinitions.md): Returns the name, Amazon Resource Name (ARN), NumberOfRules and effective dates of all cost categories defined in the account.
+- [ListCostCategoryResourceAssociations](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ListCostCategoryResourceAssociations.md): Returns resource associations of all cost categories defined in the account.
+- [ListSavingsPlansPurchaseRecommendationGeneration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ListSavingsPlansPurchaseRecommendationGeneration.md): Retrieves a list of your historical recommendation generations within the past 30 days.
+- [ListTagsForResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ListTagsForResource.md): Returns a list of resource tags associated with the resource specified by the Amazon Resource Name (ARN).
+- [ProvideAnomalyFeedback](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ProvideAnomalyFeedback.md): Modifies the feedback property of a given cost anomaly.
+- [StartCommitmentPurchaseAnalysis](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_StartCommitmentPurchaseAnalysis.md): Specifies the parameters of a planned commitment purchase and starts the generation of the analysis.
+- [StartCostAllocationTagBackfill](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_StartCostAllocationTagBackfill.md): Request a cost allocation tag backfill.
+- [StartSavingsPlansPurchaseRecommendationGeneration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_StartSavingsPlansPurchaseRecommendationGeneration.md): Requests a Savings Plans recommendation generation.
+- [TagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_TagResource.md): An API operation for adding one or more tags (key-value pairs) to a resource.
+- [UntagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_UntagResource.md): Removes one or more tags from a resource.
+- [UpdateAnomalyMonitor](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_UpdateAnomalyMonitor.md): Updates an existing cost anomaly monitor.
+- [UpdateAnomalySubscription](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_UpdateAnomalySubscription.md): Updates an existing cost anomaly subscription.
+- [UpdateCostAllocationTagsStatus](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_UpdateCostAllocationTagsStatus.md): Updates status for cost allocation tags in bulk, with maximum batch size of 20.
+- [UpdateCostCategoryDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_UpdateCostCategoryDefinition.md): Updates an existing cost category.
+
+### Data Types
+
+- [AnalysisDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AnalysisDetails.md): Details about the analysis.
+- [AnalysisSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AnalysisSummary.md): A summary of the analysis.
+- [Anomaly](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Anomaly.md): An unusual cost pattern.
+- [AnomalyDateInterval](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AnomalyDateInterval.md): The time period for an anomaly.
+- [AnomalyMonitor](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AnomalyMonitor.md): This object continuously inspects your account's cost data for anomalies.
+- [AnomalyScore](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AnomalyScore.md): Quantifies the anomaly.
+- [AnomalySubscription](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AnomalySubscription.md): An AnomalySubscription resource (also referred to as an alert subscription) sends notifications about specific anomalies that meet an alerting criteria defined by you.
+- [CommitmentPurchaseAnalysisConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CommitmentPurchaseAnalysisConfiguration.md): The configuration for the commitment purchase analysis.
+- [ComparisonMetricValue](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ComparisonMetricValue.md): Contains cost or usage metric values for comparing two time periods.
+- [CostAllocationTag](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostAllocationTag.md): The cost allocation tag structure.
+- [CostAllocationTagBackfillRequest](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostAllocationTagBackfillRequest.md): The cost allocation tag backfill request structure that contains metadata and details of a certain backfill.
+- [CostAllocationTagStatusEntry](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostAllocationTagStatusEntry.md): The cost allocation tag status.
+- [CostAndUsageComparison](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostAndUsageComparison.md): Represents a comparison of cost and usage metrics between two time periods.
+- [CostCategory](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategory.md): The structure of Cost Categories.
+- [CostCategoryInheritedValueDimension](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryInheritedValueDimension.md): When you create or update a cost category, you can define the CostCategoryRule rule type as INHERITED_VALUE.
+- [CostCategoryProcessingStatus](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryProcessingStatus.md): The list of processing statuses for Cost Management products for a specific cost category.
+- [CostCategoryReference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryReference.md): A reference to a cost category containing only enough information to identify the Cost Category.
+- [CostCategoryResourceAssociation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryResourceAssociation.md): A reference to a cost category association that contains information on an associated resource.
+- [CostCategoryRule](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.md): Rules are processed in order.
+- [CostCategorySplitChargeRule](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategorySplitChargeRule.md): Use the split charge rule to split the cost of one cost category value across several other target values.
+- [CostCategorySplitChargeRuleParameter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategorySplitChargeRuleParameter.md): The parameters for a split charge method.
+- [CostCategoryValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryValues.md): The Cost Categories values used for filtering the costs.
+- [CostComparisonDriver](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostComparisonDriver.md): Represents a collection of cost drivers and their associated metrics for cost comparison analysis.
+- [CostDriver](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostDriver.md): Represents factors that contribute to cost variations between the baseline and comparison time periods, including the type of driver, an identifier of the driver, and associated metrics.
+- [Coverage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Coverage.md): The amount of instance usage that a reservation covered.
+- [CoverageByTime](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CoverageByTime.md): Reservation coverage for a specified period, in hours.
+- [CoverageCost](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CoverageCost.md): How much it costs to run an instance.
+- [CoverageHours](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CoverageHours.md): How long a running instance either used a reservation or was On-Demand.
+- [CoverageNormalizedUnits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CoverageNormalizedUnits.md): The amount of instance usage, in normalized units.
+- [CurrentInstance](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CurrentInstance.md): Context about the current instance.
+- [DateInterval](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DateInterval.md): The time period of the request.
+- [DimensionValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DimensionValues.md): The metadata that you can use to filter and group your results.
+- [DimensionValuesWithAttributes](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DimensionValuesWithAttributes.md): The metadata of a specific type that you can use to filter and group your results.
+- [DiskResourceUtilization](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DiskResourceUtilization.md): The field that contains a list of disk (local storage) metrics that are associated with the current instance.
+- [DynamoDBCapacityDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DynamoDBCapacityDetails.md): The DynamoDB reservations that AWS recommends that you purchase.
+- [EBSResourceUtilization](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_EBSResourceUtilization.md): The EBS field that contains a list of EBS metrics that are associated with the current instance.
+- [EC2InstanceDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_EC2InstanceDetails.md): Details about the Amazon EC2 reservations that AWS recommends that you purchase.
+- [EC2ResourceDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_EC2ResourceDetails.md): Details on the Amazon EC2 Resource.
+- [EC2ResourceUtilization](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_EC2ResourceUtilization.md): Utilization metrics for the instance.
+- [EC2Specification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_EC2Specification.md): The Amazon EC2 hardware specifications that you want AWS to provide recommendations for.
+- [ElastiCacheInstanceDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ElastiCacheInstanceDetails.md): Details about the Amazon ElastiCache reservations that AWS recommends that you purchase.
+- [ESInstanceDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ESInstanceDetails.md): Details about the Amazon OpenSearch Service reservations that AWS recommends that you purchase.
+- [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.md): Use Expression to filter in various Cost Explorer APIs.
+- [ForecastResult](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ForecastResult.md): The forecast that's created for your query.
+- [GenerationSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GenerationSummary.md): The summary of the Savings Plans recommendation generation.
+- [Group](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Group.md): One level of grouped data in the results.
+- [GroupDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GroupDefinition.md): Represents a group when you specify a group by criteria or in the response to a query with a specific grouping.
+- [Impact](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Impact.md): The dollar value of the anomaly.
+- [InstanceDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_InstanceDetails.md): Details about the reservations that AWS recommends that you purchase.
+- [MemoryDBInstanceDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_MemoryDBInstanceDetails.md): Details about the MemoryDB reservations that AWS recommends that you purchase.
+- [MetricValue](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_MetricValue.md): The aggregated value for a metric.
+- [ModifyRecommendationDetail](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ModifyRecommendationDetail.md): Details for the modification recommendation.
+- [NetworkResourceUtilization](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_NetworkResourceUtilization.md): The network field that contains a list of network metrics that are associated with the current instance.
+- [RDSInstanceDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_RDSInstanceDetails.md): Details about the Amazon RDS reservations that AWS recommends that you purchase.
+- [RecommendationDetailData](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_RecommendationDetailData.md): The details and metrics for the given recommendation.
+- [RecommendationDetailHourlyMetrics](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_RecommendationDetailHourlyMetrics.md): Contains the hourly metrics for the given recommendation over the lookback period.
+- [RedshiftInstanceDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_RedshiftInstanceDetails.md): Details about the Amazon Redshift reservations that AWS recommends that you purchase.
+- [ReservationAggregates](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ReservationAggregates.md): The aggregated numbers for your reservation usage.
+- [ReservationCoverageGroup](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ReservationCoverageGroup.md): A group of reservations that share a set of attributes.
+- [ReservationPurchaseRecommendation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ReservationPurchaseRecommendation.md): A specific reservation that AWS recommends for purchase.
+- [ReservationPurchaseRecommendationDetail](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ReservationPurchaseRecommendationDetail.md): Details about your recommended reservation purchase.
+- [ReservationPurchaseRecommendationMetadata](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ReservationPurchaseRecommendationMetadata.md): Information about a recommendation, such as the timestamp for when AWS made a specific recommendation.
+- [ReservationPurchaseRecommendationSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ReservationPurchaseRecommendationSummary.md): A summary about this recommendation, such as the currency code, the amount that AWS estimates that you could save, and the total amount of reservation to purchase.
+- [ReservationUtilizationGroup](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ReservationUtilizationGroup.md): A group of reservations that share a set of attributes.
+- [ReservedCapacityDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ReservedCapacityDetails.md): Details about the reservations that AWS recommends that you purchase.
+- [ResourceDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ResourceDetails.md): Details for the resource.
+- [ResourceTag](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ResourceTag.md): The tag structure that contains a tag key and value.
+- [ResourceUtilization](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ResourceUtilization.md): Resource utilization of current resource.
+- [ResultByTime](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ResultByTime.md): The result that's associated with a time period.
+- [RightsizingRecommendation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_RightsizingRecommendation.md): Recommendations to rightsize resources.
+- [RightsizingRecommendationConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_RightsizingRecommendationConfiguration.md): You can use RightsizingRecommendationConfiguration to customize recommendations across two attributes.
+- [RightsizingRecommendationMetadata](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_RightsizingRecommendationMetadata.md): Metadata for a recommendation set.
+- [RightsizingRecommendationSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_RightsizingRecommendationSummary.md): The summary of rightsizing recommendations
+- [RootCause](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_RootCause.md): The combination of AWS service, linked account, linked account name, Region, and usage type where a cost anomaly is observed, along with the dollar and percentage amount of the anomaly impact.
+- [RootCauseImpact](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_RootCauseImpact.md): The dollar value of the root cause.
+- [SavingsPlans](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlans.md): The Savings Plans commitment details.
+- [SavingsPlansAmortizedCommitment](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansAmortizedCommitment.md): The amortized amount of Savings Plans purchased in a specific account during a specific time interval.
+- [SavingsPlansCoverage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansCoverage.md): The amount of Savings Plans eligible usage that's covered by Savings Plans.
+- [SavingsPlansCoverageData](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansCoverageData.md): Specific coverage percentage, On-Demand costs, and spend covered by Savings Plans, and total Savings Plans costs for an account.
+- [SavingsPlansDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansDetails.md): The attribute details on a specific Savings Plan.
+- [SavingsPlansPurchaseAnalysisConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansPurchaseAnalysisConfiguration.md): The configuration for the Savings Plans purchase analysis.
+- [SavingsPlansPurchaseAnalysisDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansPurchaseAnalysisDetails.md): Details about the Savings Plans purchase analysis.
+- [SavingsPlansPurchaseRecommendation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansPurchaseRecommendation.md): Contains your request parameters, Savings Plan Recommendations Summary, and Details.
+- [SavingsPlansPurchaseRecommendationDetail](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansPurchaseRecommendationDetail.md): Details for your recommended Savings Plans.
+- [SavingsPlansPurchaseRecommendationMetadata](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansPurchaseRecommendationMetadata.md): Metadata about your Savings Plans Purchase Recommendations.
+- [SavingsPlansPurchaseRecommendationSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansPurchaseRecommendationSummary.md): Summary metrics for your Savings Plans Purchase Recommendations.
+- [SavingsPlansSavings](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansSavings.md): The amount of savings that you're accumulating, against the public On-Demand rate of the usage accrued in an account.
+- [SavingsPlansUtilization](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansUtilization.md): The measurement of how well you're using your existing Savings Plans.
+- [SavingsPlansUtilizationAggregates](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansUtilizationAggregates.md): The aggregated utilization metrics for your Savings Plans usage.
+- [SavingsPlansUtilizationByTime](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansUtilizationByTime.md): The amount of Savings Plans utilization (in hours).
+- [SavingsPlansUtilizationDetail](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SavingsPlansUtilizationDetail.md): A single daily or monthly Savings Plans utilization rate and details for your account.
+- [ServiceSpecification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_ServiceSpecification.md): Hardware specifications for the service that you want recommendations for.
+- [SortDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_SortDefinition.md): The details for how to sort the data.
+- [Subscriber](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Subscriber.md): The recipient of AnomalySubscription notifications.
+- [TagValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_TagValues.md): The values that are available for a tag.
+- [TargetInstance](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_TargetInstance.md): Details on recommended instance.
+- [TerminateRecommendationDetail](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_TerminateRecommendationDetail.md): Details on termination recommendation.
+- [TotalImpactFilter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_TotalImpactFilter.md): Filters cost anomalies based on the total impact.
+- [UpdateCostAllocationTagsStatusError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_UpdateCostAllocationTagsStatusError.md): Gives a detailed description of the result of an action.
+- [UtilizationByTime](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_UtilizationByTime.md): The amount of utilization, in hours.
+
+## [AWS Billing and Cost Management Dashboards](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_AWS_Billing_and_Cost_Management_Dashboards.md)
+
+AWS Billing and Cost Management Dashboards is a service that enables you to create, manage, and share dashboards that combine multiple visualizations of your AWS cost and usage data. You can combine multiple data sources including Cost Explorer, Savings Plans, and Reserved Instance metrics into unified dashboards, helping you analyze spending patterns and share cost insights across your organization.
+
+You can use the AWS Billing and Cost Management Dashboards API to programmatically create, manage, and share dashboards. This includes creating custom dashboards, configuring widgets, managing dashboard permissions, and sharing dashboards across accounts in your organization.
+
+### Actions
+
+- [CreateDashboard](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_CreateDashboard.md): Creates a new dashboard that can contain multiple widgets displaying cost and usage data.
+- [CreateScheduledReport](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_CreateScheduledReport.md): Creates a new scheduled report for a dashboard.
+- [DeleteDashboard](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_DeleteDashboard.md): Deletes a specified dashboard.
+- [DeleteScheduledReport](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_DeleteScheduledReport.md): Deletes a specified scheduled report.
+- [ExecuteScheduledReport](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_ExecuteScheduledReport.md): Triggers an immediate execution of a scheduled report, outside of its regular schedule.
+- [GetDashboard](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_GetDashboard.md): Retrieves the configuration and metadata of a specified dashboard, including its widgets and layout settings.
+- [GetResourcePolicy](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_GetResourcePolicy.md): Retrieves the resource-based policy attached to a dashboard, showing sharing configurations and permissions.
+- [GetScheduledReport](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_GetScheduledReport.md): Retrieves the configuration and metadata of a specified scheduled report.
+- [ListDashboards](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_ListDashboards.md): Returns a list of all dashboards in your account.
+- [ListScheduledReports](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_ListScheduledReports.md): Returns a list of scheduled reports in your account.
+- [ListTagsForResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_ListTagsForResource.md): Returns a list of all tags associated with a specified dashboard resource.
+- [TagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_TagResource.md): Adds or updates tags for a specified dashboard resource.
+- [UntagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_UntagResource.md): Removes specified tags from a dashboard resource.
+- [UpdateDashboard](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_UpdateDashboard.md): Updates an existing dashboard's properties, including its name, description, and widget configurations.
+- [UpdateScheduledReport](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_UpdateScheduledReport.md): Updates an existing scheduled report's properties, including its name, description, schedule configuration, and widget settings.
+
+### Data Types
+
+- [BudgetQuery](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_BudgetQuery.md): Defines the parameters for querying budget data.
+- [CostAndUsageQuery](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_CostAndUsageQuery.md): Defines the parameters for retrieving AWS cost and usage data.
+- [CostCategoryValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_CostCategoryValues.md): Specifies the values and match options for cost category-based filtering in cost and usage queries.
+- [DashboardReference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_DashboardReference.md): Contains basic information about a dashboard, including its ARN, name, type, and timestamps.
+- [DateTimeRange](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_DateTimeRange.md): Defines a time period with explicit start and end times for data queries.
+- [DateTimeValue](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_DateTimeValue.md): Represents a point in time that can be specified as either an absolute date (for example, "2025-07-01") or a relative time period using ISO 8601 duration format (for example, "-P3M" for three months ago).
+- [DimensionValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_DimensionValues.md): Specifies the values and match options for dimension-based filtering in cost and usage queries.
+- [DisplayConfig](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_DisplayConfig.md): Defines how the widget's data should be visualized, including chart type, color schemes, axis configurations, and other display preferences.
+- [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_Expression.md): Defines complex filtering conditions using logical operators (AND, OR, NOT) and various filter types.
+- [GraphDisplayConfig](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_GraphDisplayConfig.md): Defines the visual representation settings for widget data, including the visualization type, styling options, and display preferences for different metric types.
+- [GroupDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_GroupDefinition.md): Specifies how to group cost and usage data.
+- [HealthStatus](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_HealthStatus.md): Contains the health status information for a scheduled report, including the status code and any reasons for an unhealthy state.
+- [QueryParameters](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_QueryParameters.md): Defines the data retrieval parameters for a widget.
+- [ReservationCoverageQuery](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_ReservationCoverageQuery.md): Defines the parameters for querying Reserved Instance coverage data, including grouping options, metrics, and sorting preferences.
+- [ReservationUtilizationQuery](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_ReservationUtilizationQuery.md): Defines the parameters for querying Reserved Instance utilization data, including grouping options and time granularity.
+- [ResourceTag](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_ResourceTag.md): A key-value pair that can be attached to a dashboard for organization and management purposes.
+- [SavingsPlansCoverageQuery](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_SavingsPlansCoverageQuery.md): Defines the parameters for querying Savings Plans coverage data, including metrics, grouping options, and time granularity.
+- [SavingsPlansUtilizationQuery](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_SavingsPlansUtilizationQuery.md): Defines the parameters for querying Savings Plans utilization data, including time granularity and sorting preferences.
+- [ScheduleConfig](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_ScheduleConfig.md): Defines the schedule for a scheduled report, including the cron expression, time zone, active period, and the schedule state.
+- [ScheduledReport](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_ScheduledReport.md): Contains the full configuration and metadata of a scheduled report.
+- [ScheduledReportInput](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_ScheduledReportInput.md): Defines the configuration for creating a new scheduled report, including the dashboard, schedule, execution role, and optional widget settings.
+- [ScheduledReportSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_ScheduledReportSummary.md): Contains summary information for a scheduled report.
+- [SchedulePeriod](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_SchedulePeriod.md): Defines the active time period for execution of the scheduled report.
+- [TableDisplayConfigStruct](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_TableDisplayConfigStruct.md): Configuration structure for customizing the tabular display of widget data.
+- [TagValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_TagValues.md): Specifies tag-based filtering options for cost and usage queries.
+- [Widget](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_Widget.md): A configurable visualization component within a dashboard that displays specific cost and usage metrics.
+- [WidgetConfig](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_bcmDashboards_WidgetConfig.md): Defines the complete configuration for a widget, including data retrieval settings and visualization preferences.
+
+## [AWS Data Exports](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_AWS_Billing_and_Cost_Management_Data_Exports.md)
+
+You can use the Data Exports API to create customized exports from multiple AWS cost management and billing datasets, such as cost and usage data and cost optimization recommendations.
+
+The Data Exports API provides the following endpoint:
+
+- https://bcm-data-exports.us-east-1.api.aws
+
+### Actions
+
+- [CreateExport](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_CreateExport.md): Creates a data export and specifies the data query, the delivery preference, and any optional resource tags.
+- [DeleteExport](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_DeleteExport.md): Deletes an existing data export.
+- [GetExecution](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_GetExecution.md): Exports data based on the source data update.
+- [GetExport](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_GetExport.md): Views the definition of an existing data export.
+- [GetTable](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_GetTable.md): Returns the metadata for the specified table and table properties.
+- [ListExecutions](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_ListExecutions.md): Lists the historical executions for the export.
+- [ListExports](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_ListExports.md): Lists all data export definitions.
+- [ListTables](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_ListTables.md): Lists all available tables in data exports.
+- [ListTagsForResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_ListTagsForResource.md): List tags associated with an existing data export.
+- [TagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_TagResource.md): Adds tags for an existing data export definition.
+- [UntagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_UntagResource.md): Deletes tags associated with an existing data export definition.
+- [UpdateExport](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_UpdateExport.md): Updates an existing data export by overwriting all export parameters.
+
+### Data Types
+
+- [Column](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_Column.md): Includes basic information for a data column such as its description, name, and type.
+- [DataQuery](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_DataQuery.md): The SQL query of column selections and row filters from the data table you want.
+- [DestinationConfigurations](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_DestinationConfigurations.md): The destinations used for data exports.
+- [ExecutionReference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_ExecutionReference.md): The reference for the data export update.
+- [ExecutionStatus](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_ExecutionStatus.md): The status of the execution.
+- [Export](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_Export.md): The details that are available for an export.
+- [ExportReference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_ExportReference.md): The reference details for a given export.
+- [ExportStatus](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_ExportStatus.md): The status of the data export.
+- [RefreshCadence](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_RefreshCadence.md): The cadence for AWS to update the data export in your S3 bucket.
+- [ResourceTag](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_ResourceTag.md): The tag structure that contains a tag key and value.
+- [S3Destination](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_S3Destination.md): Describes the destination Amazon Simple Storage Service (Amazon S3) bucket name and object keys of a data exports file.
+- [S3OutputConfigurations](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_S3OutputConfigurations.md): The compression type, file format, and overwrite preference for the data export.
+- [Table](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_Table.md): The details for the data export table.
+- [TablePropertyDescription](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_TablePropertyDescription.md): The properties for the data export table.
+- [ValidationExceptionField](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_ValidationExceptionField.md): The input failed to meet the constraints specified by the AWS service in a specified field.
+
+## [AWS Pricing Calculator](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_AWS_Billing_and_Cost_Management_Pricing_Calculator.md)
+
+You can use the Pricing Calculator API to programmatically create estimates for your planned cloud use. You can model usage and commitments such as Savings Plans and Reserved Instances, and generate estimated costs using your discounts and benefit sharing preferences.
+
+The Pricing Calculator API provides the following endpoint:
+
+- `https://bcm-pricing-calculator.us-east-1.api.aws`
+
+### Actions
+
+- [BatchCreateBillScenarioCommitmentModification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateBillScenarioCommitmentModification.md): Create Compute Savings Plans, EC2 Instance Savings Plans, or EC2 Reserved Instances commitments that you want to model in a Bill Scenario.
+- [BatchCreateBillScenarioUsageModification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateBillScenarioUsageModification.md): Create AWS service usage that you want to model in a Bill Scenario.
+- [BatchCreateWorkloadEstimateUsage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateWorkloadEstimateUsage.md): Create AWS service usage that you want to model in a Workload Estimate.
+- [BatchDeleteBillScenarioCommitmentModification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchDeleteBillScenarioCommitmentModification.md): Delete commitment that you have created in a Bill Scenario.
+- [BatchDeleteBillScenarioUsageModification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchDeleteBillScenarioUsageModification.md): Delete usage that you have created in a Bill Scenario.
+- [BatchDeleteWorkloadEstimateUsage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchDeleteWorkloadEstimateUsage.md): Delete usage that you have created in a Workload estimate.
+- [BatchUpdateBillScenarioCommitmentModification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateBillScenarioCommitmentModification.md): Update a newly added or existing commitment.
+- [BatchUpdateBillScenarioUsageModification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateBillScenarioUsageModification.md): Update a newly added or existing usage lines.
+- [BatchUpdateWorkloadEstimateUsage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateWorkloadEstimateUsage.md): Update a newly added or existing usage lines.
+- [CreateBillEstimate](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_CreateBillEstimate.md): Create a Bill estimate from a Bill scenario.
+- [CreateBillScenario](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_CreateBillScenario.md): Creates a new bill scenario to model potential changes to AWS usage and costs.
+- [CreateWorkloadEstimate](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_CreateWorkloadEstimate.md): Creates a new workload estimate to model costs for a specific workload.
+- [DeleteBillEstimate](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_DeleteBillEstimate.md): Deletes an existing bill estimate.
+- [DeleteBillScenario](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_DeleteBillScenario.md): Deletes an existing bill scenario.
+- [DeleteWorkloadEstimate](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_DeleteWorkloadEstimate.md): Deletes an existing workload estimate.
+- [GetBillEstimate](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_GetBillEstimate.md): Retrieves details of a specific bill estimate.
+- [GetBillScenario](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_GetBillScenario.md): Retrieves details of a specific bill scenario.
+- [GetPreferences](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_GetPreferences.md): Retrieves the current preferences for AWS Pricing Calculator.
+- [GetWorkloadEstimate](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_GetWorkloadEstimate.md): Retrieves details of a specific workload estimate.
+- [ListBillEstimateCommitments](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListBillEstimateCommitments.md): Lists the commitments associated with a bill estimate.
+- [ListBillEstimateInputCommitmentModifications](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListBillEstimateInputCommitmentModifications.md): Lists the input commitment modifications associated with a bill estimate.
+- [ListBillEstimateInputUsageModifications](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListBillEstimateInputUsageModifications.md): Lists the input usage modifications associated with a bill estimate.
+- [ListBillEstimateLineItems](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListBillEstimateLineItems.md): Lists the line items associated with a bill estimate.
+- [ListBillEstimates](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListBillEstimates.md): Lists all bill estimates for the account.
+- [ListBillScenarioCommitmentModifications](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListBillScenarioCommitmentModifications.md): Lists the commitment modifications associated with a bill scenario.
+- [ListBillScenarios](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListBillScenarios.md): Lists all bill scenarios for the account.
+- [ListBillScenarioUsageModifications](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListBillScenarioUsageModifications.md): Lists the usage modifications associated with a bill scenario.
+- [ListTagsForResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListTagsForResource.md): Lists all tags associated with a specified resource.
+- [ListWorkloadEstimates](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListWorkloadEstimates.md): Lists all workload estimates for the account.
+- [ListWorkloadEstimateUsage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListWorkloadEstimateUsage.md): Lists the usage associated with a workload estimate.
+- [TagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_TagResource.md): Adds one or more tags to a specified resource.
+- [UntagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_UntagResource.md): Removes one or more tags from a specified resource.
+- [UpdateBillEstimate](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_UpdateBillEstimate.md): Updates an existing bill estimate.
+- [UpdateBillScenario](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_UpdateBillScenario.md): Updates an existing bill scenario.
+- [UpdatePreferences](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_UpdatePreferences.md): Updates the preferences for AWS Pricing Calculator.
+- [UpdateWorkloadEstimate](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_UpdateWorkloadEstimate.md): Updates an existing workload estimate.
+
+### Data Types
+
+- [AddReservedInstanceAction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_AddReservedInstanceAction.md): Represents an action to add a Reserved Instance to a bill scenario.
+- [AddSavingsPlanAction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_AddSavingsPlanAction.md): Represents an action to add a Savings Plan to a bill scenario.
+- [BatchCreateBillScenarioCommitmentModificationEntry](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateBillScenarioCommitmentModificationEntry.md): Represents an entry object in the batch operation to create bill scenario commitment modifications.
+- [BatchCreateBillScenarioCommitmentModificationError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateBillScenarioCommitmentModificationError.md): Represents an error that occurred during a batch create operation for bill scenario commitment modifications.
+- [BatchCreateBillScenarioCommitmentModificationItem](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateBillScenarioCommitmentModificationItem.md): Represents a successfully created item in a batch operation for bill scenario commitment modifications.
+- [BatchCreateBillScenarioUsageModificationEntry](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateBillScenarioUsageModificationEntry.md): Represents an entry in a batch operation to create bill scenario usage modifications.
+- [BatchCreateBillScenarioUsageModificationError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateBillScenarioUsageModificationError.md): Represents an error that occurred during a batch create operation for bill scenario usage modifications.
+- [BatchCreateBillScenarioUsageModificationItem](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateBillScenarioUsageModificationItem.md): Represents a successfully created item in a batch operation for bill scenario usage modifications.
+- [BatchCreateWorkloadEstimateUsageEntry](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateWorkloadEstimateUsageEntry.md): Represents an entry in a batch operation to create workload estimate usage.
+- [BatchCreateWorkloadEstimateUsageError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateWorkloadEstimateUsageError.md): Represents an error that occurred during a batch create operation for workload estimate usage.
+- [BatchCreateWorkloadEstimateUsageItem](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchCreateWorkloadEstimateUsageItem.md): Represents a successfully created item in a batch operation for workload estimate usage.
+- [BatchDeleteBillScenarioCommitmentModificationError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchDeleteBillScenarioCommitmentModificationError.md): Represents an error that occurred when deleting a commitment in a Bill Scenario.
+- [BatchDeleteBillScenarioUsageModificationError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchDeleteBillScenarioUsageModificationError.md): Represents an error that occurred when deleting usage in a Bill Scenario.
+- [BatchDeleteWorkloadEstimateUsageError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchDeleteWorkloadEstimateUsageError.md): Represents an error that occurred when deleting usage in a workload estimate.
+- [BatchUpdateBillScenarioCommitmentModificationEntry](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateBillScenarioCommitmentModificationEntry.md): Represents an entry in a batch operation to update bill scenario commitment modifications.
+- [BatchUpdateBillScenarioCommitmentModificationError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateBillScenarioCommitmentModificationError.md): Represents an error that occurred when updating a commitment in a Bill Scenario.
+- [BatchUpdateBillScenarioUsageModificationEntry](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateBillScenarioUsageModificationEntry.md): Represents an entry in a batch operation to update bill scenario usage modifications.
+- [BatchUpdateBillScenarioUsageModificationError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateBillScenarioUsageModificationError.md): Represents an error that occurred when updating usage in a Bill Scenario.
+- [BatchUpdateWorkloadEstimateUsageEntry](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateWorkloadEstimateUsageEntry.md): Represents an entry in a batch operation to update workload estimate usage.
+- [BatchUpdateWorkloadEstimateUsageError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateWorkloadEstimateUsageError.md): Represents an error that occurred when updating usage in a workload estimate.
+- [BillEstimateCommitmentSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillEstimateCommitmentSummary.md): Provides a summary of commitment-related information for a bill estimate.
+- [BillEstimateCostSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillEstimateCostSummary.md): Provides a summary of cost-related information for a bill estimate.
+- [BillEstimateInputCommitmentModificationSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillEstimateInputCommitmentModificationSummary.md): Summarizes an input commitment modification for a bill estimate.
+- [BillEstimateInputUsageModificationSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillEstimateInputUsageModificationSummary.md): Summarizes an input usage modification for a bill estimate.
+- [BillEstimateLineItemSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillEstimateLineItemSummary.md): Provides a summary of a line item in a bill estimate.
+- [BillEstimateSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillEstimateSummary.md): Provides a summary of a bill estimate.
+- [BillInterval](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillInterval.md): Represents a time interval for a bill or estimate.
+- [BillScenarioCommitmentModificationAction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillScenarioCommitmentModificationAction.md): Represents an action to modify commitments in a bill scenario.
+- [BillScenarioCommitmentModificationItem](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillScenarioCommitmentModificationItem.md): Represents a commitment modification item in a bill scenario.
+- [BillScenarioSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillScenarioSummary.md): Provides a summary of a bill scenario.
+- [BillScenarioUsageModificationItem](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BillScenarioUsageModificationItem.md): Represents a usage modification item in a bill scenario.
+- [CostAmount](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_CostAmount.md): Represents a monetary amount with associated currency.
+- [CostDifference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_CostDifference.md): Represents the difference between historical and estimated costs.
+- [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_Expression.md): Represents a complex filtering expression for cost and usage data.
+- [ExpressionFilter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ExpressionFilter.md): Represents a filter used within an expression.
+- [FilterTimestamp](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_FilterTimestamp.md): Represents a time-based filter.
+- [HistoricalUsageEntity](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_HistoricalUsageEntity.md): Represents historical usage data for a specific entity.
+- [ListBillEstimateLineItemsFilter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListBillEstimateLineItemsFilter.md): Represents a filter for listing bill estimate line items.
+- [ListBillEstimatesFilter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListBillEstimatesFilter.md): Represents a filter for listing bill estimates.
+- [ListBillScenariosFilter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListBillScenariosFilter.md): Represents a filter for listing bill scenarios.
+- [ListUsageFilter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListUsageFilter.md): Represents a filter for listing usage data.
+- [ListWorkloadEstimatesFilter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ListWorkloadEstimatesFilter.md): Represents a filter for listing workload estimates.
+- [NegateReservedInstanceAction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_NegateReservedInstanceAction.md): Represents an action to remove a Reserved Instance from a bill scenario.
+- [NegateSavingsPlanAction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_NegateSavingsPlanAction.md): Represents an action to remove a Savings Plan from a bill scenario.
+- [UsageAmount](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_UsageAmount.md): Represents a usage amount for a specific time period.
+- [UsageQuantity](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_UsageQuantity.md): Represents a usage quantity with associated unit and time period.
+- [UsageQuantityResult](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_UsageQuantityResult.md): Represents the result of a usage quantity calculation.
+- [ValidationExceptionField](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_ValidationExceptionField.md): Represents a field that failed validation in a request.
+- [WorkloadEstimateSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_WorkloadEstimateSummary.md): Provides a summary of a workload estimate.
+- [WorkloadEstimateUsageItem](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_WorkloadEstimateUsageItem.md): Represents a usage item in a workload estimate.
+- [WorkloadEstimateUsageQuantity](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_WorkloadEstimateUsageQuantity.md): Represents a usage quantity for a workload estimate.
+
+## [AWS Billing and Cost Management Recommended Actions](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_AWS_Billing_and_Cost_Management_Recommended_Actions.md)
+
+You can use the AWS Billing and Cost Management Recommended Actions API to programmatically query your best practices and recommendations to optimize your costs.
+
+The AWS Billing and Cost Management Recommended Actions API provides the following endpoint:
+
+- https://bcm-recommended-actions.us-east-1.api.aws
+
+### Actions
+
+- [ListRecommendedActions](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_BillingAndCostManagementRecommendedActions_ListRecommendedActions.md): Returns a list of recommended actions that match the filter criteria.
+
+### Data Types
+
+- [ActionFilter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_BillingAndCostManagementRecommendedActions_ActionFilter.md): Describes a filter that returns a more specific list of recommended actions.
+- [RecommendedAction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_BillingAndCostManagementRecommendedActions_RecommendedAction.md): Describes a specific recommended action.
+- [RequestFilter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_BillingAndCostManagementRecommendedActions_RequestFilter.md): Enables filtering of results based on specified action criteria.
+- [ValidationExceptionField](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_BillingAndCostManagementRecommendedActions_ValidationExceptionField.md): Provides specific details about why a particular field failed validation.
+
+## [AWS Billing](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_AWS_Billing.md)
+
+You can use the Billing API to programatically list the billing views available to you for a given time period. A billing view represents a set of billing data.
+
+The Billing API provides the following endpoint:
+
+`https://billing.us-east-1.api.aws`
+
+### Actions
+
+- [AssociateSourceViews](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_AssociateSourceViews.md): Associates one or more source billing views with an existing billing view.
+- [CreateBillingView](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_CreateBillingView.md): Creates a billing view with the specified billing view attributes.
+- [DeleteBillingView](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_DeleteBillingView.md): Deletes the specified billing view.
+- [DisassociateSourceViews](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_DisassociateSourceViews.md): Removes the association between one or more source billing views and an existing billing view.
+- [GetBillingPreferences](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_GetBillingPreferences.md): Retrieves billing preferences for the specified feature.
+- [GetBillingView](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_GetBillingView.md): Returns the metadata associated to the specified billing view ARN.
+- [GetCreditAllocationHistory](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_GetCreditAllocationHistory.md): Returns the per-billing-month allocation history for credits applied to an AWS account's bills.
+- [GetCredits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_GetCredits.md): Returns the list of AWS account credits for the specified account.
+- [GetResourcePolicy](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_GetResourcePolicy.md): Returns the resource-based policy document attached to the resource in JSON format.
+- [ListBillingViews](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_ListBillingViews.md): Lists the billing views available for a given time period.
+- [ListSourceViewsForBillingView](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_ListSourceViewsForBillingView.md): Lists the source views (managed AWS billing views) associated with the billing view.
+- [ListTagsForResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_ListTagsForResource.md): Lists tags associated with the billing view resource.
+- [RedeemCredits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_RedeemCredits.md): Redeems an AWS promotional credit code on behalf of the calling account.
+- [TagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_TagResource.md): An API operation for adding one or more tags (key-value pairs) to a resource.
+- [UntagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_UntagResource.md): Removes one or more tags from a resource.
+- [UpdateBillingPreferences](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_UpdateBillingPreferences.md): Updates billing preferences for the specified feature.
+- [UpdateBillingView](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_UpdateBillingView.md): An API to update the attributes of the billing view.
+
+### Data Types
+
+- [ActiveTimeRange](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_ActiveTimeRange.md): A time range with a start and end time.
+- [Amount](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_Amount.md): A monetary amount with a currency code.
+- [BillingFeatureFilter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_BillingFeatureFilter.md): A filter that narrows the set of preferences returned by GetBillingPreferences.
+- [BillingPeriod](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_BillingPeriod.md): A specific billing period identified by year and month.
+- [BillingPreferenceForKey](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_BillingPreferenceForKey.md): A single key/value entry used to update a billing preference.
+- [BillingPreferenceSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_BillingPreferenceSummary.md): A single billing preference entry returned by GetBillingPreferences.
+- [BillingViewElement](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_BillingViewElement.md): The metadata associated to the billing view.
+- [BillingViewHealthStatus](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_BillingViewHealthStatus.md): Represents the health status of a billing view, including a status code and optional reasons for the status.
+- [BillingViewListElement](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_BillingViewListElement.md): A representation of a billing view.
+- [CostCategoryValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_CostCategoryValues.md): The Cost Categories values used for filtering the costs.
+- [CreditAllocationHistoryEntry](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_CreditAllocationHistoryEntry.md): A single entry in the credit allocation history, representing how a credit was applied to a specific service during a billing month.
+- [CreditData](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_CreditData.md): Detailed information about an AWS credit, including its identifier, type, monetary amounts, applicable products, sharing configuration, and current enabled status.
+- [DimensionValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_DimensionValues.md): The metadata that you can use to filter and group your results.
+- [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_Expression.md): See Expression.
+- [ResourceTag](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_ResourceTag.md): The tag structure that contains a tag key and value.
+- [StringSearch](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_StringSearch.md): A structure that defines how to search for string values.
+- [TagValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_TagValues.md): The values that are available for a tag.
+- [TimeRange](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_TimeRange.md): Specifies a time range with inclusive begin and end dates.
+- [ValidationExceptionField](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_billing_ValidationExceptionField.md): The field's information of a request that resulted in an exception.
+
+## [AWS Budgets](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_AWS_Budgets.md)
+
+Use the AWS Budgets API to plan your service usage, service costs, and instance reservations. This API reference provides descriptions, syntax, and usage examples for each of the actions and data types for the AWS Budgets feature.
+
+Budgets provide you with a way to see the following information:
+
+- How close your plan is to your budgeted amount or to the free tier limits
+- Your usage-to-date, including how much you've used of your Reserved Instances (RIs)
+- Your current estimated charges from AWS, and how much your predicted usage will accrue in charges by the end of the month
+- How much of your budget has been used
+
+AWS updates your budget status several times a day. Budgets track your unblended costs, subscriptions, refunds, and RIs. You can create the following types of budgets:
+
+- Cost budgets- Plan how much you want to spend on a service.
+- Usage budgets- Plan how much you want to use one or more services.
+- RI utilization budgets- Define a utilization threshold, and receive alerts when your RI usage falls below that threshold. This lets you see if your RIs are unused or under-utilized.
+- RI coverage budgets- Define a coverage threshold, and receive alerts when the number of your instance hours that are covered by RIs fall below that threshold. This lets you see how much of your instance usage is covered by a reservation.
+
+Service Endpoint
+
+The AWS Budgets API provides the following endpoint:
+
+- https://budgets.amazonaws.com
+
+For information about costs that are associated with the AWS Budgets API, see [AWS Cost Management Pricing](https://aws.amazon.com/aws-cost-management/pricing/).
+
+### Actions
+
+- [CreateBudget](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.md): Creates a budget and, if included, notifications and subscribers.
+- [CreateBudgetAction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudgetAction.md): Creates a budget action.
+- [CreateNotification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateNotification.md): Creates a notification.
+- [CreateSubscriber](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateSubscriber.md): Creates a subscriber.
+- [DeleteBudget](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DeleteBudget.md): Deletes a budget.
+- [DeleteBudgetAction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DeleteBudgetAction.md): Deletes a budget action.
+- [DeleteNotification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DeleteNotification.md): Deletes a notification.
+- [DeleteSubscriber](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DeleteSubscriber.md): Deletes a subscriber.
+- [DescribeBudget](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.md): Describes a budget.
+- [DescribeBudgetAction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgetAction.md): Describes a budget action detail.
+- [DescribeBudgetActionHistories](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgetActionHistories.md): Describes a budget action history detail.
+- [DescribeBudgetActionsForAccount](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgetActionsForAccount.md): Describes all of the budget actions for an account.
+- [DescribeBudgetActionsForBudget](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgetActionsForBudget.md): Describes all of the budget actions for a budget.
+- [DescribeBudgetNotificationsForAccount](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgetNotificationsForAccount.md): Lists the budget names and notifications that are associated with an account.
+- [DescribeBudgetPerformanceHistory](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgetPerformanceHistory.md): Describes the history for DAILY, MONTHLY, and QUARTERLY budgets.
+- [DescribeBudgets](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.md): Lists the budgets that are associated with an account.
+- [DescribeNotificationsForBudget](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeNotificationsForBudget.md): Lists the notifications that are associated with a budget.
+- [DescribeSubscribersForNotification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeSubscribersForNotification.md): Lists the subscribers that are associated with a notification.
+- [ExecuteBudgetAction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_ExecuteBudgetAction.md): Executes a budget action.
+- [ListTagsForResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_ListTagsForResource.md): Lists tags associated with a budget or budget action resource.
+- [TagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_TagResource.md): Creates tags for a budget or budget action resource.
+- [UntagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UntagResource.md): Deletes tags associated with a budget or budget action resource.
+- [UpdateBudget](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.md): Updates a budget.
+- [UpdateBudgetAction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudgetAction.md): Updates a budget action.
+- [UpdateNotification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateNotification.md): Updates a notification.
+- [UpdateSubscriber](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateSubscriber.md): Updates a subscriber.
+
+### Data Types
+
+- [Action](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Action.md): A budget action resource.
+- [ActionHistory](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_ActionHistory.md): The historical records for a budget action.
+- [ActionHistoryDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_ActionHistoryDetails.md): The description of the details for the event.
+- [ActionThreshold](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_ActionThreshold.md): The trigger threshold of the action.
+- [AutoAdjustData](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_AutoAdjustData.md): The parameters that determine the budget amount for an auto-adjusting budget.
+- [Budget](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Budget.md): Represents the output of the CreateBudget operation.
+- [BudgetedAndActualAmounts](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_BudgetedAndActualAmounts.md): The amount of cost or usage that you created the budget for, compared to your actual costs or usage.
+- [BudgetNotificationsForAccount](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_BudgetNotificationsForAccount.md): The budget name and associated notifications for an account.
+- [BudgetPerformanceHistory](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_BudgetPerformanceHistory.md): A history of the state of a budget at the end of the budget's specified time period.
+- [CalculatedSpend](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CalculatedSpend.md): The spend objects that are associated with this budget.
+- [CostCategoryValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CostCategoryValues.md): The cost category values used for filtering the costs.
+- [CostTypes](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CostTypes.md): The types of cost that are included in a COST budget, such as tax and subscriptions.
+- [Definition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Definition.md): Specifies all of the type-specific parameters.
+- [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Expression.md): Use Expression to filter in various Budgets APIs.
+- [ExpressionDimensionValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_ExpressionDimensionValues.md): Contains the specifications for the filters to use for your request.
+- [HealthStatus](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_HealthStatus.md): Provides information about the current operational state of a billing view resource, including its ability to access and update based on its associated billing view.
+- [HistoricalOptions](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_HistoricalOptions.md): The parameters that define or describe the historical data that your auto-adjusting budget is based on.
+- [IamActionDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_IamActionDefinition.md): The AWS Identity and Access Management (IAM) action definition details.
+- [Notification](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Notification.md): A notification that's associated with a budget.
+- [NotificationWithSubscribers](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_NotificationWithSubscribers.md): A notification with subscribers.
+- [ResourceTag](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_ResourceTag.md): The tag structure that contains a tag key and value.
+- [ScpActionDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_ScpActionDefinition.md): The service control policies (SCP) action definition details.
+- [Spend](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Spend.md): The amount of cost or usage that's measured for a budget.
+- [SsmActionDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_SsmActionDefinition.md): The AWS Systems Manager (SSM) action definition details.
+- [Subscriber](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Subscriber.md): The subscriber to a budget notification.
+- [TagValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_TagValues.md): The values that are available for a tag.
+- [TimePeriod](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_TimePeriod.md): The period of time that's covered by a budget.
+
+## [AWS Cost Optimization Hub](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_Cost_Optimization_Hub.md)
+
+You can use the Cost Optimization Hub API to programmatically identify, filter, aggregate, and quantify savings for your cost optimization recommendations across multiple AWS Regions and AWS accounts in your organization.
+
+The Cost Optimization Hub API provides the following endpoint:
+
+- https://cost-optimization-hub.us-east-1.amazonaws.com
+
+### Actions
+
+- [GetPreferences](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_GetPreferences.md): Returns a set of preferences for an account in order to add account-specific preferences into the service.
+- [GetRecommendation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_GetRecommendation.md): Returns both the current and recommended resource configuration and the estimated cost impact for a recommendation.
+- [ListEfficiencyMetrics](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ListEfficiencyMetrics.md): Returns cost efficiency metrics aggregated over time and optionally grouped by a specified dimension.
+- [ListEnrollmentStatuses](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ListEnrollmentStatuses.md): Retrieves the enrollment status for an account.
+- [ListRecommendations](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ListRecommendations.md): Returns a list of recommendations.
+- [ListRecommendationSummaries](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ListRecommendationSummaries.md): Returns a concise representation of savings estimates for resources.
+- [UpdateEnrollmentStatus](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_UpdateEnrollmentStatus.md): Updates the enrollment (opt in and opt out) status of an account to the Cost Optimization Hub service.
+- [UpdatePreferences](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_UpdatePreferences.md): Updates a set of preferences for an account in order to add account-specific preferences into the service.
+
+### Data Types
+
+- [AccountEnrollmentStatus](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_AccountEnrollmentStatus.md): Describes the enrollment status of an organization's member accounts in Cost Optimization Hub.
+- [AuroraDbClusterStorage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_AuroraDbClusterStorage.md): Contains the details of an Aurora DB cluster storage.
+- [AuroraDbClusterStorageConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_AuroraDbClusterStorageConfiguration.md): The Aurora DB cluster storage configuration used for recommendations.
+- [BlockStoragePerformanceConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_BlockStoragePerformanceConfiguration.md): Describes the Amazon Elastic Block Store performance configuration of the current and recommended resource configuration for a recommendation.
+- [ComputeConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ComputeConfiguration.md): Describes the performance configuration for compute services such as Amazon EC2, Lambda, and ECS.
+- [ComputeSavingsPlans](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ComputeSavingsPlans.md): The Compute Savings Plans recommendation details.
+- [ComputeSavingsPlansConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ComputeSavingsPlansConfiguration.md): The Compute Savings Plans configuration used for recommendations.
+- [DbInstanceConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_DbInstanceConfiguration.md): The DB instance configuration used for recommendations.
+- [DocumentDbCluster](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_DocumentDbCluster.md): The Amazon DocumentDB cluster recommendation details.
+- [DynamoDbReservedCapacity](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_DynamoDbReservedCapacity.md): The DynamoDB reserved capacity recommendation details.
+- [DynamoDbReservedCapacityConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_DynamoDbReservedCapacityConfiguration.md): The DynamoDB reserved capacity configuration used for recommendations.
+- [DynamoDbTable](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_DynamoDbTable.md): The DynamoDB table recommendation details.
+- [EbsVolume](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_EbsVolume.md): Describes the Amazon Elastic Block Store volume configuration of the current and recommended resource configuration for a recommendation.
+- [EbsVolumeConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_EbsVolumeConfiguration.md): The Amazon Elastic Block Store volume configuration used for recommendations.
+- [Ec2AutoScalingGroup](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Ec2AutoScalingGroup.md): The EC2 Auto Scaling group recommendation details.
+- [Ec2AutoScalingGroupConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Ec2AutoScalingGroupConfiguration.md): The EC2 Auto Scaling group configuration used for recommendations.
+- [Ec2Instance](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Ec2Instance.md): Describes the EC2 instance configuration of the current and recommended resource configuration for a recommendation.
+- [Ec2InstanceConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Ec2InstanceConfiguration.md): The EC2 instance configuration used for recommendations.
+- [Ec2InstanceSavingsPlans](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Ec2InstanceSavingsPlans.md): The EC2 instance Savings Plans recommendation details.
+- [Ec2InstanceSavingsPlansConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Ec2InstanceSavingsPlansConfiguration.md): The EC2 instance Savings Plans configuration used for recommendations.
+- [Ec2ReservedInstances](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Ec2ReservedInstances.md): The EC2 reserved instances recommendation details.
+- [Ec2ReservedInstancesConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Ec2ReservedInstancesConfiguration.md): The EC2 reserved instances configuration used for recommendations.
+- [EcsService](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_EcsService.md): The ECS service recommendation details.
+- [EcsServiceConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_EcsServiceConfiguration.md): The ECS service configuration used for recommendations.
+- [EfficiencyMetricsByGroup](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_EfficiencyMetricsByGroup.md): Contains cost efficiency metrics for a specific group over time.
+- [ElastiCacheCluster](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ElastiCacheCluster.md): The ElastiCache cluster recommendation details.
+- [ElastiCacheReservedInstances](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ElastiCacheReservedInstances.md): The ElastiCache reserved instances recommendation details.
+- [ElastiCacheReservedInstancesConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ElastiCacheReservedInstancesConfiguration.md): The ElastiCache reserved instances configuration used for recommendations.
+- [EstimatedDiscounts](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_EstimatedDiscounts.md): Estimated discount details of the current and recommended resource configuration for a recommendation.
+- [Filter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Filter.md): Describes a filter that returns a more specific list of recommendations.
+- [InstanceConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_InstanceConfiguration.md): The instance configuration used for recommendations.
+- [LambdaFunction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_LambdaFunction.md): The Lambda function recommendation details.
+- [LambdaFunctionConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_LambdaFunctionConfiguration.md): The Lambda function configuration used for recommendations.
+- [MemoryDbCluster](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_MemoryDbCluster.md): The MemoryDB cluster recommendation details.
+- [MemoryDbReservedInstances](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_MemoryDbReservedInstances.md): The MemoryDB reserved instances recommendation details.
+- [MemoryDbReservedInstancesConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_MemoryDbReservedInstancesConfiguration.md): The MemoryDB reserved instances configuration used for recommendations.
+- [MetricsByTime](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_MetricsByTime.md): Contains efficiency metrics for a specific point in time, including an efficiency score, potential savings, optimizable spend, and timestamp.
+- [MixedInstanceConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_MixedInstanceConfiguration.md): The configuration for the EC2 Auto Scaling group with mixed instance types.
+- [NatGateway](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_NatGateway.md): The NAT Gateway recommendation details.
+- [NatGatewayConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_NatGatewayConfiguration.md): The NAT Gateway configuration used for recommendations.
+- [OpenSearchReservedInstances](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_OpenSearchReservedInstances.md): The OpenSearch reserved instances recommendation details.
+- [OpenSearchReservedInstancesConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_OpenSearchReservedInstancesConfiguration.md): The OpenSearch reserved instances configuration used for recommendations.
+- [OrderBy](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_OrderBy.md): Defines how rows will be sorted in the response.
+- [PreferredCommitment](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_PreferredCommitment.md): The preferred configuration for Reserved Instances and Savings Plans commitment-based discounts, consisting of a payment option and a commitment duration.
+- [RdsDbInstance](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_RdsDbInstance.md): Contains the details of an Amazon RDS DB instance.
+- [RdsDbInstanceConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_RdsDbInstanceConfiguration.md): The Amazon RDS DB instance configuration used for recommendations.
+- [RdsDbInstanceStorage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_RdsDbInstanceStorage.md): Contains the details of an Amazon RDS DB instance storage.
+- [RdsDbInstanceStorageConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_RdsDbInstanceStorageConfiguration.md): The Amazon RDS DB instance storage configuration used for recommendations.
+- [RdsReservedInstances](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_RdsReservedInstances.md): The RDS reserved instances recommendation details.
+- [RdsReservedInstancesConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_RdsReservedInstancesConfiguration.md): The RDS reserved instances configuration used for recommendations.
+- [Recommendation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Recommendation.md): Describes a recommendation.
+- [RecommendationSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_RecommendationSummary.md): The summary of rightsizing recommendations, including de-duped savings from all types of recommendations.
+- [RedshiftReservedInstances](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_RedshiftReservedInstances.md): The Redshift reserved instances recommendation details.
+- [RedshiftReservedInstancesConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_RedshiftReservedInstancesConfiguration.md): The Redshift reserved instances configuration used for recommendations.
+- [ReservedInstancesCostCalculation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ReservedInstancesCostCalculation.md): Cost impact of the purchase recommendation.
+- [ReservedInstancesPricing](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ReservedInstancesPricing.md): Pricing details for your recommended reserved instance.
+- [ResourceCostCalculation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ResourceCostCalculation.md): Cost impact of the resource recommendation.
+- [ResourceDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ResourceDetails.md): Contains detailed information about the specified resource.
+- [ResourcePricing](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ResourcePricing.md): Contains pricing information about the specified resource.
+- [SageMakerEndpoint](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_SageMakerEndpoint.md): The SageMaker endpoint recommendation details.
+- [SageMakerSavingsPlans](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_SageMakerSavingsPlans.md): The SageMaker Savings Plans recommendation details.
+- [SageMakerSavingsPlansConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_SageMakerSavingsPlansConfiguration.md): The SageMaker Savings Plans configuration used for recommendations.
+- [SavingsPlansCostCalculation](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_SavingsPlansCostCalculation.md): Cost impact of the purchase recommendation.
+- [SavingsPlansPricing](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_SavingsPlansPricing.md): Pricing information about a Savings Plans.
+- [StorageConfiguration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_StorageConfiguration.md): The storage configuration used for recommendations.
+- [SummaryMetricsResult](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_SummaryMetricsResult.md): The results or descriptions for the additional metrics, based on whether the metrics were or were not requested.
+- [Tag](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Tag.md): The tag structure that contains a tag key and value.
+- [TimePeriod](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_TimePeriod.md): Specifies a date range for retrieving efficiency metrics.
+- [Usage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_Usage.md): Details about the usage.
+- [ValidationExceptionDetail](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_ValidationExceptionDetail.md): The input failed to meet the constraints specified by the AWS service in a specified field.
+- [WorkSpaces](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostOptimizationHub_WorkSpaces.md): The WorkSpaces recommendation details.
+
+## [AWS Cost and Usage Report](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_AWS_Cost_and_Usage_Report_Service.md)
+
+You can use the AWS Cost and Usage Report API to programmatically create, query, and delete AWS Cost and Usage Report definitions.
+
+AWS Cost and Usage Report track the monthly AWS costs and usage associated with your AWS account. The report contains line items for each unique combination of AWS product, usage type, and operation that your AWS account uses. You can configure the AWS Cost and Usage Report to show only the data that you want, using the AWS Cost and Usage Report API.
+
+Service Endpoint
+
+The AWS Cost and Usage Report API provides the following endpoint:
+
+- cur.us-east-1.amazonaws.com
+
+### Actions
+
+- [DeleteReportDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_cur_DeleteReportDefinition.md): Deletes the specified report.
+- [DescribeReportDefinitions](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_cur_DescribeReportDefinitions.md): Lists the AWS Cost and Usage Report available to this account.
+- [ListTagsForResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_cur_ListTagsForResource.md): Lists the tags associated with the specified report definition.
+- [ModifyReportDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_cur_ModifyReportDefinition.md): Allows you to programmatically update your report preferences.
+- [PutReportDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_cur_PutReportDefinition.md): Creates a new report using the description that you provide.
+- [TagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_cur_TagResource.md): Associates a set of tags with a report definition.
+- [UntagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_cur_UntagResource.md): Disassociates a set of tags from a report definition.
+
+### Data Types
+
+- [ReportDefinition](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_cur_ReportDefinition.md): The definition of AWS Cost and Usage Report.
+- [ReportStatus](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_cur_ReportStatus.md): A two element dictionary with a lastDelivery and lastStatus key whose values describe the date and status of the last delivered report for a particular report definition.
+- [Tag](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_cur_Tag.md): Describes a tag.
+
+## [AWS Free Tier](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_AWS_Free_Tier.md)
+
+You can use the AWS Free Tier API to query programmatically your Free Tier usage data.
+
+Free Tier tracks your monthly usage data for all free tier offers that are associated with your AWS account. You can use the Free Tier API to filter and show only the data that you want.
+
+Service endpoint
+
+The Free Tier API provides the following endpoint:
+
+- https://freetier.us-east-1.api.aws
+
+For more information, see [Using the AWS Free Tier](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html)in the AWS Billing User Guide.
+
+### Actions
+
+- [GetAccountActivity](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_freetier_GetAccountActivity.md): Returns a specific activity record that is available to the customer.
+- [GetAccountPlanState](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_freetier_GetAccountPlanState.md): This returns all of the information related to the state of the account plan related to Free Tier.
+- [GetFreeTierUsage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_freetier_GetFreeTierUsage.md): Returns a list of all Free Tier usage objects that match your filters.
+- [ListAccountActivities](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_freetier_ListAccountActivities.md): Returns a list of activities that are available.
+- [UpgradeAccountPlan](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_freetier_UpgradeAccountPlan.md): The account plan type for the AWS account.
+
+### Data Types
+
+- [ActivityReward](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_freetier_ActivityReward.md): The summary of the rewards granted as a result of activities completed.
+- [ActivitySummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_freetier_ActivitySummary.md): The summary of activities.
+- [DimensionValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_freetier_DimensionValues.md): Contains the specifications for the filters to use for your request.
+- [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_freetier_Expression.md): Use Expression to filter in the GetFreeTierUsage API operation.
+- [FreeTierUsage](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_freetier_FreeTierUsage.md): Consists of a AWS Free Tier offer’s metadata and your data usage for the offer.
+- [MonetaryAmount](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_freetier_MonetaryAmount.md): The monetary amount of the credit.
+
+## [AWS Invoicing](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_AWS_Invoicing.md)
+
+AWS Invoice Configuration
+
+You can use AWS Invoice Configuration APIs to programmatically create, update, delete, get, and list invoice units. You can also programmatically fetch the information of the invoice receiver. For example, business legal name, address, and invoicing contacts.
+
+You can use AWS Invoice Configuration to receive separate AWS invoices based your organizational needs. By using AWS Invoice Configuration, you can configure invoice units that are groups of AWS accounts that represent your business entities, and receive separate invoices for each business entity. You can also assign a unique member or payer account as the invoice receiver for each invoice unit. As you create new accounts within your Organizations using AWS Invoice Configuration APIs, you can automate the creation of new invoice units and subsequently automate the addition of new accounts to your invoice units.
+
+AWS Procurement Portal Preferences
+
+You can use AWS Procurement Portal Preferences APIs to programmatically create, update, delete, get, and list procurement portal connections and e-invoice delivery settings. You can also programmatically fetch and modify the status of procurement portal configurations. For example, SAP Business Network or Coupa connections, configure e-invoice delivery and purchase order retrieval features.
+
+You can use AWS Procurement Portal Preferences to connect e-invoice delivery to your procurement portals based on your organizational needs. By using AWS Procurement Portal Preferences, you can configure connections to SAP Business Network and Coupa procurement portals that retrieve purchase orders and deliver AWS invoices on the same day they are generated. You can also set up testing environments to validate invoice delivery without affecting live transactions, and manage contact information for portal setup and support.
+
+Administrative users should understand that billing read-only policies will show all procurement portal connection details. Review your IAM policies to ensure appropriate access controls are in place for procurement portal preferences.
+
+AWS Invoice Management
+
+You can use AWS Invoice Management APIs to programmatically list invoice summaries and get invoice documents. You can also programmatically fetch invoice documents with S3 pre-signed URLs.
+
+You can use AWS Invoice Management to access invoice information based on your organizational needs. By using AWS Invoice Management, you can retrieve paginated lists of invoice summaries that include invoice metadata such as invoice IDs, amounts, and currencies without downloading documents. You can also download invoice documents in PDF format using S3 pre-signed URLs with built-in expiration. As you manage invoices across your organization using AWS Invoice Management APIs, you can create invoice retrieval processes and integrate invoice data into your financial systems.
+
+Service endpoint
+
+You can use the following endpoints for AWS Invoice Configuration, AWS Procurement Portal Preferences, and AWS Invoice Management:
+
+- `https://invoicing.us-east-1.api.aws`
+
+### Actions
+
+- [BatchGetInvoiceProfile](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_BatchGetInvoiceProfile.md): This gets the invoice profile associated with a set of accounts.
+- [CreateInvoiceUnit](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_CreateInvoiceUnit.md): This creates a new invoice unit with the provided definition.
+- [CreateProcurementPortalPreference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_CreateProcurementPortalPreference.md): This feature API is subject to changing at any time.
+- [DeleteInvoiceUnit](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_DeleteInvoiceUnit.md): This deletes an invoice unit with the provided invoice unit ARN.
+- [DeleteProcurementPortalPreference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_DeleteProcurementPortalPreference.md): This feature API is subject to changing at any time.
+- [GetInvoicePDF](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_GetInvoicePDF.md): Returns a URL to download the invoice document and supplemental documents associated with an invoice.
+- [GetInvoiceUnit](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_GetInvoiceUnit.md): This retrieves the invoice unit definition.
+- [GetProcurementPortalPreference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_GetProcurementPortalPreference.md): This feature API is subject to changing at any time.
+- [ListInvoiceSummaries](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_ListInvoiceSummaries.md): Retrieves your invoice details programmatically, without line item details.
+- [ListInvoiceUnits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_ListInvoiceUnits.md): This fetches a list of all invoice unit definitions for a given account, as of the provided AsOf date.
+- [ListProcurementPortalPreferences](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_ListProcurementPortalPreferences.md): This feature API is subject to changing at any time.
+- [ListTagsForResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_ListTagsForResource.md): Lists the tags for a resource.
+- [PutProcurementPortalPreference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_PutProcurementPortalPreference.md): This feature API is subject to changing at any time.
+- [TagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_TagResource.md): Adds a tag to a resource.
+- [UntagResource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_UntagResource.md): Removes a tag from a resource.
+- [UpdateInvoiceUnit](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_UpdateInvoiceUnit.md): You can update the invoice unit configuration at any time, and AWS will use the latest configuration at the end of the month.
+- [UpdateProcurementPortalPreferenceStatus](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_UpdateProcurementPortalPreferenceStatus.md): This feature API is subject to changing at any time.
+
+### Data Types
+
+- [AmountBreakdown](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_AmountBreakdown.md): Details about how the total amount was calculated and categorized.
+- [BillingPeriod](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_BillingPeriod.md): The billing period for which you want to retrieve invoice-related documents.
+- [Contact](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_Contact.md): Represents contact information for a person or role associated with the procurement portal preference.
+- [CurrencyExchangeDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_CurrencyExchangeDetails.md): The details of currency exchange.
+- [DateInterval](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_DateInterval.md): The time period that you want invoice-related documents for.
+- [DiscountsBreakdown](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_DiscountsBreakdown.md): The discounts details.
+- [DiscountsBreakdownAmount](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_DiscountsBreakdownAmount.md): The discounted amount.
+- [EinvoiceDeliveryPreference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_EinvoiceDeliveryPreference.md): Specifies the preferences for e-invoice delivery, including document types, attachment types, and customization settings.
+- [Entity](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_Entity.md): The organization name providing AWS services.
+- [FeesBreakdown](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_FeesBreakdown.md): The details of fees.
+- [FeesBreakdownAmount](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_FeesBreakdownAmount.md): The fee amount.
+- [Filters](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_Filters.md): An optional input to the list API.
+- [InvoiceCurrencyAmount](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_InvoiceCurrencyAmount.md): The amount charged after taxes, in the preferred currency.
+- [InvoicePDF](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_InvoicePDF.md): Invoice document data.
+- [InvoiceProfile](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_InvoiceProfile.md): Contains high-level information about the invoice receiver.
+- [InvoiceSummariesFilter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_InvoiceSummariesFilter.md): Filters for your invoice summaries.
+- [InvoiceSummariesSelector](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_InvoiceSummariesSelector.md): Specifies the invoice summary.
+- [InvoiceSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_InvoiceSummary.md): The invoice that the API retrieved.
+- [InvoiceUnit](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_InvoiceUnit.md): An invoice unit is a set of mutually exclusive accounts that correspond to your business entity.
+- [InvoiceUnitRule](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_InvoiceUnitRule.md): This is used to categorize the invoice unit.
+- [ProcurementPortalPreference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_ProcurementPortalPreference.md): Represents the full configuration of a procurement portal preference, including settings for e-invoice delivery and purchase order retrieval.
+- [ProcurementPortalPreferenceSelector](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_ProcurementPortalPreferenceSelector.md): Specifies criteria for selecting which invoices should be processed using a particular procurement portal preference.
+- [ProcurementPortalPreferenceSummary](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_ProcurementPortalPreferenceSummary.md): Provides a summary of a procurement portal preference, including key identifiers and status information.
+- [PurchaseOrderDataSource](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_PurchaseOrderDataSource.md): Specifies the source configuration for retrieving purchase order data.
+- [ReceiverAddress](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_ReceiverAddress.md): The details of the address associated with the receiver.
+- [ResourceTag](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_ResourceTag.md): The tag structure that contains a tag key and value.
+- [SupplementalDocument](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_SupplementalDocument.md): Supplemental document associated with the invoice.
+- [TaxesBreakdown](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_TaxesBreakdown.md): The details of the taxes.
+- [TaxesBreakdownAmount](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_TaxesBreakdownAmount.md): The tax amount.
+- [TestEnvPreference](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_TestEnvPreference.md): Contains configuration settings for testing the procurement portal integration in a non-production environment.
+- [TestEnvPreferenceInput](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_TestEnvPreferenceInput.md): Input parameters for configuring test environment preferences for a procurement portal.
+- [ValidationExceptionField](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_invoicing_ValidationExceptionField.md): The input fails to satisfy the constraints specified by an AWS service.
+
+## [AWS Price List](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_AWS_Price_List_Service.md)
+
+The AWS Price List API is a centralized and convenient way to programmatically query AWS for services, products, and pricing information. The AWS Price List uses standardized product attributes such as `Location`, `Storage Class`, and `Operating System`, and provides prices at the SKU level. You can use the AWS Price List to do the following:
+
+- Build cost control and scenario planning tools
+- Reconcile billing data
+- Forecast future spend for budgeting purposes
+- Provide cost benefit analysis that compare your internal workloads with AWS
+
+Use `GetServices`without a service code to retrieve the service codes for all AWS services, then `GetServices`with a service code to retrieve the attribute names for that service. After you have the service code and attribute names, you can use `GetAttributeValues`to see what values are available for an attribute. With the service code and an attribute name and value, you can use `GetProducts`to find specific products that you're interested in, such as an `AmazonEC2`instance, with a `Provisioned IOPS``volumeType`.
+
+You can use the following endpoints for the AWS Price List API:
+
+- https://api.pricing.us-east-1.amazonaws.com
+- https://api.pricing.ap-south-1.amazonaws.com
+- https://api.pricing.eu-central-1.amazonaws.com
+
+For more information, see [Using the AWS Price List API](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html)in the AWS Billing User Guide.
+
+For more information about AWS Billing and Cost Management endpoints, see [AWS Billing and Cost Management endpoints](https://docs.aws.amazon.com/general/latest/gr/billing.html)in the Amazon Web Services General Reference.
+
+For more information about AWS Billing and Cost Management quotas, see [Quotas and restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-limits.html)in the AWS Billing User Guideand [Quotas and restrictions](https://docs.aws.amazon.com/cost-management/latest/userguide/management-limits.html)in the AWS Cost Management User Guide.
+
+### Actions
+
+- [DescribeServices](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_DescribeServices.md): Returns the metadata for one service or a list of the metadata for all services.
+- [GetAttributeValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_GetAttributeValues.md): Returns a list of attribute values.
+- [GetPriceListFileUrl](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_GetPriceListFileUrl.md): This returns the URL that you can retrieve your Price List file from.
+- [GetProducts](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_GetProducts.md): Returns a list of all products that match the filter criteria.
+- [ListPriceLists](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_ListPriceLists.md): This returns a list of Price List references that the requester if authorized to view, given a ServiceCode, CurrencyCode, and an EffectiveDate.
+
+### Data Types
+
+- [AttributeValue](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_AttributeValue.md): The values of a given attribute, such as Throughput Optimized HDD or Provisioned IOPS for the Amazon EC2 volumeType attribute.
+- [Filter](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_Filter.md): The constraints that you want all returned products to match.
+- [PriceList](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_PriceList.md): This is the type of price list references that match your request.
+- [Service](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_Service.md): The metadata for a service, such as the service code and available attribute names.
+
+## [Tax Settings](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome_Tax_Settings.md)
+
+You can use the tax setting API to programmatically set, modify, and delete the tax registration number (TRN), associated business legal name, and address (Collectively referred to as "TRN information"). You can also programmatically view TRN information and tax addresses ("Tax profiles").
+
+You can use this API to automate your TRN information settings instead of manually using the console.
+
+Service Endpoint
+
+- https://tax.us-east-1.amazonaws.com
+
+### Actions
+
+- [BatchDeleteTaxRegistration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_BatchDeleteTaxRegistration.md): Deletes tax registration for multiple accounts in batch.
+- [BatchGetTaxExemptions](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_BatchGetTaxExemptions.md): Get the active tax exemptions for a given list of accounts.
+- [BatchPutTaxRegistration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_BatchPutTaxRegistration.md): Adds or updates tax registration for multiple accounts in batch.
+- [DeleteSupplementalTaxRegistration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_DeleteSupplementalTaxRegistration.md): Deletes a supplemental tax registration for a single account.
+- [DeleteTaxRegistration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_DeleteTaxRegistration.md): Deletes tax registration for a single account.
+- [GetTaxExemptionTypes](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_GetTaxExemptionTypes.md): Get supported tax exemption types.
+- [GetTaxInheritance](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_GetTaxInheritance.md): The get account tax inheritance status.
+- [GetTaxRegistration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_GetTaxRegistration.md): Retrieves tax registration for a single account.
+- [GetTaxRegistrationDocument](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_GetTaxRegistrationDocument.md): Downloads your tax documents to the Amazon S3 bucket that you specify in your request.
+- [ListSupplementalTaxRegistrations](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_ListSupplementalTaxRegistrations.md): Retrieves supplemental tax registrations for a single account.
+- [ListTaxExemptions](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_ListTaxExemptions.md): Retrieves the tax exemption of accounts listed in a consolidated billing family.
+- [ListTaxRegistrations](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_ListTaxRegistrations.md): Retrieves the tax registration of accounts listed in a consolidated billing family.
+- [PutSupplementalTaxRegistration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_PutSupplementalTaxRegistration.md): Stores supplemental tax registration for a single account.
+- [PutTaxExemption](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_PutTaxExemption.md): Adds the tax exemption for a single account or all accounts listed in a consolidated billing family.
+- [PutTaxInheritance](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_PutTaxInheritance.md): The updated tax inheritance status.
+- [PutTaxRegistration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_PutTaxRegistration.md): Adds or updates tax registration for a single account.
+
+### Data Types
+
+- [AccountDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_AccountDetails.md): An object with your accountId and TRN information.
+- [AccountMetaData](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_AccountMetaData.md): The meta data information associated with the account.
+- [AdditionalInfoRequest](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_AdditionalInfoRequest.md): Additional tax information associated with your tax registration number (TRN).
+- [AdditionalInfoResponse](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_AdditionalInfoResponse.md): Additional tax information associated with your TRN.
+- [Address](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_Address.md): The details of the address associated with the TRN information.
+- [Authority](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_Authority.md): The address domain associate with the tax information.
+- [BatchDeleteTaxRegistrationError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_BatchDeleteTaxRegistrationError.md): The error object for representing failures in the BatchDeleteTaxRegistration operation.
+- [BatchPutTaxRegistrationError](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_BatchPutTaxRegistrationError.md): The error object for representing failures in the BatchPutTaxRegistration operation.
+- [BelgiumAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_BelgiumAdditionalInfo.md): Additional tax information associated with your TRN in Belgium.
+- [BrazilAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_BrazilAdditionalInfo.md): Additional tax information associated with your TRN in Brazil.
+- [CanadaAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_CanadaAdditionalInfo.md): Additional tax information associated with your TRN in Canada .
+- [ChileAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_ChileAdditionalInfo.md): Additional tax information associated with your TRN in Chile.
+- [DestinationS3Location](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_DestinationS3Location.md): The location of the Amazon S3 bucket that you specify to download your tax documents to.
+- [EgyptAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_EgyptAdditionalInfo.md): Additional tax information to specify for a TRN in Egypt.
+- [EstoniaAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_EstoniaAdditionalInfo.md): Additional tax information associated with your TRN in Estonia.
+- [ExemptionCertificate](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_ExemptionCertificate.md): The exemption certificate.
+- [FranceAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_FranceAdditionalInfo.md): Additional tax information associated with your TRN in France.
+- [GeorgiaAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_GeorgiaAdditionalInfo.md): Additional tax information associated with your TRN in Georgia.
+- [GreeceAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_GreeceAdditionalInfo.md): Additional tax information to specify for a TRN in Greece.
+- [IndiaAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_IndiaAdditionalInfo.md): Additional tax information in India.
+- [IndonesiaAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_IndonesiaAdditionalInfo.md): Additional tax information associated with your TRN in Indonesia.
+- [IsraelAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_IsraelAdditionalInfo.md): Additional tax information associated with your TRN in Israel.
+- [ItalyAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_ItalyAdditionalInfo.md): Additional tax information associated with your TRN in Italy.
+- [Jurisdiction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_Jurisdiction.md): The jurisdiction details of the TRN information of the customers.
+- [KenyaAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_KenyaAdditionalInfo.md): Additional tax information associated with your TRN in Kenya.
+- [MalaysiaAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_MalaysiaAdditionalInfo.md): Additional tax information associated with your TRN in Malaysia.
+- [PhilippinesAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_PhilippinesAdditionalInfo.md): Additional tax information associated with your TRN in the Philippines.
+- [PolandAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_PolandAdditionalInfo.md): Additional tax information associated with your TRN in Poland.
+- [RomaniaAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_RomaniaAdditionalInfo.md): Additional tax information to specify for a TRN in Romania.
+- [SaudiArabiaAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_SaudiArabiaAdditionalInfo.md): Additional tax information associated with your TRN in Saudi Arabia.
+- [SourceS3Location](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_SourceS3Location.md): The Amazon S3 bucket in your account where your tax document is located.
+- [SouthKoreaAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_SouthKoreaAdditionalInfo.md): Additional tax information associated with your TRN in South Korea.
+- [SpainAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_SpainAdditionalInfo.md): Additional tax information associated with your TRN in Spain.
+- [SupplementalTaxRegistration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_SupplementalTaxRegistration.md): Supplemental TRN details.
+- [SupplementalTaxRegistrationEntry](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_SupplementalTaxRegistrationEntry.md): The supplemental TRN information to provide when adding or updating a supplemental TRN.
+- [TaxDocumentMetadata](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_TaxDocumentMetadata.md): The metadata for your tax document.
+- [TaxExemption](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_TaxExemption.md): The tax exemption.
+- [TaxExemptionDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_TaxExemptionDetails.md): The tax exemption details.
+- [TaxExemptionType](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_TaxExemptionType.md): The tax exemption type.
+- [TaxInheritanceDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_TaxInheritanceDetails.md): Tax inheritance information associated with the account.
+- [TaxRegistration](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_TaxRegistration.md): Your TRN information.
+- [TaxRegistrationDocFile](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_TaxRegistrationDocFile.md): The tax registration document.
+- [TaxRegistrationDocument](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_TaxRegistrationDocument.md): Tax registration document information.
+- [TaxRegistrationEntry](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_TaxRegistrationEntry.md): The TRN information you provide when you add a new TRN, or update.
+- [TaxRegistrationWithJurisdiction](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_TaxRegistrationWithJurisdiction.md): Your TRN information with jurisdiction details.
+- [TurkeyAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_TurkeyAdditionalInfo.md): Additional tax information associated with your TRN in Turkey.
+- [UkraineAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_UkraineAdditionalInfo.md): Additional tax information associated with your TRN in Ukraine.
+- [UzbekistanAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_UzbekistanAdditionalInfo.md): Additional tax information to specify for a TRN in Uzbekistan.
+- [ValidationExceptionField](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_ValidationExceptionField.md): The information about the specified parameter in the request that caused an error.
+- [VerificationDetails](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_VerificationDetails.md): Required information to verify your TRN.
+- [VietnamAdditionalInfo](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_taxSettings_VietnamAdditionalInfo.md): Additional tax information to specify for a TRN in Vietnam.
+
+## Common
+
+- [Common Parameters](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/CommonParameters.md)
+- [Common Error Types](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/CommonErrors.md)
