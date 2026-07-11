@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/aws-budgets-api-openapi.yml, openapi/aws-cost-explorer-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: aws_iam
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: AWS Signature Version 4 authentication
+  sources:
+  - openapi/aws-budgets-api-openapi.yml
+  - openapi/aws-cost-explorer-api-openapi.yml

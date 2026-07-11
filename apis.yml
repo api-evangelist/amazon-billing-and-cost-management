@@ -149,6 +149,14 @@ apis:
         url: https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html
 
 common:
+  - type: TrustCenter
+    url: security/amazon-billing-and-cost-management-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-billing-and-cost-management-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-billing-and-cost-management-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-billing-and-cost-management-authentication.yml
   - type: Portal
     url: https://aws.amazon.com/
   - type: Website
