@@ -1,0 +1,132 @@
+openapi: 3.1.0
+info:
+  title: AWS Budgets Anomaly Detection Notifications API
+  description: The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.
+  version: '2016-10-20'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://budgets.amazonaws.com
+  description: AWS Budgets (Global endpoint)
+security:
+- aws_iam: []
+tags:
+- name: Notifications
+  description: Manage budget alert notifications
+paths:
+  /CreateNotification:
+    post:
+      operationId: CreateNotification
+      summary: Create Notification
+      description: Creates a notification. You must create the budget before you create the associated notification.
+      tags:
+      - Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - AccountId
+              - BudgetName
+              - Notification
+              - Subscribers
+              properties:
+                AccountId:
+                  type: string
+                BudgetName:
+                  type: string
+                Notification:
+                  $ref: '#/components/schemas/Notification'
+                Subscribers:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Subscriber'
+      responses:
+        '200':
+          description: Notification created successfully
+  /DescribeNotificationsForBudget:
+    post:
+      operationId: DescribeNotificationsForBudget
+      summary: Describe Notifications For Budget
+      description: Lists the notifications that are associated with a budget.
+      tags:
+      - Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - AccountId
+              - BudgetName
+              properties:
+                AccountId:
+                  type: string
+                BudgetName:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Notifications returned
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    Subscriber:
+      type: object
+      required:
+      - SubscriptionType
+      - Address
+      properties:
+        SubscriptionType:
+          type: string
+          enum:
+          - SNS
+          - EMAIL
+        Address:
+          type: string
+    Notification:
+      type: object
+      required:
+      - NotificationType
+      - ComparisonOperator
+      - Threshold
+      properties:
+        NotificationType:
+          type: string
+          enum:
+          - ACTUAL
+          - FORECASTED
+        ComparisonOperator:
+          type: string
+          enum:
+          - GREATER_THAN
+          - LESS_THAN
+          - EQUAL_TO
+        Threshold:
+          type: number
+          minimum: 0
+          maximum: 15000000000000
+        ThresholdType:
+          type: string
+          enum:
+          - PERCENTAGE
+          - ABSOLUTE_VALUE
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: AWS Budgets API Reference
+  url: https://docs.aws.amazon.com/budgets/latest/APIReference/

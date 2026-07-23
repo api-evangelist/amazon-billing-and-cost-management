@@ -1,0 +1,278 @@
+openapi: 3.1.0
+info:
+  title: AWS Budgets Anomaly Detection API
+  description: The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.
+  version: '2016-10-20'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://budgets.amazonaws.com
+  description: AWS Budgets (Global endpoint)
+security:
+- aws_iam: []
+tags:
+- name: Anomaly Detection
+  description: Detect and manage cost anomalies
+paths:
+  /CreateAnomalyMonitor:
+    post:
+      operationId: CreateAnomalyMonitor
+      summary: Create Anomaly Monitor
+      description: Creates a new cost anomaly detection monitor with the requested type and monitor specification.
+      tags:
+      - Anomaly Detection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAnomalyMonitorRequest'
+      responses:
+        '200':
+          description: Anomaly monitor created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAnomalyMonitorResponse'
+        '400':
+          $ref: '#/components/responses/LimitExceededException'
+  /GetAnomalies:
+    post:
+      operationId: GetAnomalies
+      summary: Get Anomalies
+      description: Retrieves all of the cost anomalies detected on your account during the time period that's specified in the DateInterval object.
+      tags:
+      - Anomaly Detection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetAnomaliesRequest'
+      responses:
+        '200':
+          description: Anomalies returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAnomaliesResponse'
+        '400':
+          $ref: '#/components/responses/LimitExceededException'
+  /CreateAnomalySubscription:
+    post:
+      operationId: CreateAnomalySubscription
+      summary: Create Anomaly Subscription
+      description: Adds an alert subscription to a cost anomaly detection monitor. You can use each subscription to define subscribers with email or SNS targets and a frequency for anomaly notifications.
+      tags:
+      - Anomaly Detection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAnomalySubscriptionRequest'
+      responses:
+        '200':
+          description: Anomaly subscription created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAnomalySubscriptionResponse'
+        '400':
+          $ref: '#/components/responses/LimitExceededException'
+components:
+  schemas:
+    GetAnomaliesResponse:
+      type: object
+      properties:
+        Anomalies:
+          type: array
+          items:
+            type: object
+            properties:
+              AnomalyId:
+                type: string
+              AnomalyStartDate:
+                type: string
+              AnomalyEndDate:
+                type: string
+              DimensionValue:
+                type: string
+              MonitorArn:
+                type: string
+              AnomalyScore:
+                type: object
+              Impact:
+                type: object
+              Feedback:
+                type: string
+        NextPageToken:
+          type: string
+    CreateAnomalySubscriptionRequest:
+      type: object
+      required:
+      - AnomalySubscription
+      properties:
+        AnomalySubscription:
+          type: object
+          required:
+          - MonitorArnList
+          - Subscribers
+          - Frequency
+          - SubscriptionName
+          properties:
+            MonitorArnList:
+              type: array
+              items:
+                type: string
+            Subscribers:
+              type: array
+              items:
+                type: object
+                properties:
+                  Address:
+                    type: string
+                  Type:
+                    type: string
+                    enum:
+                    - EMAIL
+                    - SNS
+            Threshold:
+              type: number
+            Frequency:
+              type: string
+              enum:
+              - DAILY
+              - IMMEDIATE
+              - WEEKLY
+            SubscriptionName:
+              type: string
+    CreateAnomalySubscriptionResponse:
+      type: object
+      properties:
+        SubscriptionArn:
+          type: string
+    CreateAnomalyMonitorResponse:
+      type: object
+      properties:
+        MonitorArn:
+          type: string
+    GetAnomaliesRequest:
+      type: object
+      required:
+      - DateInterval
+      properties:
+        MonitorArn:
+          type: string
+        DateInterval:
+          $ref: '#/components/schemas/DateInterval'
+        Feedback:
+          type: string
+          enum:
+          - true
+          - false
+          - PLANNED_ACTIVITY
+        TotalImpact:
+          type: object
+        NextPageToken:
+          type: string
+        MaxResults:
+          type: integer
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
+    DateInterval:
+      type: object
+      required:
+      - Start
+      - End
+      properties:
+        Start:
+          type: string
+          description: Start of the time period in YYYY-MM-DD format
+          example: '2026-01-01'
+        End:
+          type: string
+          description: End of the time period in YYYY-MM-DD format
+          example: '2026-04-01'
+    CreateAnomalyMonitorRequest:
+      type: object
+      required:
+      - AnomalyMonitor
+      properties:
+        AnomalyMonitor:
+          type: object
+          required:
+          - MonitorName
+          - MonitorType
+          properties:
+            MonitorName:
+              type: string
+            MonitorType:
+              type: string
+              enum:
+              - DIMENSIONAL
+              - CUSTOM
+            MonitorDimension:
+              type: string
+              enum:
+              - SERVICE
+            MonitorSpecification:
+              $ref: '#/components/schemas/Expression'
+        ResourceTags:
+          type: array
+          items:
+            type: object
+    Expression:
+      type: object
+      description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
+      properties:
+        Dimensions:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        Tags:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        And:
+          type: array
+          items:
+            type: object
+        Or:
+          type: array
+          items:
+            type: object
+        Not:
+          type: object
+  responses:
+    LimitExceededException:
+      description: You've exceeded the limit for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: AWS Budgets API Reference
+  url: https://docs.aws.amazon.com/budgets/latest/APIReference/

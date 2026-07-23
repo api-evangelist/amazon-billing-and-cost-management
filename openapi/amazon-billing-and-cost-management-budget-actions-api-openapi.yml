@@ -1,0 +1,148 @@
+openapi: 3.1.0
+info:
+  title: AWS Budgets Anomaly Detection Budget Actions API
+  description: The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.
+  version: '2016-10-20'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://budgets.amazonaws.com
+  description: AWS Budgets (Global endpoint)
+security:
+- aws_iam: []
+tags:
+- name: Budget Actions
+  description: Automated actions when budget thresholds are exceeded
+paths:
+  /CreateBudgetAction:
+    post:
+      operationId: CreateBudgetAction
+      summary: Create Budget Action
+      description: Creates a budget action. Budget actions are automated responses that execute when a budget exceeds a threshold, such as applying an IAM policy or running an SSM automation.
+      tags:
+      - Budget Actions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBudgetActionRequest'
+      responses:
+        '200':
+          description: Budget action created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  AccountId:
+                    type: string
+                  BudgetName:
+                    type: string
+                  ActionId:
+                    type: string
+  /DescribeBudgetActionsForBudget:
+    post:
+      operationId: DescribeBudgetActionsForBudget
+      summary: Describe Budget Actions For Budget
+      description: Describes all of the budget actions for a budget.
+      tags:
+      - Budget Actions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - AccountId
+              - BudgetName
+              properties:
+                AccountId:
+                  type: string
+                BudgetName:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Budget actions returned
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    Subscriber:
+      type: object
+      required:
+      - SubscriptionType
+      - Address
+      properties:
+        SubscriptionType:
+          type: string
+          enum:
+          - SNS
+          - EMAIL
+        Address:
+          type: string
+    CreateBudgetActionRequest:
+      type: object
+      required:
+      - AccountId
+      - BudgetName
+      - NotificationType
+      - ActionType
+      - ActionThreshold
+      - Definition
+      - ExecutionRoleArn
+      - ApprovalModel
+      - Subscribers
+      properties:
+        AccountId:
+          type: string
+        BudgetName:
+          type: string
+        NotificationType:
+          type: string
+          enum:
+          - ACTUAL
+          - FORECASTED
+        ActionType:
+          type: string
+          enum:
+          - APPLY_IAM_POLICY
+          - APPLY_SCP_POLICY
+          - RUN_SSM_DOCUMENTS
+        ActionThreshold:
+          type: object
+          properties:
+            ActionThresholdValue:
+              type: number
+            ActionThresholdType:
+              type: string
+        Definition:
+          type: object
+        ExecutionRoleArn:
+          type: string
+        ApprovalModel:
+          type: string
+          enum:
+          - AUTOMATIC
+          - MANUAL
+        Subscribers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscriber'
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: AWS Budgets API Reference
+  url: https://docs.aws.amazon.com/budgets/latest/APIReference/

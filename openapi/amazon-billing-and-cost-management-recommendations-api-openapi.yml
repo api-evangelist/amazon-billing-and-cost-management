@@ -1,0 +1,201 @@
+openapi: 3.1.0
+info:
+  title: AWS Budgets Anomaly Detection Recommendations API
+  description: The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.
+  version: '2016-10-20'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://budgets.amazonaws.com
+  description: AWS Budgets (Global endpoint)
+security:
+- aws_iam: []
+tags:
+- name: Recommendations
+  description: Cost optimization recommendations
+paths:
+  /GetRightsizingRecommendation:
+    post:
+      operationId: GetRightsizingRecommendation
+      summary: Get Rightsizing Recommendation
+      description: Creates recommendations that help you save cost by identifying idle and underutilized Amazon EC2 instances.
+      tags:
+      - Recommendations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetRightsizingRecommendationRequest'
+      responses:
+        '200':
+          description: Rightsizing recommendations returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRightsizingRecommendationResponse'
+        '400':
+          $ref: '#/components/responses/InvalidNextTokenException'
+  /GetSavingsPlansPurchaseRecommendation:
+    post:
+      operationId: GetSavingsPlansPurchaseRecommendation
+      summary: Get Savings Plans Purchase Recommendation
+      description: Retrieves the Savings Plans recommendations for your account.
+      tags:
+      - Recommendations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                SavingsPlansType:
+                  type: string
+                TermInYears:
+                  type: string
+                PaymentOption:
+                  type: string
+                LookbackPeriodInDays:
+                  type: string
+      responses:
+        '200':
+          description: Savings Plans recommendations returned
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/LimitExceededException'
+  /GetReservationPurchaseRecommendation:
+    post:
+      operationId: GetReservationPurchaseRecommendation
+      summary: Get Reservation Purchase Recommendation
+      description: Gets recommendations for Reserved Instance purchases based on usage patterns.
+      tags:
+      - Recommendations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Service:
+                  type: string
+                TermInYears:
+                  type: string
+                PaymentOption:
+                  type: string
+                LookbackPeriodInDays:
+                  type: string
+      responses:
+        '200':
+          description: Reservation purchase recommendations returned
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/LimitExceededException'
+components:
+  schemas:
+    GetRightsizingRecommendationRequest:
+      type: object
+      required:
+      - Service
+      properties:
+        Filter:
+          $ref: '#/components/schemas/Expression'
+        Configuration:
+          type: object
+          properties:
+            RecommendationTarget:
+              type: string
+              enum:
+              - SAME_INSTANCE_FAMILY
+              - CROSS_INSTANCE_FAMILY
+            BenefitsConsidered:
+              type: boolean
+        Service:
+          type: string
+          description: The specific service that you want recommendations for (e.g., AmazonEC2)
+        PageSize:
+          type: integer
+        NextPageToken:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
+    GetRightsizingRecommendationResponse:
+      type: object
+      properties:
+        Metadata:
+          type: object
+        Summary:
+          type: object
+        RightsizingRecommendations:
+          type: array
+          items:
+            type: object
+        NextPageToken:
+          type: string
+    Expression:
+      type: object
+      description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
+      properties:
+        Dimensions:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        Tags:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        And:
+          type: array
+          items:
+            type: object
+        Or:
+          type: array
+          items:
+            type: object
+        Not:
+          type: object
+  responses:
+    LimitExceededException:
+      description: You've exceeded the limit for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InvalidNextTokenException:
+      description: The pagination token is invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: AWS Budgets API Reference
+  url: https://docs.aws.amazon.com/budgets/latest/APIReference/

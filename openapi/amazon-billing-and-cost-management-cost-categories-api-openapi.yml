@@ -1,0 +1,157 @@
+openapi: 3.1.0
+info:
+  title: AWS Budgets Anomaly Detection Cost Categories API
+  description: The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.
+  version: '2016-10-20'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://budgets.amazonaws.com
+  description: AWS Budgets (Global endpoint)
+security:
+- aws_iam: []
+tags:
+- name: Cost Categories
+  description: Organize costs with custom categories
+paths:
+  /CreateCostCategoryDefinition:
+    post:
+      operationId: CreateCostCategoryDefinition
+      summary: Create Cost Category Definition
+      description: Creates a new Cost Category with the requested name and rules.
+      tags:
+      - Cost Categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCostCategoryRequest'
+      responses:
+        '200':
+          description: Cost category created
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/LimitExceededException'
+  /ListCostCategoryDefinitions:
+    post:
+      operationId: ListCostCategoryDefinitions
+      summary: List Cost Category Definitions
+      description: Returns the name, ARN, rules, definition, and effective dates of all Cost Categories defined in the account.
+      tags:
+      - Cost Categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Cost categories returned
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          $ref: '#/components/responses/LimitExceededException'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
+    CreateCostCategoryRequest:
+      type: object
+      required:
+      - Name
+      - RuleVersion
+      - Rules
+      properties:
+        Name:
+          type: string
+        EffectiveStart:
+          type: string
+        RuleVersion:
+          type: string
+          enum:
+          - CostCategoryExpression.v1
+        Rules:
+          type: array
+          items:
+            type: object
+            properties:
+              Value:
+                type: string
+              Rule:
+                $ref: '#/components/schemas/Expression'
+              InheritedValue:
+                type: object
+              Type:
+                type: string
+        DefaultValue:
+          type: string
+        SplitChargeRules:
+          type: array
+          items:
+            type: object
+    Expression:
+      type: object
+      description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
+      properties:
+        Dimensions:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        Tags:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        And:
+          type: array
+          items:
+            type: object
+        Or:
+          type: array
+          items:
+            type: object
+        Not:
+          type: object
+  responses:
+    LimitExceededException:
+      description: You've exceeded the limit for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: AWS Budgets API Reference
+  url: https://docs.aws.amazon.com/budgets/latest/APIReference/

@@ -1,0 +1,124 @@
+openapi: 3.1.0
+info:
+  title: AWS Budgets Anomaly Detection Tags API
+  description: The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.
+  version: '2016-10-20'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://budgets.amazonaws.com
+  description: AWS Budgets (Global endpoint)
+security:
+- aws_iam: []
+tags:
+- name: Tags
+  description: Manage cost allocation tags
+paths:
+  /ListCostAllocationTags:
+    post:
+      operationId: ListCostAllocationTags
+      summary: List Cost Allocation Tags
+      description: Get a list of cost allocation tags. For a list of cost allocation tag types, see Tag types in the AWS Billing and Cost Management User Guide.
+      tags:
+      - Tags
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Status:
+                  type: string
+                TagKeys:
+                  type: array
+                  items:
+                    type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Cost allocation tags returned
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/LimitExceededException'
+  /GetTags:
+    post:
+      operationId: GetTags
+      summary: Get Tags
+      description: Queries for available tag keys and tag values for a specified period. You can search the tag values via the Filter parameter or that pertain to a specific tag key by using the TagKey parameter.
+      tags:
+      - Tags
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                TimePeriod:
+                  $ref: '#/components/schemas/DateInterval'
+                TagKey:
+                  type: string
+                SearchString:
+                  type: string
+      responses:
+        '200':
+          description: Tags returned
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/DataUnavailableException'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
+    DateInterval:
+      type: object
+      required:
+      - Start
+      - End
+      properties:
+        Start:
+          type: string
+          description: Start of the time period in YYYY-MM-DD format
+          example: '2026-01-01'
+        End:
+          type: string
+          description: End of the time period in YYYY-MM-DD format
+          example: '2026-04-01'
+  responses:
+    LimitExceededException:
+      description: You've exceeded the limit for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    DataUnavailableException:
+      description: The requested data is unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: AWS Budgets API Reference
+  url: https://docs.aws.amazon.com/budgets/latest/APIReference/

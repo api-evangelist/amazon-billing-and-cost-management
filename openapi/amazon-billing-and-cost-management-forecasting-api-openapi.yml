@@ -1,0 +1,189 @@
+openapi: 3.1.0
+info:
+  title: AWS Budgets Anomaly Detection Forecasting API
+  description: The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.
+  version: '2016-10-20'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://budgets.amazonaws.com
+  description: AWS Budgets (Global endpoint)
+security:
+- aws_iam: []
+tags:
+- name: Forecasting
+  description: Generate cost and usage forecasts
+paths:
+  /GetCostForecast:
+    post:
+      operationId: GetCostForecast
+      summary: Get Cost Forecast
+      description: Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs.
+      tags:
+      - Forecasting
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetCostForecastRequest'
+      responses:
+        '200':
+          description: Cost forecast returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCostForecastResponse'
+        '400':
+          $ref: '#/components/responses/DataUnavailableException'
+  /GetUsageForecast:
+    post:
+      operationId: GetUsageForecast
+      summary: Get Usage Forecast
+      description: Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select.
+      tags:
+      - Forecasting
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetUsageForecastRequest'
+      responses:
+        '200':
+          description: Usage forecast returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCostForecastResponse'
+        '400':
+          $ref: '#/components/responses/DataUnavailableException'
+components:
+  responses:
+    DataUnavailableException:
+      description: The requested data is unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    GetUsageForecastRequest:
+      type: object
+      required:
+      - TimePeriod
+      - Metric
+      - Granularity
+      properties:
+        TimePeriod:
+          $ref: '#/components/schemas/DateInterval'
+        Metric:
+          type: string
+        Granularity:
+          type: string
+        Filter:
+          $ref: '#/components/schemas/Expression'
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
+    DateInterval:
+      type: object
+      required:
+      - Start
+      - End
+      properties:
+        Start:
+          type: string
+          description: Start of the time period in YYYY-MM-DD format
+          example: '2026-01-01'
+        End:
+          type: string
+          description: End of the time period in YYYY-MM-DD format
+          example: '2026-04-01'
+    Expression:
+      type: object
+      description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
+      properties:
+        Dimensions:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        Tags:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        And:
+          type: array
+          items:
+            type: object
+        Or:
+          type: array
+          items:
+            type: object
+        Not:
+          type: object
+    GetCostForecastResponse:
+      type: object
+      properties:
+        Total:
+          type: object
+          properties:
+            Amount:
+              type: string
+            Unit:
+              type: string
+        ForecastResultsByTime:
+          type: array
+          items:
+            type: object
+    GetCostForecastRequest:
+      type: object
+      required:
+      - TimePeriod
+      - Metric
+      - Granularity
+      properties:
+        TimePeriod:
+          $ref: '#/components/schemas/DateInterval'
+        Metric:
+          type: string
+          enum:
+          - AMORTIZED_COST
+          - BLENDED_COST
+          - NET_AMORTIZED_COST
+          - NET_UNBLENDED_COST
+          - UNBLENDED_COST
+        Granularity:
+          type: string
+          enum:
+          - DAILY
+          - MONTHLY
+        Filter:
+          $ref: '#/components/schemas/Expression'
+        PredictionIntervalLevel:
+          type: integer
+          minimum: 51
+          maximum: 99
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: AWS Budgets API Reference
+  url: https://docs.aws.amazon.com/budgets/latest/APIReference/

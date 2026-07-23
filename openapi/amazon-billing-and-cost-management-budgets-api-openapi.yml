@@ -1,0 +1,315 @@
+openapi: 3.1.0
+info:
+  title: AWS Anomaly Detection Budgets API
+  description: The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.
+  version: '2016-10-20'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+servers:
+- url: https://budgets.amazonaws.com
+  description: AWS Budgets (Global endpoint)
+security:
+- aws_iam: []
+tags:
+- name: Budgets
+  description: Create and manage cost budgets
+paths:
+  /CreateBudget:
+    post:
+      operationId: CreateBudget
+      summary: Create Budget
+      description: Creates a budget and, if included, notifications and subscribers. A budget can track cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans coverage.
+      tags:
+      - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBudgetRequest'
+      responses:
+        '200':
+          description: Budget created successfully
+        '400':
+          $ref: '#/components/responses/InvalidParameterException'
+        '403':
+          $ref: '#/components/responses/AccessDeniedException'
+        '429':
+          $ref: '#/components/responses/CreationLimitExceededException'
+  /DescribeBudget:
+    post:
+      operationId: DescribeBudget
+      summary: Describe Budget
+      description: Describes a budget.
+      tags:
+      - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - AccountId
+              - BudgetName
+              properties:
+                AccountId:
+                  type: string
+                BudgetName:
+                  type: string
+      responses:
+        '200':
+          description: Budget details returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+  /DescribeBudgets:
+    post:
+      operationId: DescribeBudgets
+      summary: Describe Budgets
+      description: Lists the budgets that are associated with an account.
+      tags:
+      - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - AccountId
+              properties:
+                AccountId:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Budgets returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Budgets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Budget'
+                  NextToken:
+                    type: string
+  /UpdateBudget:
+    post:
+      operationId: UpdateBudget
+      summary: Update Budget
+      description: Updates a budget. You can change every part of a budget except for the BudgetName and the CalculatedSpend.
+      tags:
+      - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - AccountId
+              - NewBudget
+              properties:
+                AccountId:
+                  type: string
+                NewBudget:
+                  $ref: '#/components/schemas/Budget'
+      responses:
+        '200':
+          description: Budget updated successfully
+  /DeleteBudget:
+    post:
+      operationId: DeleteBudget
+      summary: Delete Budget
+      description: Deletes a budget. You can delete your budget at any time.
+      tags:
+      - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - AccountId
+              - BudgetName
+              properties:
+                AccountId:
+                  type: string
+                BudgetName:
+                  type: string
+      responses:
+        '200':
+          description: Budget deleted successfully
+components:
+  responses:
+    InvalidParameterException:
+      description: An error on the client occurred. Typically, the cause is an invalid input value.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AccessDeniedException:
+      description: You are not authorized to use this operation with the given parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    CreationLimitExceededException:
+      description: You've exceeded the notification or subscriber limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    Subscriber:
+      type: object
+      required:
+      - SubscriptionType
+      - Address
+      properties:
+        SubscriptionType:
+          type: string
+          enum:
+          - SNS
+          - EMAIL
+        Address:
+          type: string
+    CreateBudgetRequest:
+      type: object
+      required:
+      - AccountId
+      - Budget
+      properties:
+        AccountId:
+          type: string
+        Budget:
+          $ref: '#/components/schemas/Budget'
+        NotificationsWithSubscribers:
+          type: array
+          items:
+            type: object
+            properties:
+              Notification:
+                $ref: '#/components/schemas/Notification'
+              Subscribers:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscriber'
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+    Notification:
+      type: object
+      required:
+      - NotificationType
+      - ComparisonOperator
+      - Threshold
+      properties:
+        NotificationType:
+          type: string
+          enum:
+          - ACTUAL
+          - FORECASTED
+        ComparisonOperator:
+          type: string
+          enum:
+          - GREATER_THAN
+          - LESS_THAN
+          - EQUAL_TO
+        Threshold:
+          type: number
+          minimum: 0
+          maximum: 15000000000000
+        ThresholdType:
+          type: string
+          enum:
+          - PERCENTAGE
+          - ABSOLUTE_VALUE
+    Budget:
+      type: object
+      required:
+      - BudgetName
+      - TimeUnit
+      - BudgetType
+      properties:
+        BudgetName:
+          type: string
+        BudgetLimit:
+          type: object
+          properties:
+            Amount:
+              type: string
+            Unit:
+              type: string
+        PlannedBudgetLimits:
+          type: object
+        CostFilters:
+          type: object
+        CostTypes:
+          type: object
+          properties:
+            IncludeTax:
+              type: boolean
+            IncludeSubscription:
+              type: boolean
+            UseBlended:
+              type: boolean
+            IncludeRefund:
+              type: boolean
+            IncludeCredit:
+              type: boolean
+        TimeUnit:
+          type: string
+          enum:
+          - DAILY
+          - MONTHLY
+          - QUARTERLY
+          - ANNUALLY
+        TimePeriod:
+          type: object
+          properties:
+            Start:
+              type: string
+              format: date-time
+            End:
+              type: string
+              format: date-time
+        BudgetType:
+          type: string
+          enum:
+          - USAGE
+          - COST
+          - RI_UTILIZATION
+          - RI_COVERAGE
+          - SAVINGS_PLANS_UTILIZATION
+          - SAVINGS_PLANS_COVERAGE
+        CalculatedSpend:
+          type: object
+          properties:
+            ActualSpend:
+              type: object
+            ForecastedSpend:
+              type: object
+        LastUpdatedTime:
+          type: string
+          format: date-time
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: AWS Budgets API Reference
+  url: https://docs.aws.amazon.com/budgets/latest/APIReference/
