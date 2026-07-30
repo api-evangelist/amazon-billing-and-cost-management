@@ -9,7 +9,19 @@ description: >-
   List API for programmatic pricing queries. The suite supports consolidated
   billing across AWS Organizations and chargeback/showback workflows.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-billing-and-cost-management.png
 tags:
   - Billing
   - Cost Management
@@ -25,129 +37,249 @@ created: '2026-03-16'
 modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
-  - aid: amazon-billing-and-cost-management:aws-cost-explorer-api
-    name: AWS Cost Explorer API
-    description: >-
-      The AWS Cost Explorer API provides programmatic access to cost and usage
-      data. Query aggregated or granular cost data, filter and group by service,
-      account, tag, or region, and retrieve cost forecasts and rightsizing
-      recommendations.
-    humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
-    baseURL: https://ce.us-east-1.amazonaws.com
-    tags:
-      - Cost Explorer
-      - Cost Analysis
-      - Forecasting
-      - Cost Optimization
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
-      - type: APIReference
-        url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/openapi/aws-cost-explorer-api-openapi.yml
-      - type: SpectralRuleset
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/spectral/ruleset.yml
-      - type: Capabilities
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/capabilities/capabilities.yml
-      - type: Vocabulary
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
-      - type: Overlay
-        url: overlays/amazon-billing-and-cost-management-aws-cost-explorer-api-overlay.yaml
-    contact:
-      - FN: AWS Support
-        url: https://aws.amazon.com/contact-us/
-    features:
-      - name: Cost and Usage Queries
-        description: >-
-          Query cost and usage data with filtering by service, account, tag,
-          region, and time range at daily or monthly granularity.
-      - name: Cost Forecasting
-        description: >-
-          Generate cost forecasts for future time periods based on historical
-          spending patterns.
-      - name: Cost Anomaly Detection
-        description: >-
-          ML-powered detection of unusual spending patterns with configurable
-          alerts and root cause analysis.
-      - name: Rightsizing Recommendations
-        description: >-
-          Identify EC2 instance rightsizing opportunities to reduce costs
-          without impacting performance.
-      - name: Savings Plans Recommendations
-        description: >-
-          Get recommendations for Savings Plans purchases to reduce compute
-          costs based on usage patterns.
-      - name: Reservation Recommendations
-        description: >-
-          Receive recommendations for Reserved Instance purchases across
-          EC2, RDS, Redshift, and other services.
-    useCases:
-      - name: FinOps Cost Analysis
-        description: >-
-          Build custom dashboards and reports querying cost and usage data
-          by team, project, service, or environment using cost allocation tags.
-      - name: Budget Tracking Automation
-        description: >-
-          Automate budget monitoring with programmatic budget creation, alert
-          configuration, and cost anomaly subscriptions.
-      - name: Chargeback and Showback
-        description: >-
-          Allocate and distribute AWS costs to internal teams and business
-          units using cost categories and split charge rules.
-    integrations:
-      - name: AWS Organizations
-        description: Consolidated billing and multi-account cost analysis
-      - name: Amazon QuickSight
-        description: Visualize cost and usage data with QuickSight dashboards
-      - name: Amazon SNS
-        description: Receive budget and anomaly alert notifications via SNS
-      - name: AWS Lambda
-        description: Trigger automated cost remediation workflows from budget actions
-
-  - aid: amazon-billing-and-cost-management:aws-budgets-api
-    name: AWS Budgets API
-    description: >-
-      The AWS Budgets API enables programmatic creation and management of
-      custom budgets that track cost, usage, coverage, and utilization.
-      Supports budget actions that automatically respond when thresholds are
-      exceeded.
-    humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
-    baseURL: https://budgets.amazonaws.com
-    tags:
-      - Budgets
-      - Cost Tracking
-      - Alerts
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/openapi/aws-budgets-api-openapi.yml
-      - type: Overlay
-        url: overlays/amazon-billing-and-cost-management-aws-budgets-api-overlay.yaml
-
-  - aid: amazon-billing-and-cost-management:aws-price-list-api
-    name: AWS Price List API
-    description: >-
-      The AWS Price List API allows programmatic querying of AWS service
-      pricing information in JSON or CSV format. Retrieve price lists for
-      all AWS services, filter by region and attributes, and stay current
-      with pricing changes via SNS notifications.
-    humanURL: https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html
-    baseURL: https://pricing.us-east-1.amazonaws.com
-    tags:
-      - Pricing
-      - Price List
-      - Cost Estimation
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html
-
+- aid: amazon-billing-and-cost-management:aws-price-list-api
+  name: AWS Price List API
+  description: >-
+    The AWS Price List API allows programmatic querying of AWS service pricing information in JSON or
+    CSV format. Retrieve price lists for all AWS services, filter by region and attributes, and stay current
+    with pricing changes via SNS notifications.
+  humanURL: https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html
+  baseURL: https://pricing.us-east-1.amazonaws.com
+  tags:
+  - Pricing
+  - Price List
+  - Cost Estimation
+  properties:
+  - type: Documentation
+    url: https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html
+- aid: >-
+    amazon-billing-and-cost-management:amazon-billing-and-cost-management-anomaly-detection-api
+  name: Amazon Billing And Cost Management Anomaly Detection API
+  description: Detect and manage cost anomalies
+  humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  baseURL: https://ce.us-east-1.amazonaws.com
+  tags:
+  - Anomaly Detection
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-billing-and-cost-management-anomaly-detection-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/spectral/ruleset.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/capabilities/capabilities.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
+- aid: amazon-billing-and-cost-management:amazon-billing-and-cost-management-budget-actions-api
+  name: Amazon Billing And Cost Management Budget Actions API
+  description: Automated actions when budget thresholds are exceeded
+  humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  baseURL: https://ce.us-east-1.amazonaws.com
+  tags:
+  - Budget Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-billing-and-cost-management-budget-actions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/spectral/ruleset.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/capabilities/capabilities.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
+- aid: amazon-billing-and-cost-management:amazon-billing-and-cost-management-budgets-api
+  name: Amazon Billing And Cost Management Budgets API
+  description: Create and manage cost budgets
+  humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  baseURL: https://ce.us-east-1.amazonaws.com
+  tags:
+  - Budgets
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-billing-and-cost-management-budgets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/spectral/ruleset.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/capabilities/capabilities.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
+- aid: amazon-billing-and-cost-management:amazon-billing-and-cost-management-cost-and-usage-api
+  name: Amazon Billing And Cost Management Cost And Usage API
+  description: Query cost and usage data
+  humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  baseURL: https://ce.us-east-1.amazonaws.com
+  tags:
+  - Cost And Usage
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-billing-and-cost-management-cost-and-usage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/spectral/ruleset.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/capabilities/capabilities.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
+- aid: >-
+    amazon-billing-and-cost-management:amazon-billing-and-cost-management-cost-categories-api
+  name: Amazon Billing And Cost Management Cost Categories API
+  description: Organize costs with custom categories
+  humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  baseURL: https://ce.us-east-1.amazonaws.com
+  tags:
+  - Cost Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-billing-and-cost-management-cost-categories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/spectral/ruleset.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/capabilities/capabilities.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
+- aid: amazon-billing-and-cost-management:amazon-billing-and-cost-management-forecasting-api
+  name: Amazon Billing And Cost Management Forecasting API
+  description: Generate cost and usage forecasts
+  humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  baseURL: https://ce.us-east-1.amazonaws.com
+  tags:
+  - Forecasting
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-billing-and-cost-management-forecasting-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/spectral/ruleset.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/capabilities/capabilities.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
+- aid: amazon-billing-and-cost-management:amazon-billing-and-cost-management-notifications-api
+  name: Amazon Billing And Cost Management Notifications API
+  description: Manage budget alert notifications
+  humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  baseURL: https://ce.us-east-1.amazonaws.com
+  tags:
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-billing-and-cost-management-notifications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/spectral/ruleset.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/capabilities/capabilities.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
+- aid: >-
+    amazon-billing-and-cost-management:amazon-billing-and-cost-management-recommendations-api
+  name: Amazon Billing And Cost Management Recommendations API
+  description: Cost optimization recommendations
+  humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  baseURL: https://ce.us-east-1.amazonaws.com
+  tags:
+  - Recommendations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-billing-and-cost-management-recommendations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/spectral/ruleset.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/capabilities/capabilities.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
+- aid: amazon-billing-and-cost-management:amazon-billing-and-cost-management-tags-api
+  name: Amazon Billing And Cost Management Tags API
+  description: Manage cost allocation tags
+  humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  baseURL: https://ce.us-east-1.amazonaws.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-billing-and-cost-management-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/spectral/ruleset.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/capabilities/capabilities.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/vocabulary/vocabulary.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
 common:
   - type: AgenticAccess
     url: agentic-access/amazon-billing-and-cost-management-agentic-access.yml
