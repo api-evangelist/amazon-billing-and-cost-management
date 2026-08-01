@@ -1,0 +1,30 @@
+{
+  "provider": "amazon-billing-and-cost-management",
+  "sources": [
+    "amazon-billing-and-cost-management-anomaly-detection-api-openapi.yml",
+    "amazon-billing-and-cost-management-budget-actions-api-openapi.yml",
+    "amazon-billing-and-cost-management-budgets-api-openapi.yml",
+    "amazon-billing-and-cost-management-cost-and-usage-api-openapi.yml",
+    "amazon-billing-and-cost-management-cost-categories-api-openapi.yml",
+    "amazon-billing-and-cost-management-forecasting-api-openapi.yml",
+    "amazon-billing-and-cost-management-notifications-api-openapi.yml",
+    "amazon-billing-and-cost-management-recommendations-api-openapi.yml",
+    "amazon-billing-and-cost-management-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-billing-and-cost-management-anomaly-detection-api-openapi.yml",
+    "amazon-billing-and-cost-management-budget-actions-api-openapi.yml",
+    "amazon-billing-and-cost-management-budgets-api-openapi.yml",
+    "amazon-billing-and-cost-management-cost-and-usage-api-openapi.yml",
+    "amazon-billing-and-cost-management-cost-categories-api-openapi.yml",
+    "amazon-billing-and-cost-management-forecasting-api-openapi.yml",
+    "amazon-billing-and-cost-management-notifications-api-openapi.yml",
+    "amazon-billing-and-cost-management-recommendations-api-openapi.yml",
+    "amazon-billing-and-cost-management-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
