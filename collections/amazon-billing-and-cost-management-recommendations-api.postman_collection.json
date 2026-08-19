@@ -1,0 +1,499 @@
+{
+  "item": [
+    {
+      "id": "9e8e3164-a558-4464-a766-09f53eeb479a",
+      "name": "Recommendations",
+      "description": {
+        "content": "Cost optimization recommendations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "860ba727-48ca-4855-af09-69c59b109663",
+          "name": "Get Rightsizing Recommendation",
+          "request": {
+            "name": "Get Rightsizing Recommendation",
+            "description": {
+              "content": "Creates recommendations that help you save cost by identifying idle and underutilized Amazon EC2 instances.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GetRightsizingRecommendation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Service\": \"<string>\",\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"<string>\",\n      \"Values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"<string>\",\n      \"Values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"And\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"Or\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"Not\": \"<object>\"\n  },\n  \"Configuration\": {\n    \"RecommendationTarget\": \"<string>\",\n    \"BenefitsConsidered\": \"<boolean>\"\n  },\n  \"PageSize\": \"<integer>\",\n  \"NextPageToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7869a39-1b1a-4528-a1dd-609cd5200b48",
+              "name": "Rightsizing recommendations returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetRightsizingRecommendation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Service\": \"<string>\",\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Not\": {}\n  },\n  \"Configuration\": {\n    \"RecommendationTarget\": \"<string>\",\n    \"BenefitsConsidered\": \"<boolean>\"\n  },\n  \"PageSize\": \"<integer>\",\n  \"NextPageToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Metadata\": {},\n  \"Summary\": {},\n  \"NextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e51dfc3-5fe0-4f13-ac07-2bcff93efaef",
+              "name": "The pagination token is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetRightsizingRecommendation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Service\": \"<string>\",\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Not\": {}\n  },\n  \"Configuration\": {\n    \"RecommendationTarget\": \"<string>\",\n    \"BenefitsConsidered\": \"<boolean>\"\n  },\n  \"PageSize\": \"<integer>\",\n  \"NextPageToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "911c69cd-1743-459c-8258-803bdd629d8c",
+          "name": "Get Savings Plans Purchase Recommendation",
+          "request": {
+            "name": "Get Savings Plans Purchase Recommendation",
+            "description": {
+              "content": "Retrieves the Savings Plans recommendations for your account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GetSavingsPlansPurchaseRecommendation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"SavingsPlansType\": \"<string>\",\n  \"TermInYears\": \"<string>\",\n  \"PaymentOption\": \"<string>\",\n  \"LookbackPeriodInDays\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e7faeaf-6875-4914-bfc8-0b6f0d0a8c0a",
+              "name": "Savings Plans recommendations returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetSavingsPlansPurchaseRecommendation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SavingsPlansType\": \"<string>\",\n  \"TermInYears\": \"<string>\",\n  \"PaymentOption\": \"<string>\",\n  \"LookbackPeriodInDays\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d2fc092-0a7b-4084-a005-90f3712d1adb",
+              "name": "You've exceeded the limit for this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetSavingsPlansPurchaseRecommendation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"SavingsPlansType\": \"<string>\",\n  \"TermInYears\": \"<string>\",\n  \"PaymentOption\": \"<string>\",\n  \"LookbackPeriodInDays\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8465ceba-eb47-4055-a794-d06505c94de2",
+          "name": "Get Reservation Purchase Recommendation",
+          "request": {
+            "name": "Get Reservation Purchase Recommendation",
+            "description": {
+              "content": "Gets recommendations for Reserved Instance purchases based on usage patterns.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GetReservationPurchaseRecommendation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Service\": \"<string>\",\n  \"TermInYears\": \"<string>\",\n  \"PaymentOption\": \"<string>\",\n  \"LookbackPeriodInDays\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8a73ee64-782a-475b-af3b-4d8bf3268ef4",
+              "name": "Reservation purchase recommendations returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetReservationPurchaseRecommendation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Service\": \"<string>\",\n  \"TermInYears\": \"<string>\",\n  \"PaymentOption\": \"<string>\",\n  \"LookbackPeriodInDays\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ea2fee1-3822-42c5-acbd-cddd32d197c4",
+              "name": "You've exceeded the limit for this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetReservationPurchaseRecommendation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Service\": \"<string>\",\n  \"TermInYears\": \"<string>\",\n  \"PaymentOption\": \"<string>\",\n  \"LookbackPeriodInDays\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://budgets.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5ba57a2f-bb7e-407e-b908-fb37aa0c909a",
+    "name": "AWS Budgets Anomaly Detection Recommendations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.",
+      "type": "text/plain"
+    }
+  }
+}

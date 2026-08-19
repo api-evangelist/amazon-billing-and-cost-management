@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS Budgets Anomaly Detection Tags API",
+    "version": "2016-10-20"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Cost Allocation Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/ListCostAllocationTags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get a list of cost allocation tags. For a list of cost allocation tag types, see Tag types in the AWS Billing and Cost Management User Guide."
+        },
+        {
+          "info": {
+            "name": "Get Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/GetTags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Queries for available tag keys and tag values for a specified period. You can search the tag values via the Filter parameter or that pertain to a specific tag key by using the TagKey parameter."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

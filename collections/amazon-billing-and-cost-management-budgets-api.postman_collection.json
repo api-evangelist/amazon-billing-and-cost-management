@@ -1,0 +1,677 @@
+{
+  "item": [
+    {
+      "id": "67e45413-e825-4e14-b579-6837cf94164a",
+      "name": "Budgets",
+      "description": {
+        "content": "Create and manage cost budgets",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e0194f10-7e12-407a-81a7-bb607d6cce02",
+          "name": "Create Budget",
+          "request": {
+            "name": "Create Budget",
+            "description": {
+              "content": "Creates a budget and, if included, notifications and subscribers. A budget can track cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans coverage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CreateBudget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AccountId\": \"<string>\",\n  \"Budget\": {\n    \"BudgetName\": \"<string>\",\n    \"TimeUnit\": \"<string>\",\n    \"BudgetType\": \"<string>\",\n    \"BudgetLimit\": {\n      \"Amount\": \"<string>\",\n      \"Unit\": \"<string>\"\n    },\n    \"PlannedBudgetLimits\": \"<object>\",\n    \"CostFilters\": \"<object>\",\n    \"CostTypes\": {\n      \"IncludeTax\": \"<boolean>\",\n      \"IncludeSubscription\": \"<boolean>\",\n      \"UseBlended\": \"<boolean>\",\n      \"IncludeRefund\": \"<boolean>\",\n      \"IncludeCredit\": \"<boolean>\"\n    },\n    \"TimePeriod\": {\n      \"Start\": \"<dateTime>\",\n      \"End\": \"<dateTime>\"\n    },\n    \"CalculatedSpend\": {\n      \"ActualSpend\": \"<object>\",\n      \"ForecastedSpend\": \"<object>\"\n    },\n    \"LastUpdatedTime\": \"<dateTime>\"\n  },\n  \"NotificationsWithSubscribers\": [\n    {\n      \"Notification\": {\n        \"NotificationType\": \"<string>\",\n        \"ComparisonOperator\": \"<string>\",\n        \"Threshold\": \"<number>\",\n        \"ThresholdType\": \"<string>\"\n      },\n      \"Subscribers\": [\n        {\n          \"SubscriptionType\": \"<string>\",\n          \"Address\": \"<string>\"\n        },\n        {\n          \"SubscriptionType\": \"<string>\",\n          \"Address\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"Notification\": {\n        \"NotificationType\": \"<string>\",\n        \"ComparisonOperator\": \"<string>\",\n        \"Threshold\": \"<number>\",\n        \"ThresholdType\": \"<string>\"\n      },\n      \"Subscribers\": [\n        {\n          \"SubscriptionType\": \"<string>\",\n          \"Address\": \"<string>\"\n        },\n        {\n          \"SubscriptionType\": \"<string>\",\n          \"Address\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "caf2f43c-9398-4631-a9cb-f50d162b1d15",
+              "name": "Budget created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateBudget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"Budget\": {\n    \"BudgetName\": \"string\",\n    \"TimeUnit\": \"MONTHLY\",\n    \"BudgetType\": \"SAVINGS_PLANS_COVERAGE\",\n    \"BudgetLimit\": {\n      \"Amount\": \"string\",\n      \"Unit\": \"string\"\n    },\n    \"PlannedBudgetLimits\": {},\n    \"CostFilters\": {},\n    \"CostTypes\": {\n      \"IncludeTax\": false,\n      \"IncludeSubscription\": false,\n      \"UseBlended\": false,\n      \"IncludeRefund\": false,\n      \"IncludeCredit\": false\n    },\n    \"TimePeriod\": {\n      \"Start\": \"1966-06-19T12:17:42.947Z\",\n      \"End\": \"1961-12-07T22:51:19.464Z\"\n    },\n    \"CalculatedSpend\": {\n      \"ActualSpend\": {},\n      \"ForecastedSpend\": {}\n    },\n    \"LastUpdatedTime\": \"2021-05-30T12:27:17.314Z\"\n  },\n  \"NotificationsWithSubscribers\": [\n    {\n      \"Notification\": {\n        \"NotificationType\": \"FORECASTED\",\n        \"ComparisonOperator\": \"LESS_THAN\",\n        \"Threshold\": 1501131580675.6182,\n        \"ThresholdType\": \"ABSOLUTE_VALUE\"\n      },\n      \"Subscribers\": [\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        },\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        }\n      ]\n    },\n    {\n      \"Notification\": {\n        \"NotificationType\": \"FORECASTED\",\n        \"ComparisonOperator\": \"GREATER_THAN\",\n        \"Threshold\": 1156811706079.83,\n        \"ThresholdType\": \"ABSOLUTE_VALUE\"\n      },\n      \"Subscribers\": [\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        },\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6f8d523-a22e-4374-a581-9bfd9ea8ea42",
+              "name": "An error on the client occurred. Typically, the cause is an invalid input value.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateBudget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"Budget\": {\n    \"BudgetName\": \"string\",\n    \"TimeUnit\": \"MONTHLY\",\n    \"BudgetType\": \"SAVINGS_PLANS_COVERAGE\",\n    \"BudgetLimit\": {\n      \"Amount\": \"string\",\n      \"Unit\": \"string\"\n    },\n    \"PlannedBudgetLimits\": {},\n    \"CostFilters\": {},\n    \"CostTypes\": {\n      \"IncludeTax\": false,\n      \"IncludeSubscription\": false,\n      \"UseBlended\": false,\n      \"IncludeRefund\": false,\n      \"IncludeCredit\": false\n    },\n    \"TimePeriod\": {\n      \"Start\": \"1966-06-19T12:17:42.947Z\",\n      \"End\": \"1961-12-07T22:51:19.464Z\"\n    },\n    \"CalculatedSpend\": {\n      \"ActualSpend\": {},\n      \"ForecastedSpend\": {}\n    },\n    \"LastUpdatedTime\": \"2021-05-30T12:27:17.314Z\"\n  },\n  \"NotificationsWithSubscribers\": [\n    {\n      \"Notification\": {\n        \"NotificationType\": \"FORECASTED\",\n        \"ComparisonOperator\": \"LESS_THAN\",\n        \"Threshold\": 1501131580675.6182,\n        \"ThresholdType\": \"ABSOLUTE_VALUE\"\n      },\n      \"Subscribers\": [\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        },\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        }\n      ]\n    },\n    {\n      \"Notification\": {\n        \"NotificationType\": \"FORECASTED\",\n        \"ComparisonOperator\": \"GREATER_THAN\",\n        \"Threshold\": 1156811706079.83,\n        \"ThresholdType\": \"ABSOLUTE_VALUE\"\n      },\n      \"Subscribers\": [\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        },\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31704ab7-2b83-4af4-9d46-ff2c2bbdf08a",
+              "name": "You are not authorized to use this operation with the given parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateBudget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"Budget\": {\n    \"BudgetName\": \"string\",\n    \"TimeUnit\": \"MONTHLY\",\n    \"BudgetType\": \"SAVINGS_PLANS_COVERAGE\",\n    \"BudgetLimit\": {\n      \"Amount\": \"string\",\n      \"Unit\": \"string\"\n    },\n    \"PlannedBudgetLimits\": {},\n    \"CostFilters\": {},\n    \"CostTypes\": {\n      \"IncludeTax\": false,\n      \"IncludeSubscription\": false,\n      \"UseBlended\": false,\n      \"IncludeRefund\": false,\n      \"IncludeCredit\": false\n    },\n    \"TimePeriod\": {\n      \"Start\": \"1966-06-19T12:17:42.947Z\",\n      \"End\": \"1961-12-07T22:51:19.464Z\"\n    },\n    \"CalculatedSpend\": {\n      \"ActualSpend\": {},\n      \"ForecastedSpend\": {}\n    },\n    \"LastUpdatedTime\": \"2021-05-30T12:27:17.314Z\"\n  },\n  \"NotificationsWithSubscribers\": [\n    {\n      \"Notification\": {\n        \"NotificationType\": \"FORECASTED\",\n        \"ComparisonOperator\": \"LESS_THAN\",\n        \"Threshold\": 1501131580675.6182,\n        \"ThresholdType\": \"ABSOLUTE_VALUE\"\n      },\n      \"Subscribers\": [\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        },\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        }\n      ]\n    },\n    {\n      \"Notification\": {\n        \"NotificationType\": \"FORECASTED\",\n        \"ComparisonOperator\": \"GREATER_THAN\",\n        \"Threshold\": 1156811706079.83,\n        \"ThresholdType\": \"ABSOLUTE_VALUE\"\n      },\n      \"Subscribers\": [\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        },\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "feb29066-0827-4ffb-afc8-1b0cdad3293a",
+              "name": "You've exceeded the notification or subscriber limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateBudget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"Budget\": {\n    \"BudgetName\": \"string\",\n    \"TimeUnit\": \"MONTHLY\",\n    \"BudgetType\": \"SAVINGS_PLANS_COVERAGE\",\n    \"BudgetLimit\": {\n      \"Amount\": \"string\",\n      \"Unit\": \"string\"\n    },\n    \"PlannedBudgetLimits\": {},\n    \"CostFilters\": {},\n    \"CostTypes\": {\n      \"IncludeTax\": false,\n      \"IncludeSubscription\": false,\n      \"UseBlended\": false,\n      \"IncludeRefund\": false,\n      \"IncludeCredit\": false\n    },\n    \"TimePeriod\": {\n      \"Start\": \"1966-06-19T12:17:42.947Z\",\n      \"End\": \"1961-12-07T22:51:19.464Z\"\n    },\n    \"CalculatedSpend\": {\n      \"ActualSpend\": {},\n      \"ForecastedSpend\": {}\n    },\n    \"LastUpdatedTime\": \"2021-05-30T12:27:17.314Z\"\n  },\n  \"NotificationsWithSubscribers\": [\n    {\n      \"Notification\": {\n        \"NotificationType\": \"FORECASTED\",\n        \"ComparisonOperator\": \"LESS_THAN\",\n        \"Threshold\": 1501131580675.6182,\n        \"ThresholdType\": \"ABSOLUTE_VALUE\"\n      },\n      \"Subscribers\": [\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        },\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        }\n      ]\n    },\n    {\n      \"Notification\": {\n        \"NotificationType\": \"FORECASTED\",\n        \"ComparisonOperator\": \"GREATER_THAN\",\n        \"Threshold\": 1156811706079.83,\n        \"ThresholdType\": \"ABSOLUTE_VALUE\"\n      },\n      \"Subscribers\": [\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        },\n        {\n          \"SubscriptionType\": \"EMAIL\",\n          \"Address\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0bd9b6d-9f4e-4632-aaa8-070657bd9082",
+          "name": "Describe Budget",
+          "request": {
+            "name": "Describe Budget",
+            "description": {
+              "content": "Describes a budget.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DescribeBudget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "02b25091-3041-4a90-a09f-6d0a42e5da0b",
+              "name": "Budget details returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DescribeBudget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"BudgetName\": \"string\",\n  \"TimeUnit\": \"ANNUALLY\",\n  \"BudgetType\": \"USAGE\",\n  \"BudgetLimit\": {\n    \"Amount\": \"string\",\n    \"Unit\": \"string\"\n  },\n  \"PlannedBudgetLimits\": {},\n  \"CostFilters\": {},\n  \"CostTypes\": {\n    \"IncludeTax\": true,\n    \"IncludeSubscription\": false,\n    \"UseBlended\": true,\n    \"IncludeRefund\": false,\n    \"IncludeCredit\": false\n  },\n  \"TimePeriod\": {\n    \"Start\": \"1988-08-27T07:04:08.020Z\",\n    \"End\": \"2021-07-13T15:49:08.568Z\"\n  },\n  \"CalculatedSpend\": {\n    \"ActualSpend\": {},\n    \"ForecastedSpend\": {}\n  },\n  \"LastUpdatedTime\": \"1977-03-12T21:34:43.695Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3390e163-2c42-4ea5-ae9e-557d3c3b92a3",
+          "name": "Describe Budgets",
+          "request": {
+            "name": "Describe Budgets",
+            "description": {
+              "content": "Lists the budgets that are associated with an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DescribeBudgets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AccountId\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4cbabce1-9228-4881-b6e2-453211fa1ac1",
+              "name": "Budgets returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DescribeBudgets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Budgets\": [\n    {\n      \"BudgetName\": \"string\",\n      \"TimeUnit\": \"ANNUALLY\",\n      \"BudgetType\": \"COST\",\n      \"BudgetLimit\": {\n        \"Amount\": \"string\",\n        \"Unit\": \"string\"\n      },\n      \"PlannedBudgetLimits\": {},\n      \"CostFilters\": {},\n      \"CostTypes\": {\n        \"IncludeTax\": true,\n        \"IncludeSubscription\": false,\n        \"UseBlended\": false,\n        \"IncludeRefund\": true,\n        \"IncludeCredit\": true\n      },\n      \"TimePeriod\": {\n        \"Start\": \"2013-06-25T10:12:29.270Z\",\n        \"End\": \"1946-10-18T02:15:47.889Z\"\n      },\n      \"CalculatedSpend\": {\n        \"ActualSpend\": {},\n        \"ForecastedSpend\": {}\n      },\n      \"LastUpdatedTime\": \"2010-07-08T17:45:49.796Z\"\n    },\n    {\n      \"BudgetName\": \"string\",\n      \"TimeUnit\": \"ANNUALLY\",\n      \"BudgetType\": \"RI_UTILIZATION\",\n      \"BudgetLimit\": {\n        \"Amount\": \"string\",\n        \"Unit\": \"string\"\n      },\n      \"PlannedBudgetLimits\": {},\n      \"CostFilters\": {},\n      \"CostTypes\": {\n        \"IncludeTax\": true,\n        \"IncludeSubscription\": true,\n        \"UseBlended\": true,\n        \"IncludeRefund\": true,\n        \"IncludeCredit\": false\n      },\n      \"TimePeriod\": {\n        \"Start\": \"2026-03-25T01:37:25.030Z\",\n        \"End\": \"1973-10-09T09:16:42.848Z\"\n      },\n      \"CalculatedSpend\": {\n        \"ActualSpend\": {},\n        \"ForecastedSpend\": {}\n      },\n      \"LastUpdatedTime\": \"2001-03-29T13:46:07.333Z\"\n    }\n  ],\n  \"NextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f37960f-0aa6-4070-a6f9-1c207a116a36",
+          "name": "Update Budget",
+          "request": {
+            "name": "Update Budget",
+            "description": {
+              "content": "Updates a budget. You can change every part of a budget except for the BudgetName and the CalculatedSpend.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "UpdateBudget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AccountId\": \"<string>\",\n  \"NewBudget\": {\n    \"BudgetName\": \"<string>\",\n    \"TimeUnit\": \"<string>\",\n    \"BudgetType\": \"<string>\",\n    \"BudgetLimit\": {\n      \"Amount\": \"<string>\",\n      \"Unit\": \"<string>\"\n    },\n    \"PlannedBudgetLimits\": \"<object>\",\n    \"CostFilters\": \"<object>\",\n    \"CostTypes\": {\n      \"IncludeTax\": \"<boolean>\",\n      \"IncludeSubscription\": \"<boolean>\",\n      \"UseBlended\": \"<boolean>\",\n      \"IncludeRefund\": \"<boolean>\",\n      \"IncludeCredit\": \"<boolean>\"\n    },\n    \"TimePeriod\": {\n      \"Start\": \"<dateTime>\",\n      \"End\": \"<dateTime>\"\n    },\n    \"CalculatedSpend\": {\n      \"ActualSpend\": \"<object>\",\n      \"ForecastedSpend\": \"<object>\"\n    },\n    \"LastUpdatedTime\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b421623-d175-47d9-8c38-10824a2256f5",
+              "name": "Budget updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "UpdateBudget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"NewBudget\": {\n    \"BudgetName\": \"string\",\n    \"TimeUnit\": \"QUARTERLY\",\n    \"BudgetType\": \"COST\",\n    \"BudgetLimit\": {\n      \"Amount\": \"string\",\n      \"Unit\": \"string\"\n    },\n    \"PlannedBudgetLimits\": {},\n    \"CostFilters\": {},\n    \"CostTypes\": {\n      \"IncludeTax\": true,\n      \"IncludeSubscription\": true,\n      \"UseBlended\": true,\n      \"IncludeRefund\": true,\n      \"IncludeCredit\": true\n    },\n    \"TimePeriod\": {\n      \"Start\": \"1967-10-06T13:34:12.533Z\",\n      \"End\": \"1964-12-11T02:05:58.929Z\"\n    },\n    \"CalculatedSpend\": {\n      \"ActualSpend\": {},\n      \"ForecastedSpend\": {}\n    },\n    \"LastUpdatedTime\": \"1982-04-02T03:05:01.554Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad93b57c-3950-470d-8942-0116a5aa78e7",
+          "name": "Delete Budget",
+          "request": {
+            "name": "Delete Budget",
+            "description": {
+              "content": "Deletes a budget. You can delete your budget at any time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DeleteBudget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb5d4459-cb1e-42a4-86d9-fdf1176e1cab",
+              "name": "Budget deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeleteBudget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://budgets.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "34f75567-4202-4f15-83ea-de29ccf58a5f",
+    "name": "AWS Anomaly Detection Budgets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.",
+      "type": "text/plain"
+    }
+  }
+}

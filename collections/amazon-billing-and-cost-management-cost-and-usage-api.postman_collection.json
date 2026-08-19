@@ -1,0 +1,550 @@
+{
+  "item": [
+    {
+      "id": "b1b83134-6007-4b3e-9ac5-27c985953cf6",
+      "name": "Cost And Usage",
+      "description": {
+        "content": "Query cost and usage data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9f4cf90b-20f5-451a-bbcd-ef3fe7f5087d",
+          "name": "Get Cost And Usage",
+          "request": {
+            "name": "Get Cost And Usage",
+            "description": {
+              "content": "Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric that you want the request to return, and filter and group your data by various dimensions, such as SERVICE or AZ, in a specific time range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GetCostAndUsage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"<string>\",\n    \"End\": \"<string>\"\n  },\n  \"Granularity\": \"<string>\",\n  \"Metrics\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"<string>\",\n      \"Values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"<string>\",\n      \"Values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"And\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"Or\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"Not\": \"<object>\"\n  },\n  \"GroupBy\": [\n    {\n      \"Type\": \"<string>\",\n      \"Key\": \"<string>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Key\": \"<string>\"\n    }\n  ],\n  \"NextPageToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff9af82f-ae2b-46c2-9a6f-518174dab034",
+              "name": "Cost and usage data returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetCostAndUsage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"Granularity\": \"<string>\",\n  \"Metrics\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Not\": {}\n  },\n  \"GroupBy\": [\n    {\n      \"Type\": \"COST_CATEGORY\",\n      \"Key\": \"string\"\n    },\n    {\n      \"Type\": \"COST_CATEGORY\",\n      \"Key\": \"string\"\n    }\n  ],\n  \"NextPageToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ResultsByTime\": [\n    {\n      \"TimePeriod\": {\n        \"Start\": \"2026-01-01\",\n        \"End\": \"2026-04-01\"\n      },\n      \"Total\": {},\n      \"Estimated\": false\n    },\n    {\n      \"TimePeriod\": {\n        \"Start\": \"2026-01-01\",\n        \"End\": \"2026-04-01\"\n      },\n      \"Total\": {},\n      \"Estimated\": false\n    }\n  ],\n  \"NextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3fd2b80-e0dc-4fc5-a57d-d0ceb0311e87",
+              "name": "The requested data is unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetCostAndUsage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"Granularity\": \"<string>\",\n  \"Metrics\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Not\": {}\n  },\n  \"GroupBy\": [\n    {\n      \"Type\": \"COST_CATEGORY\",\n      \"Key\": \"string\"\n    },\n    {\n      \"Type\": \"COST_CATEGORY\",\n      \"Key\": \"string\"\n    }\n  ],\n  \"NextPageToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c45b249-c0b1-4010-b39d-5ba55e7aeada",
+              "name": "You've exceeded the limit for this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetCostAndUsage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"Granularity\": \"<string>\",\n  \"Metrics\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Not\": {}\n  },\n  \"GroupBy\": [\n    {\n      \"Type\": \"COST_CATEGORY\",\n      \"Key\": \"string\"\n    },\n    {\n      \"Type\": \"COST_CATEGORY\",\n      \"Key\": \"string\"\n    }\n  ],\n  \"NextPageToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dec2f044-6a7d-465e-a9b8-28a58cd5ba08",
+          "name": "Get Cost And Usage With Resources",
+          "request": {
+            "name": "Get Cost And Usage With Resources",
+            "description": {
+              "content": "Retrieves cost and usage metrics with resources for your account. Supports resource-level data for EC2 instances.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GetCostAndUsageWithResources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"<string>\",\n    \"End\": \"<string>\"\n  },\n  \"Granularity\": \"<string>\",\n  \"Metrics\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"<string>\",\n      \"Values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"<string>\",\n      \"Values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"And\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"Or\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"Not\": \"<object>\"\n  },\n  \"GroupBy\": [\n    {\n      \"Type\": \"<string>\",\n      \"Key\": \"<string>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Key\": \"<string>\"\n    }\n  ],\n  \"NextPageToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e126c865-8db6-4a43-97c8-e8425f0360e9",
+              "name": "Cost and usage with resources returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetCostAndUsageWithResources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"Granularity\": \"<string>\",\n  \"Metrics\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Not\": {}\n  },\n  \"GroupBy\": [\n    {\n      \"Type\": \"COST_CATEGORY\",\n      \"Key\": \"string\"\n    },\n    {\n      \"Type\": \"COST_CATEGORY\",\n      \"Key\": \"string\"\n    }\n  ],\n  \"NextPageToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ResultsByTime\": [\n    {\n      \"TimePeriod\": {\n        \"Start\": \"2026-01-01\",\n        \"End\": \"2026-04-01\"\n      },\n      \"Total\": {},\n      \"Estimated\": false\n    },\n    {\n      \"TimePeriod\": {\n        \"Start\": \"2026-01-01\",\n        \"End\": \"2026-04-01\"\n      },\n      \"Total\": {},\n      \"Estimated\": false\n    }\n  ],\n  \"NextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab23fd7d-6242-4115-9d63-944e6415be91",
+              "name": "The requested data is unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetCostAndUsageWithResources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"Granularity\": \"<string>\",\n  \"Metrics\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Not\": {}\n  },\n  \"GroupBy\": [\n    {\n      \"Type\": \"COST_CATEGORY\",\n      \"Key\": \"string\"\n    },\n    {\n      \"Type\": \"COST_CATEGORY\",\n      \"Key\": \"string\"\n    }\n  ],\n  \"NextPageToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38ffea66-d852-40b7-92fa-612ef71c5fd7",
+          "name": "Get Dimension Values",
+          "request": {
+            "name": "Get Dimension Values",
+            "description": {
+              "content": "Retrieves all available filter values for a specified filter over a period of time. For example, you can search the EC2 cost category entries for a specific month.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GetDimensionValues"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"<string>\",\n    \"End\": \"<string>\"\n  },\n  \"Dimension\": \"<string>\",\n  \"SearchString\": \"<string>\",\n  \"Context\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8afa11d3-6da9-4a7f-a6d3-09b4e4729b8b",
+              "name": "Dimension values returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetDimensionValues"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"Dimension\": \"<string>\",\n  \"SearchString\": \"<string>\",\n  \"Context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbc118cb-a3d6-4c26-84c2-7f3500b59d1f",
+              "name": "The requested data is unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetDimensionValues"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"Dimension\": \"<string>\",\n  \"SearchString\": \"<string>\",\n  \"Context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://budgets.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "502a0d0a-4265-4c66-b46b-e9976ef1565d",
+    "name": "AWS Budgets Anomaly Detection Cost And Usage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.",
+      "type": "text/plain"
+    }
+  }
+}

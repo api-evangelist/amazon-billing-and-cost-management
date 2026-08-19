@@ -1,0 +1,247 @@
+{
+  "item": [
+    {
+      "id": "cf4baf72-43a4-4148-9146-aed82de8cf5b",
+      "name": "Budget Actions",
+      "description": {
+        "content": "Automated actions when budget thresholds are exceeded",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e89aab0f-8f1a-472c-9bdc-f61fb49d081f",
+          "name": "Create Budget Action",
+          "request": {
+            "name": "Create Budget Action",
+            "description": {
+              "content": "Creates a budget action. Budget actions are automated responses that execute when a budget exceeds a threshold, such as applying an IAM policy or running an SSM automation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CreateBudgetAction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\",\n  \"NotificationType\": \"<string>\",\n  \"ActionType\": \"<string>\",\n  \"ActionThreshold\": {\n    \"ActionThresholdValue\": \"<number>\",\n    \"ActionThresholdType\": \"<string>\"\n  },\n  \"Definition\": \"<object>\",\n  \"ExecutionRoleArn\": \"<string>\",\n  \"ApprovalModel\": \"<string>\",\n  \"Subscribers\": [\n    {\n      \"SubscriptionType\": \"<string>\",\n      \"Address\": \"<string>\"\n    },\n    {\n      \"SubscriptionType\": \"<string>\",\n      \"Address\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "413c9c4c-298f-4e8f-a2ce-415a44a149dd",
+              "name": "Budget action created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateBudgetAction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\",\n  \"NotificationType\": \"<string>\",\n  \"ActionType\": \"<string>\",\n  \"ActionThreshold\": {\n    \"ActionThresholdValue\": \"<number>\",\n    \"ActionThresholdType\": \"<string>\"\n  },\n  \"Definition\": \"<object>\",\n  \"ExecutionRoleArn\": \"<string>\",\n  \"ApprovalModel\": \"<string>\",\n  \"Subscribers\": [\n    {\n      \"SubscriptionType\": \"SNS\",\n      \"Address\": \"string\"\n    },\n    {\n      \"SubscriptionType\": \"SNS\",\n      \"Address\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AccountId\": \"string\",\n  \"BudgetName\": \"string\",\n  \"ActionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f5c8c0a-cb93-4390-bd97-20b9e3cff01f",
+          "name": "Describe Budget Actions For Budget",
+          "request": {
+            "name": "Describe Budget Actions For Budget",
+            "description": {
+              "content": "Describes all of the budget actions for a budget.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DescribeBudgetActionsForBudget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "198ff3bb-a16d-469d-a1bb-1c7c087c2cc3",
+              "name": "Budget actions returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DescribeBudgetActionsForBudget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://budgets.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8b3adc95-3a12-4323-adfe-8c4c3883ba8a",
+    "name": "AWS Budgets Anomaly Detection Budget Actions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.",
+      "type": "text/plain"
+    }
+  }
+}

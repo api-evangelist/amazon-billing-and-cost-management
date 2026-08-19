@@ -1,0 +1,349 @@
+{
+  "item": [
+    {
+      "id": "40cba97d-24c2-42ec-9cb4-d4554890ec0d",
+      "name": "Forecasting",
+      "description": {
+        "content": "Generate cost and usage forecasts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fdfc4166-3625-4265-b63b-34dcb3c298ea",
+          "name": "Get Cost Forecast",
+          "request": {
+            "name": "Get Cost Forecast",
+            "description": {
+              "content": "Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GetCostForecast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"<string>\",\n    \"End\": \"<string>\"\n  },\n  \"Metric\": \"<string>\",\n  \"Granularity\": \"<string>\",\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"<string>\",\n      \"Values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"<string>\",\n      \"Values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"And\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"Or\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"Not\": \"<object>\"\n  },\n  \"PredictionIntervalLevel\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "450d1208-68c7-4efd-966b-d6715036b88f",
+              "name": "Cost forecast returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetCostForecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"Metric\": \"<string>\",\n  \"Granularity\": \"<string>\",\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Not\": {}\n  },\n  \"PredictionIntervalLevel\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Total\": {\n    \"Amount\": \"string\",\n    \"Unit\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37785566-01dd-4c93-b7e3-abea5f9e11ca",
+              "name": "The requested data is unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetCostForecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"Metric\": \"<string>\",\n  \"Granularity\": \"<string>\",\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Not\": {}\n  },\n  \"PredictionIntervalLevel\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f21ed25-0ccf-410d-af25-341430cbfc60",
+          "name": "Get Usage Forecast",
+          "request": {
+            "name": "Get Usage Forecast",
+            "description": {
+              "content": "Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GetUsageForecast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"<string>\",\n    \"End\": \"<string>\"\n  },\n  \"Metric\": \"<string>\",\n  \"Granularity\": \"<string>\",\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"<string>\",\n      \"Values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"<string>\",\n      \"Values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"And\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"Or\": [\n      \"<object>\",\n      \"<object>\"\n    ],\n    \"Not\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80633930-8a68-4aed-bf2c-3b6f1027ee95",
+              "name": "Usage forecast returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetUsageForecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"Metric\": \"<string>\",\n  \"Granularity\": \"<string>\",\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Not\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Total\": {\n    \"Amount\": \"string\",\n    \"Unit\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94706d8e-1963-43fd-9e9d-db5a938a1919",
+              "name": "The requested data is unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetUsageForecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TimePeriod\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"Metric\": \"<string>\",\n  \"Granularity\": \"<string>\",\n  \"Filter\": {\n    \"Dimensions\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Tags\": {\n      \"Key\": \"string\",\n      \"Values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"Not\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://budgets.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "28201d9f-2972-4ebf-8429-79de322013ce",
+    "name": "AWS Budgets Anomaly Detection Forecasting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.",
+      "type": "text/plain"
+    }
+  }
+}

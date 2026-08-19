@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS Budgets Anomaly Detection Forecasting API",
+    "version": "2016-10-20"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Forecasting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Cost Forecast",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/GetCostForecast",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs."
+        },
+        {
+          "info": {
+            "name": "Get Usage Forecast",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/GetUsageForecast",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS Budgets Anomaly Detection Recommendations API",
+    "version": "2016-10-20"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recommendations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Rightsizing Recommendation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/GetRightsizingRecommendation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates recommendations that help you save cost by identifying idle and underutilized Amazon EC2 instances."
+        },
+        {
+          "info": {
+            "name": "Get Savings Plans Purchase Recommendation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/GetSavingsPlansPurchaseRecommendation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves the Savings Plans recommendations for your account."
+        },
+        {
+          "info": {
+            "name": "Get Reservation Purchase Recommendation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/GetReservationPurchaseRecommendation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets recommendations for Reserved Instance purchases based on usage patterns."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

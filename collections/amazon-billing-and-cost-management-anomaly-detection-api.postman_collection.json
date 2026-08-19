@@ -1,0 +1,499 @@
+{
+  "item": [
+    {
+      "id": "ef0b4b63-3bf5-4b70-9c68-c7b348c87f3a",
+      "name": "Anomaly Detection",
+      "description": {
+        "content": "Detect and manage cost anomalies",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0d6f727a-b751-426b-90a9-6cb93d73ebe6",
+          "name": "Create Anomaly Monitor",
+          "request": {
+            "name": "Create Anomaly Monitor",
+            "description": {
+              "content": "Creates a new cost anomaly detection monitor with the requested type and monitor specification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CreateAnomalyMonitor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AnomalyMonitor\": {\n    \"MonitorName\": \"<string>\",\n    \"MonitorType\": \"<string>\",\n    \"MonitorDimension\": \"<string>\",\n    \"MonitorSpecification\": {\n      \"Dimensions\": {\n        \"Key\": \"<string>\",\n        \"Values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"Tags\": {\n        \"Key\": \"<string>\",\n        \"Values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"And\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"Or\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"Not\": \"<object>\"\n    }\n  },\n  \"ResourceTags\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "10f68157-e1f3-4c7f-bada-1c0317a66d32",
+              "name": "Anomaly monitor created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateAnomalyMonitor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AnomalyMonitor\": {\n    \"MonitorName\": \"<string>\",\n    \"MonitorType\": \"<string>\",\n    \"MonitorDimension\": \"<string>\",\n    \"MonitorSpecification\": {\n      \"Dimensions\": {\n        \"Key\": \"string\",\n        \"Values\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"Tags\": {\n        \"Key\": \"string\",\n        \"Values\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"Not\": {}\n    }\n  },\n  \"ResourceTags\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MonitorArn\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97688979-798d-4102-b549-797bb598d2a9",
+              "name": "You've exceeded the limit for this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateAnomalyMonitor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AnomalyMonitor\": {\n    \"MonitorName\": \"<string>\",\n    \"MonitorType\": \"<string>\",\n    \"MonitorDimension\": \"<string>\",\n    \"MonitorSpecification\": {\n      \"Dimensions\": {\n        \"Key\": \"string\",\n        \"Values\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"Tags\": {\n        \"Key\": \"string\",\n        \"Values\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"Not\": {}\n    }\n  },\n  \"ResourceTags\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fbc12bc5-3b71-4c2a-a8f6-c68f76d49a58",
+          "name": "Get Anomalies",
+          "request": {
+            "name": "Get Anomalies",
+            "description": {
+              "content": "Retrieves all of the cost anomalies detected on your account during the time period that's specified in the DateInterval object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GetAnomalies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"DateInterval\": {\n    \"Start\": \"<string>\",\n    \"End\": \"<string>\"\n  },\n  \"MonitorArn\": \"<string>\",\n  \"Feedback\": \"<string>\",\n  \"TotalImpact\": \"<object>\",\n  \"NextPageToken\": \"<string>\",\n  \"MaxResults\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "46aecb9f-b893-4809-9a5f-6b721c1487fa",
+              "name": "Anomalies returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetAnomalies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DateInterval\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"MonitorArn\": \"<string>\",\n  \"Feedback\": \"<string>\",\n  \"TotalImpact\": \"<object>\",\n  \"NextPageToken\": \"<string>\",\n  \"MaxResults\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Anomalies\": [\n    {\n      \"AnomalyId\": \"string\",\n      \"AnomalyStartDate\": \"string\",\n      \"AnomalyEndDate\": \"string\",\n      \"DimensionValue\": \"string\",\n      \"MonitorArn\": \"string\",\n      \"AnomalyScore\": {},\n      \"Impact\": {},\n      \"Feedback\": \"string\"\n    },\n    {\n      \"AnomalyId\": \"string\",\n      \"AnomalyStartDate\": \"string\",\n      \"AnomalyEndDate\": \"string\",\n      \"DimensionValue\": \"string\",\n      \"MonitorArn\": \"string\",\n      \"AnomalyScore\": {},\n      \"Impact\": {},\n      \"Feedback\": \"string\"\n    }\n  ],\n  \"NextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14afe964-2fac-49cc-9628-55dccffdbf36",
+              "name": "You've exceeded the limit for this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GetAnomalies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DateInterval\": {\n    \"Start\": \"2026-01-01\",\n    \"End\": \"2026-04-01\"\n  },\n  \"MonitorArn\": \"<string>\",\n  \"Feedback\": \"<string>\",\n  \"TotalImpact\": \"<object>\",\n  \"NextPageToken\": \"<string>\",\n  \"MaxResults\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e557cda-8e0a-452a-974a-7938a17b035e",
+          "name": "Create Anomaly Subscription",
+          "request": {
+            "name": "Create Anomaly Subscription",
+            "description": {
+              "content": "Adds an alert subscription to a cost anomaly detection monitor. You can use each subscription to define subscribers with email or SNS targets and a frequency for anomaly notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CreateAnomalySubscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AnomalySubscription\": {\n    \"MonitorArnList\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"Subscribers\": [\n      {\n        \"Address\": \"<string>\",\n        \"Type\": \"<string>\"\n      },\n      {\n        \"Address\": \"<string>\",\n        \"Type\": \"<string>\"\n      }\n    ],\n    \"Frequency\": \"<string>\",\n    \"SubscriptionName\": \"<string>\",\n    \"Threshold\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "434d05ae-eb31-4a58-b22e-0d876640a531",
+              "name": "Anomaly subscription created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateAnomalySubscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AnomalySubscription\": {\n    \"MonitorArnList\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"Subscribers\": [\n      {\n        \"Address\": \"<string>\",\n        \"Type\": \"<string>\"\n      },\n      {\n        \"Address\": \"<string>\",\n        \"Type\": \"<string>\"\n      }\n    ],\n    \"Frequency\": \"<string>\",\n    \"SubscriptionName\": \"<string>\",\n    \"Threshold\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SubscriptionArn\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b9c9808-ce53-4f9b-a9b4-e869f7894e05",
+              "name": "You've exceeded the limit for this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateAnomalySubscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AnomalySubscription\": {\n    \"MonitorArnList\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"Subscribers\": [\n      {\n        \"Address\": \"<string>\",\n        \"Type\": \"<string>\"\n      },\n      {\n        \"Address\": \"<string>\",\n        \"Type\": \"<string>\"\n      }\n    ],\n    \"Frequency\": \"<string>\",\n    \"SubscriptionName\": \"<string>\",\n    \"Threshold\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://budgets.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3d01aab3-3f81-4f0d-b980-48ee4e64f2a8",
+    "name": "AWS Budgets Anomaly Detection API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.",
+      "type": "text/plain"
+    }
+  }
+}

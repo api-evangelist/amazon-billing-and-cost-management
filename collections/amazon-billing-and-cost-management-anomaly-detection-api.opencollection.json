@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS Budgets Anomaly Detection API",
+    "version": "2016-10-20"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Anomaly Detection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Anomaly Monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/CreateAnomalyMonitor",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new cost anomaly detection monitor with the requested type and monitor specification."
+        },
+        {
+          "info": {
+            "name": "Get Anomalies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/GetAnomalies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves all of the cost anomalies detected on your account during the time period that's specified in the DateInterval object."
+        },
+        {
+          "info": {
+            "name": "Create Anomaly Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/CreateAnomalySubscription",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds an alert subscription to a cost anomaly detection monitor. You can use each subscription to define subscribers with email or SNS targets and a frequency for anomaly notifications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS Anomaly Detection Budgets API",
+    "version": "2016-10-20"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Budgets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/CreateBudget",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a budget and, if included, notifications and subscribers. A budget can track cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans coverage."
+        },
+        {
+          "info": {
+            "name": "Describe Budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/DescribeBudget",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Describes a budget."
+        },
+        {
+          "info": {
+            "name": "Describe Budgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/DescribeBudgets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lists the budgets that are associated with an account."
+        },
+        {
+          "info": {
+            "name": "Update Budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/UpdateBudget",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a budget. You can change every part of a budget except for the BudgetName and the CalculatedSpend."
+        },
+        {
+          "info": {
+            "name": "Delete Budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/DeleteBudget",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes a budget. You can delete your budget at any time."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

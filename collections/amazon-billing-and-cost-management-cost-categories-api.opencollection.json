@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS Budgets Anomaly Detection Cost Categories API",
+    "version": "2016-10-20"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cost Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Cost Category Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/CreateCostCategoryDefinition",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Cost Category with the requested name and rules."
+        },
+        {
+          "info": {
+            "name": "List Cost Category Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/ListCostCategoryDefinitions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the name, ARN, rules, definition, and effective dates of all Cost Categories defined in the account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

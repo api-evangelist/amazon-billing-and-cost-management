@@ -1,0 +1,349 @@
+{
+  "item": [
+    {
+      "id": "685662e0-a17e-41cb-b6ab-1b11d011f89d",
+      "name": "Cost Categories",
+      "description": {
+        "content": "Organize costs with custom categories",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "834d9231-a3ed-42a3-87ee-dcf67895270e",
+          "name": "Create Cost Category Definition",
+          "request": {
+            "name": "Create Cost Category Definition",
+            "description": {
+              "content": "Creates a new Cost Category with the requested name and rules.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CreateCostCategoryDefinition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"RuleVersion\": \"<string>\",\n  \"Rules\": [\n    {\n      \"Value\": \"<string>\",\n      \"Rule\": {\n        \"Dimensions\": {\n          \"Key\": \"<string>\",\n          \"Values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"Tags\": {\n          \"Key\": \"<string>\",\n          \"Values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"And\": [\n          \"<object>\",\n          \"<object>\"\n        ],\n        \"Or\": [\n          \"<object>\",\n          \"<object>\"\n        ],\n        \"Not\": \"<object>\"\n      },\n      \"InheritedValue\": \"<object>\",\n      \"Type\": \"<string>\"\n    },\n    {\n      \"Value\": \"<string>\",\n      \"Rule\": {\n        \"Dimensions\": {\n          \"Key\": \"<string>\",\n          \"Values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"Tags\": {\n          \"Key\": \"<string>\",\n          \"Values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"And\": [\n          \"<object>\",\n          \"<object>\"\n        ],\n        \"Or\": [\n          \"<object>\",\n          \"<object>\"\n        ],\n        \"Not\": \"<object>\"\n      },\n      \"InheritedValue\": \"<object>\",\n      \"Type\": \"<string>\"\n    }\n  ],\n  \"EffectiveStart\": \"<string>\",\n  \"DefaultValue\": \"<string>\",\n  \"SplitChargeRules\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1781483-9764-46b7-83c2-48e44119f89c",
+              "name": "Cost category created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateCostCategoryDefinition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"RuleVersion\": \"<string>\",\n  \"Rules\": [\n    {\n      \"Value\": \"<string>\",\n      \"Rule\": {\n        \"Dimensions\": {\n          \"Key\": \"string\",\n          \"Values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"Tags\": {\n          \"Key\": \"string\",\n          \"Values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"Not\": {}\n      },\n      \"InheritedValue\": \"<object>\",\n      \"Type\": \"<string>\"\n    },\n    {\n      \"Value\": \"<string>\",\n      \"Rule\": {\n        \"Dimensions\": {\n          \"Key\": \"string\",\n          \"Values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"Tags\": {\n          \"Key\": \"string\",\n          \"Values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"Not\": {}\n      },\n      \"InheritedValue\": \"<object>\",\n      \"Type\": \"<string>\"\n    }\n  ],\n  \"EffectiveStart\": \"<string>\",\n  \"DefaultValue\": \"<string>\",\n  \"SplitChargeRules\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b13cef96-2d32-4591-b081-196639f68ec3",
+              "name": "You've exceeded the limit for this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateCostCategoryDefinition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"RuleVersion\": \"<string>\",\n  \"Rules\": [\n    {\n      \"Value\": \"<string>\",\n      \"Rule\": {\n        \"Dimensions\": {\n          \"Key\": \"string\",\n          \"Values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"Tags\": {\n          \"Key\": \"string\",\n          \"Values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"Not\": {}\n      },\n      \"InheritedValue\": \"<object>\",\n      \"Type\": \"<string>\"\n    },\n    {\n      \"Value\": \"<string>\",\n      \"Rule\": {\n        \"Dimensions\": {\n          \"Key\": \"string\",\n          \"Values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"Tags\": {\n          \"Key\": \"string\",\n          \"Values\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"Not\": {}\n      },\n      \"InheritedValue\": \"<object>\",\n      \"Type\": \"<string>\"\n    }\n  ],\n  \"EffectiveStart\": \"<string>\",\n  \"DefaultValue\": \"<string>\",\n  \"SplitChargeRules\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab18c183-a926-4ec3-96d0-2af938e4aa2c",
+          "name": "List Cost Category Definitions",
+          "request": {
+            "name": "List Cost Category Definitions",
+            "description": {
+              "content": "Returns the name, ARN, rules, definition, and effective dates of all Cost Categories defined in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ListCostCategoryDefinitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "609daac9-eb6a-4cf1-807b-83e56c86d63f",
+              "name": "Cost categories returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ListCostCategoryDefinitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07ae2b39-cf24-480f-bc11-cb03e113460d",
+              "name": "You've exceeded the limit for this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ListCostCategoryDefinitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Message\": \"string\",\n  \"Code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://budgets.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2594b7de-4b1c-4857-89ae-f2dae6e60c0c",
+    "name": "AWS Budgets Anomaly Detection Cost Categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.",
+      "type": "text/plain"
+    }
+  }
+}

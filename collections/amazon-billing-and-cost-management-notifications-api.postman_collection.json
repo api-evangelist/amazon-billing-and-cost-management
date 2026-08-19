@@ -1,0 +1,239 @@
+{
+  "item": [
+    {
+      "id": "db7eb8dd-bd34-4dd4-8d0c-678aecf5ac12",
+      "name": "Notifications",
+      "description": {
+        "content": "Manage budget alert notifications",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "447a744c-3bf0-403d-9fca-bb5abd69aaff",
+          "name": "Create Notification",
+          "request": {
+            "name": "Create Notification",
+            "description": {
+              "content": "Creates a notification. You must create the budget before you create the associated notification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CreateNotification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\",\n  \"Notification\": {\n    \"NotificationType\": \"<string>\",\n    \"ComparisonOperator\": \"<string>\",\n    \"Threshold\": \"<number>\",\n    \"ThresholdType\": \"<string>\"\n  },\n  \"Subscribers\": [\n    {\n      \"SubscriptionType\": \"<string>\",\n      \"Address\": \"<string>\"\n    },\n    {\n      \"SubscriptionType\": \"<string>\",\n      \"Address\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a97a0c73-7d15-4fff-9017-eae531554dba",
+              "name": "Notification created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateNotification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\",\n  \"Notification\": {\n    \"NotificationType\": \"ACTUAL\",\n    \"ComparisonOperator\": \"GREATER_THAN\",\n    \"Threshold\": 7449718499347.291,\n    \"ThresholdType\": \"ABSOLUTE_VALUE\"\n  },\n  \"Subscribers\": [\n    {\n      \"SubscriptionType\": \"EMAIL\",\n      \"Address\": \"string\"\n    },\n    {\n      \"SubscriptionType\": \"SNS\",\n      \"Address\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1fa60eb-fec9-4ad7-8bb7-bf0d101e9f90",
+          "name": "Describe Notifications For Budget",
+          "request": {
+            "name": "Describe Notifications For Budget",
+            "description": {
+              "content": "Lists the notifications that are associated with a budget.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DescribeNotificationsForBudget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19ac6f4f-d335-46ae-984f-33adf2df79a4",
+              "name": "Notifications returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DescribeNotificationsForBudget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountId\": \"<string>\",\n  \"BudgetName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://budgets.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "efb008c4-7118-4180-96a2-fd17e4f611f2",
+    "name": "AWS Budgets Anomaly Detection Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.",
+      "type": "text/plain"
+    }
+  }
+}

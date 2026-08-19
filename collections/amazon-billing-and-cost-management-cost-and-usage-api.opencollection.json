@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS Budgets Anomaly Detection Cost And Usage API",
+    "version": "2016-10-20"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cost And Usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Cost And Usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/GetCostAndUsage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric that you want the request to return, and filter and group your data by various dimensions, such as SERVICE or AZ, in a specific time range."
+        },
+        {
+          "info": {
+            "name": "Get Cost And Usage With Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/GetCostAndUsageWithResources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves cost and usage metrics with resources for your account. Supports resource-level data for EC2 instances."
+        },
+        {
+          "info": {
+            "name": "Get Dimension Values",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/GetDimensionValues",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves all available filter values for a specified filter over a period of time. For example, you can search the EC2 cost category entries for a specific month."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

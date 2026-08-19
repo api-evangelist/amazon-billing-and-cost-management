@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS Budgets Anomaly Detection Budget Actions API",
+    "version": "2016-10-20"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Budget Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Budget Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/CreateBudgetAction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a budget action. Budget actions are automated responses that execute when a budget exceeds a threshold, such as applying an IAM policy or running an SSM automation."
+        },
+        {
+          "info": {
+            "name": "Describe Budget Actions For Budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://budgets.amazonaws.com/DescribeBudgetActionsForBudget",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Describes all of the budget actions for a budget."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

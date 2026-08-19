@@ -1,36 +1,39 @@
 generated: '2026-06-20'
 method: searched
 status: published
-source: >-
-  Official AWS Labs MCP servers published to PyPI and documented at
-  awslabs.github.io/mcp. These wrap the AWS Billing and Cost Management APIs
-  (including Cost Explorer) via the boto3 SDK.
+source: Official AWS Labs MCP servers published to PyPI and documented at awslabs.github.io/mcp. These
+  wrap the AWS Billing and Cost Management APIs (including Cost Explorer) via the boto3 SDK.
 servers:
-  - name: AWS Billing and Cost Management MCP Server
-    package: awslabs.billing-cost-management-mcp-server
-    registry: pypi
-    version: 0.0.26
-    transport: stdio
-    run: uvx awslabs.billing-cost-management-mcp-server@latest
-    description: >-
-      A Model Context Protocol (MCP) server that provides tools for AWS Billing
-      and Cost Management by wrapping boto3 SDK functions. Covers Cost Explorer,
-      Budgets, Cost Optimization Hub, Compute Optimizer, Pricing, and related
-      billing surfaces.
-    url: https://pypi.org/project/awslabs.billing-cost-management-mcp-server/
-    docs: https://awslabs.github.io/mcp/servers/billing-cost-management-mcp-server/
-    repository: https://github.com/awslabs/mcp
-    official: true
-  - name: AWS Cost Explorer MCP Server
-    package: awslabs.cost-explorer-mcp-server
-    registry: pypi
-    version: 0.0.21
-    transport: stdio
-    run: uvx awslabs.cost-explorer-mcp-server@latest
-    description: >-
-      MCP server for analyzing AWS costs and usage data through the AWS Cost
-      Explorer API.
-    url: https://pypi.org/project/awslabs.cost-explorer-mcp-server/
-    docs: https://awslabs.github.io/mcp/servers/cost-explorer-mcp-server/
-    repository: https://github.com/awslabs/mcp
-    official: true
+- name: AWS Billing and Cost Management MCP Server
+  package: awslabs.billing-cost-management-mcp-server
+  registry: pypi
+  version: 0.0.26
+  transport: stdio
+  run: uvx awslabs.billing-cost-management-mcp-server@latest
+  description: A Model Context Protocol (MCP) server that provides tools for AWS Billing and Cost Management
+    by wrapping boto3 SDK functions. Covers Cost Explorer, Budgets, Cost Optimization Hub, Compute Optimizer,
+    Pricing, and related billing surfaces.
+  url: https://pypi.org/project/awslabs.billing-cost-management-mcp-server/
+  docs: https://awslabs.github.io/mcp/servers/billing-cost-management-mcp-server/
+  repository: https://github.com/awslabs/mcp
+  official: true
+- name: AWS Cost Explorer MCP Server
+  package: awslabs.cost-explorer-mcp-server
+  registry: pypi
+  version: 0.0.21
+  transport: stdio
+  run: uvx awslabs.cost-explorer-mcp-server@latest
+  description: MCP server for analyzing AWS costs and usage data through the AWS Cost Explorer API.
+  url: https://pypi.org/project/awslabs.cost-explorer-mcp-server/
+  docs: https://awslabs.github.io/mcp/servers/cost-explorer-mcp-server/
+  repository: https://github.com/awslabs/mcp
+  official: true
+deployment:
+  mode: none
+  endpoint: https://awslabs.github.io/mcp/servers/billing-cost-management-mcp-server/
+  verified: probed
+  probe: dead
+  note: the endpoint this manifest claimed did not answer; recorded as none rather than deleted so the
+    claim stays auditable
+  checked: '2026-08-12'
+  source: catalog MCP census
