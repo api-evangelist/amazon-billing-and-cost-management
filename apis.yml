@@ -35,7 +35,7 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-billing-and-cost-management/refs/heads/main/apis.yml
 created: '2026-03-16'
 modified: '2026-06-20'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: amazon-billing-and-cost-management:aws-price-list-api
   name: AWS Price List API
