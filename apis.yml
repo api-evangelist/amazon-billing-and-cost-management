@@ -134,6 +134,8 @@ apis:
   humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
   baseURL: https://ce.us-east-1.amazonaws.com
   tags:
+  - Cost and Usage
+  tags_raw:
   - Cost And Usage
   properties:
   - type: OpenAPI
@@ -210,6 +212,8 @@ apis:
   humanURL: https://docs.aws.amazon.com/cost-management/latest/userguide/ce-api.html
   baseURL: https://ce.us-east-1.amazonaws.com
   tags:
+  - Notification
+  tags_raw:
   - Notifications
   properties:
   - type: OpenAPI
