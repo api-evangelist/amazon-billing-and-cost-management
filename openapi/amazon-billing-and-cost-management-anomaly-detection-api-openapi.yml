@@ -1,14 +1,14 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: AWS Budgets Anomaly Detection API
-  description: The AWS Budgets API enables programmatic creation and management of custom budgets that track AWS cost, usage, coverage, and utilization. Supports budget actions that automatically respond when thresholds are exceeded.
-  version: '2016-10-20'
+  title: AWS Cost Explorer Anomaly Detection API
+  description: The AWS Cost Explorer API provides programmatic access to AWS cost and usage data. Query, filter, group, and aggregate cost data, generate forecasts, detect anomalies, and get rightsizing and Savings Plans recommendations.
+  version: '2017-10-25'
   contact:
     url: https://aws.amazon.com/contact-us/
   termsOfService: https://aws.amazon.com/service-terms/
 servers:
-- url: https://budgets.amazonaws.com
-  description: AWS Budgets (Global endpoint)
+- url: https://ce.us-east-1.amazonaws.com
+  description: AWS Cost Explorer (Global endpoint via us-east-1)
 security:
 - aws_iam: []
 tags:
@@ -83,31 +83,44 @@ paths:
           $ref: '#/components/responses/LimitExceededException'
 components:
   schemas:
-    GetAnomaliesResponse:
+    Expression:
       type: object
+      description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
       properties:
-        Anomalies:
+        Dimensions:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        Tags:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        And:
           type: array
           items:
             type: object
-            properties:
-              AnomalyId:
-                type: string
-              AnomalyStartDate:
-                type: string
-              AnomalyEndDate:
-                type: string
-              DimensionValue:
-                type: string
-              MonitorArn:
-                type: string
-              AnomalyScore:
-                type: object
-              Impact:
-                type: object
-              Feedback:
-                type: string
-        NextPageToken:
+        Or:
+          type: array
+          items:
+            type: object
+        Not:
+          type: object
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
           type: string
     CreateAnomalySubscriptionRequest:
       type: object
@@ -148,15 +161,50 @@ components:
               - WEEKLY
             SubscriptionName:
               type: string
-    CreateAnomalySubscriptionResponse:
+    DateInterval:
       type: object
+      required:
+      - Start
+      - End
       properties:
-        SubscriptionArn:
+        Start:
           type: string
+          description: Start of the time period in YYYY-MM-DD format
+          example: '2026-01-01'
+        End:
+          type: string
+          description: End of the time period in YYYY-MM-DD format
+          example: '2026-04-01'
     CreateAnomalyMonitorResponse:
       type: object
       properties:
         MonitorArn:
+          type: string
+    GetAnomaliesResponse:
+      type: object
+      properties:
+        Anomalies:
+          type: array
+          items:
+            type: object
+            properties:
+              AnomalyId:
+                type: string
+              AnomalyStartDate:
+                type: string
+              AnomalyEndDate:
+                type: string
+              DimensionValue:
+                type: string
+              MonitorArn:
+                type: string
+              AnomalyScore:
+                type: object
+              Impact:
+                type: object
+              Feedback:
+                type: string
+        NextPageToken:
           type: string
     GetAnomaliesRequest:
       type: object
@@ -179,27 +227,6 @@ components:
           type: string
         MaxResults:
           type: integer
-    ErrorResponse:
-      type: object
-      properties:
-        Message:
-          type: string
-        Code:
-          type: string
-    DateInterval:
-      type: object
-      required:
-      - Start
-      - End
-      properties:
-        Start:
-          type: string
-          description: Start of the time period in YYYY-MM-DD format
-          example: '2026-01-01'
-        End:
-          type: string
-          description: End of the time period in YYYY-MM-DD format
-          example: '2026-04-01'
     CreateAnomalyMonitorRequest:
       type: object
       required:
@@ -228,38 +255,11 @@ components:
           type: array
           items:
             type: object
-    Expression:
+    CreateAnomalySubscriptionResponse:
       type: object
-      description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
       properties:
-        Dimensions:
-          type: object
-          properties:
-            Key:
-              type: string
-            Values:
-              type: array
-              items:
-                type: string
-        Tags:
-          type: object
-          properties:
-            Key:
-              type: string
-            Values:
-              type: array
-              items:
-                type: string
-        And:
-          type: array
-          items:
-            type: object
-        Or:
-          type: array
-          items:
-            type: object
-        Not:
-          type: object
+        SubscriptionArn:
+          type: string
   responses:
     LimitExceededException:
       description: You've exceeded the limit for this resource
@@ -274,5 +274,5 @@ components:
       name: Authorization
       description: AWS Signature Version 4 authentication
 externalDocs:
-  description: AWS Budgets API Reference
-  url: https://docs.aws.amazon.com/budgets/latest/APIReference/
+  description: AWS Cost Explorer API Reference
+  url: https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/
