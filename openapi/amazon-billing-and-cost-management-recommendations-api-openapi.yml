@@ -133,26 +133,6 @@ components:
             type: object
         Not:
           type: object
-    GetRightsizingRecommendationResponse:
-      type: object
-      properties:
-        Metadata:
-          type: object
-        Summary:
-          type: object
-        RightsizingRecommendations:
-          type: array
-          items:
-            type: object
-        NextPageToken:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        Message:
-          type: string
-        Code:
-          type: string
     GetRightsizingRecommendationRequest:
       type: object
       required:
@@ -177,15 +157,35 @@ components:
           type: integer
         NextPageToken:
           type: string
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
+    GetRightsizingRecommendationResponse:
+      type: object
+      properties:
+        Metadata:
+          type: object
+        Summary:
+          type: object
+        RightsizingRecommendations:
+          type: array
+          items:
+            type: object
+        NextPageToken:
+          type: string
   responses:
-    InvalidNextTokenException:
-      description: The pagination token is invalid
+    LimitExceededException:
+      description: You've exceeded the limit for this resource
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    LimitExceededException:
-      description: You've exceeded the limit for this resource
+    InvalidNextTokenException:
+      description: The pagination token is invalid
       content:
         application/json:
           schema:

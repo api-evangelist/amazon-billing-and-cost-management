@@ -81,19 +81,6 @@ paths:
                 type: object
 components:
   schemas:
-    Subscriber:
-      type: object
-      required:
-      - SubscriptionType
-      - Address
-      properties:
-        SubscriptionType:
-          type: string
-          enum:
-          - SNS
-          - EMAIL
-        Address:
-          type: string
     Notification:
       type: object
       required:
@@ -121,6 +108,19 @@ components:
           enum:
           - PERCENTAGE
           - ABSOLUTE_VALUE
+    Subscriber:
+      type: object
+      required:
+      - SubscriptionType
+      - Address
+      properties:
+        SubscriptionType:
+          type: string
+          enum:
+          - SNS
+          - EMAIL
+        Address:
+          type: string
   securitySchemes:
     aws_iam:
       type: apiKey

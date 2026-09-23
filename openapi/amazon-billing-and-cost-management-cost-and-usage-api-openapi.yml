@@ -127,13 +127,6 @@ components:
             type: object
         Not:
           type: object
-    ErrorResponse:
-      type: object
-      properties:
-        Message:
-          type: string
-        Code:
-          type: string
     DateInterval:
       type: object
       required:
@@ -148,16 +141,25 @@ components:
           type: string
           description: End of the time period in YYYY-MM-DD format
           example: '2026-04-01'
-    GroupDefinition:
+    GetCostAndUsageResponse:
       type: object
       properties:
-        Type:
-          type: string
-          enum:
-          - DIMENSION
-          - TAG
-          - COST_CATEGORY
-        Key:
+        ResultsByTime:
+          type: array
+          items:
+            type: object
+            properties:
+              TimePeriod:
+                $ref: '#/components/schemas/DateInterval'
+              Total:
+                type: object
+              Groups:
+                type: array
+              Estimated:
+                type: boolean
+        DimensionValueAttributes:
+          type: array
+        NextPageToken:
           type: string
     GetCostAndUsageRequest:
       type: object
@@ -187,35 +189,33 @@ components:
             $ref: '#/components/schemas/GroupDefinition'
         NextPageToken:
           type: string
-    GetCostAndUsageResponse:
+    GroupDefinition:
       type: object
       properties:
-        ResultsByTime:
-          type: array
-          items:
-            type: object
-            properties:
-              TimePeriod:
-                $ref: '#/components/schemas/DateInterval'
-              Total:
-                type: object
-              Groups:
-                type: array
-              Estimated:
-                type: boolean
-        DimensionValueAttributes:
-          type: array
-        NextPageToken:
+        Type:
+          type: string
+          enum:
+          - DIMENSION
+          - TAG
+          - COST_CATEGORY
+        Key:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
           type: string
   responses:
-    DataUnavailableException:
-      description: The requested data is unavailable
+    LimitExceededException:
+      description: You've exceeded the limit for this resource
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    LimitExceededException:
-      description: You've exceeded the limit for this resource
+    DataUnavailableException:
+      description: The requested data is unavailable
       content:
         application/json:
           schema:

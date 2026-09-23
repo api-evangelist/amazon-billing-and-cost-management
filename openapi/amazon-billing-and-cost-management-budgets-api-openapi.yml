@@ -151,10 +151,71 @@ paths:
           description: Budget deleted successfully
 components:
   schemas:
+    Notification:
+      type: object
+      required:
+      - NotificationType
+      - ComparisonOperator
+      - Threshold
+      properties:
+        NotificationType:
+          type: string
+          enum:
+          - ACTUAL
+          - FORECASTED
+        ComparisonOperator:
+          type: string
+          enum:
+          - GREATER_THAN
+          - LESS_THAN
+          - EQUAL_TO
+        Threshold:
+          type: number
+          minimum: 0
+          maximum: 15000000000000
+        ThresholdType:
+          type: string
+          enum:
+          - PERCENTAGE
+          - ABSOLUTE_VALUE
+    CreateBudgetRequest:
+      type: object
+      required:
+      - AccountId
+      - Budget
+      properties:
+        AccountId:
+          type: string
+        Budget:
+          $ref: '#/components/schemas/Budget'
+        NotificationsWithSubscribers:
+          type: array
+          items:
+            type: object
+            properties:
+              Notification:
+                $ref: '#/components/schemas/Notification'
+              Subscribers:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscriber'
     ErrorResponse:
       type: object
       properties:
         Message:
+          type: string
+    Subscriber:
+      type: object
+      required:
+      - SubscriptionType
+      - Address
+      properties:
+        SubscriptionType:
+          type: string
+          enum:
+          - SNS
+          - EMAIL
+        Address:
           type: string
     Budget:
       type: object
@@ -224,68 +285,13 @@ components:
         LastUpdatedTime:
           type: string
           format: date-time
-    Subscriber:
-      type: object
-      required:
-      - SubscriptionType
-      - Address
-      properties:
-        SubscriptionType:
-          type: string
-          enum:
-          - SNS
-          - EMAIL
-        Address:
-          type: string
-    Notification:
-      type: object
-      required:
-      - NotificationType
-      - ComparisonOperator
-      - Threshold
-      properties:
-        NotificationType:
-          type: string
-          enum:
-          - ACTUAL
-          - FORECASTED
-        ComparisonOperator:
-          type: string
-          enum:
-          - GREATER_THAN
-          - LESS_THAN
-          - EQUAL_TO
-        Threshold:
-          type: number
-          minimum: 0
-          maximum: 15000000000000
-        ThresholdType:
-          type: string
-          enum:
-          - PERCENTAGE
-          - ABSOLUTE_VALUE
-    CreateBudgetRequest:
-      type: object
-      required:
-      - AccountId
-      - Budget
-      properties:
-        AccountId:
-          type: string
-        Budget:
-          $ref: '#/components/schemas/Budget'
-        NotificationsWithSubscribers:
-          type: array
-          items:
-            type: object
-            properties:
-              Notification:
-                $ref: '#/components/schemas/Notification'
-              Subscribers:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Subscriber'
   responses:
+    AccessDeniedException:
+      description: You are not authorized to use this operation with the given parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     InvalidParameterException:
       description: An error on the client occurred. Typically, the cause is an invalid input value.
       content:
@@ -294,12 +300,6 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     CreationLimitExceededException:
       description: You've exceeded the notification or subscriber limit.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    AccessDeniedException:
-      description: You are not authorized to use this operation with the given parameters.
       content:
         application/json:
           schema:

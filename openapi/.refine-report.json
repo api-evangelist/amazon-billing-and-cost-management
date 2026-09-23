@@ -21,7 +21,8 @@
   "notes": [
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "aws-budgets-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "aws-cost-explorer-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+    "aws-cost-explorer-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "amazon-billing-and-cost-management-anomaly-detection-api-openapi.yml: previously refined output, superseded by openapi/_original/",

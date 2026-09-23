@@ -78,19 +78,6 @@ paths:
         '400':
           $ref: '#/components/responses/DataUnavailableException'
 components:
-  responses:
-    DataUnavailableException:
-      description: The requested data is unavailable
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    LimitExceededException:
-      description: You've exceeded the limit for this resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     ErrorResponse:
       type: object
@@ -113,6 +100,19 @@ components:
           type: string
           description: End of the time period in YYYY-MM-DD format
           example: '2026-04-01'
+  responses:
+    DataUnavailableException:
+      description: The requested data is unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    LimitExceededException:
+      description: You've exceeded the limit for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     aws_iam:
       type: apiKey

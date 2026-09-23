@@ -66,6 +66,13 @@ paths:
           $ref: '#/components/responses/LimitExceededException'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
     Expression:
       type: object
       description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
@@ -132,13 +139,6 @@ components:
           type: array
           items:
             type: object
-    ErrorResponse:
-      type: object
-      properties:
-        Message:
-          type: string
-        Code:
-          type: string
   responses:
     LimitExceededException:
       description: You've exceeded the limit for this resource

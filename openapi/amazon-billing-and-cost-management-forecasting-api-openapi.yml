@@ -93,13 +93,6 @@ components:
             type: object
         Not:
           type: object
-    ErrorResponse:
-      type: object
-      properties:
-        Message:
-          type: string
-        Code:
-          type: string
     DateInterval:
       type: object
       required:
@@ -114,6 +107,21 @@ components:
           type: string
           description: End of the time period in YYYY-MM-DD format
           example: '2026-04-01'
+    GetUsageForecastRequest:
+      type: object
+      required:
+      - TimePeriod
+      - Metric
+      - Granularity
+      properties:
+        TimePeriod:
+          $ref: '#/components/schemas/DateInterval'
+        Metric:
+          type: string
+        Granularity:
+          type: string
+        Filter:
+          $ref: '#/components/schemas/Expression'
     GetCostForecastRequest:
       type: object
       required:
@@ -142,6 +150,13 @@ components:
           type: integer
           minimum: 51
           maximum: 99
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
     GetCostForecastResponse:
       type: object
       properties:
@@ -156,21 +171,6 @@ components:
           type: array
           items:
             type: object
-    GetUsageForecastRequest:
-      type: object
-      required:
-      - TimePeriod
-      - Metric
-      - Granularity
-      properties:
-        TimePeriod:
-          $ref: '#/components/schemas/DateInterval'
-        Metric:
-          type: string
-        Granularity:
-          type: string
-        Filter:
-          $ref: '#/components/schemas/Expression'
   responses:
     DataUnavailableException:
       description: The requested data is unavailable
