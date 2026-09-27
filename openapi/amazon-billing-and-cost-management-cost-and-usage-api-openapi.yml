@@ -94,7 +94,38 @@ paths:
         '400':
           $ref: '#/components/responses/DataUnavailableException'
 components:
+  responses:
+    DataUnavailableException:
+      description: The requested data is unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    LimitExceededException:
+      description: You've exceeded the limit for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    GroupDefinition:
+      type: object
+      properties:
+        Type:
+          type: string
+          enum:
+          - DIMENSION
+          - TAG
+          - COST_CATEGORY
+        Key:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
     Expression:
       type: object
       description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
@@ -127,40 +158,6 @@ components:
             type: object
         Not:
           type: object
-    DateInterval:
-      type: object
-      required:
-      - Start
-      - End
-      properties:
-        Start:
-          type: string
-          description: Start of the time period in YYYY-MM-DD format
-          example: '2026-01-01'
-        End:
-          type: string
-          description: End of the time period in YYYY-MM-DD format
-          example: '2026-04-01'
-    GetCostAndUsageResponse:
-      type: object
-      properties:
-        ResultsByTime:
-          type: array
-          items:
-            type: object
-            properties:
-              TimePeriod:
-                $ref: '#/components/schemas/DateInterval'
-              Total:
-                type: object
-              Groups:
-                type: array
-              Estimated:
-                type: boolean
-        DimensionValueAttributes:
-          type: array
-        NextPageToken:
-          type: string
     GetCostAndUsageRequest:
       type: object
       required:
@@ -189,37 +186,40 @@ components:
             $ref: '#/components/schemas/GroupDefinition'
         NextPageToken:
           type: string
-    GroupDefinition:
+    GetCostAndUsageResponse:
       type: object
       properties:
-        Type:
+        ResultsByTime:
+          type: array
+          items:
+            type: object
+            properties:
+              TimePeriod:
+                $ref: '#/components/schemas/DateInterval'
+              Total:
+                type: object
+              Groups:
+                type: array
+              Estimated:
+                type: boolean
+        DimensionValueAttributes:
+          type: array
+        NextPageToken:
           type: string
-          enum:
-          - DIMENSION
-          - TAG
-          - COST_CATEGORY
-        Key:
-          type: string
-    ErrorResponse:
+    DateInterval:
       type: object
+      required:
+      - Start
+      - End
       properties:
-        Message:
+        Start:
           type: string
-        Code:
+          description: Start of the time period in YYYY-MM-DD format
+          example: '2026-01-01'
+        End:
           type: string
-  responses:
-    LimitExceededException:
-      description: You've exceeded the limit for this resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    DataUnavailableException:
-      description: The requested data is unavailable
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+          description: End of the time period in YYYY-MM-DD format
+          example: '2026-04-01'
   securitySchemes:
     aws_iam:
       type: apiKey

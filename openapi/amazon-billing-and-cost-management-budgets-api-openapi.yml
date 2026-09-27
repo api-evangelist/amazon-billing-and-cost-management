@@ -199,11 +199,6 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Subscriber'
-    ErrorResponse:
-      type: object
-      properties:
-        Message:
-          type: string
     Subscriber:
       type: object
       required:
@@ -216,6 +211,11 @@ components:
           - SNS
           - EMAIL
         Address:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
           type: string
     Budget:
       type: object
@@ -292,14 +292,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    InvalidParameterException:
-      description: An error on the client occurred. Typically, the cause is an invalid input value.
+    CreationLimitExceededException:
+      description: You've exceeded the notification or subscriber limit.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    CreationLimitExceededException:
-      description: You've exceeded the notification or subscriber limit.
+    InvalidParameterException:
+      description: An error on the client occurred. Typically, the cause is an invalid input value.
       content:
         application/json:
           schema:

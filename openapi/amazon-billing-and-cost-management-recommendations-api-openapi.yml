@@ -101,6 +101,30 @@ paths:
           $ref: '#/components/responses/LimitExceededException'
 components:
   schemas:
+    GetRightsizingRecommendationRequest:
+      type: object
+      required:
+      - Service
+      properties:
+        Filter:
+          $ref: '#/components/schemas/Expression'
+        Configuration:
+          type: object
+          properties:
+            RecommendationTarget:
+              type: string
+              enum:
+              - SAME_INSTANCE_FAMILY
+              - CROSS_INSTANCE_FAMILY
+            BenefitsConsidered:
+              type: boolean
+        Service:
+          type: string
+          description: The specific service that you want recommendations for (e.g., AmazonEC2)
+        PageSize:
+          type: integer
+        NextPageToken:
+          type: string
     Expression:
       type: object
       description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
@@ -133,30 +157,6 @@ components:
             type: object
         Not:
           type: object
-    GetRightsizingRecommendationRequest:
-      type: object
-      required:
-      - Service
-      properties:
-        Filter:
-          $ref: '#/components/schemas/Expression'
-        Configuration:
-          type: object
-          properties:
-            RecommendationTarget:
-              type: string
-              enum:
-              - SAME_INSTANCE_FAMILY
-              - CROSS_INSTANCE_FAMILY
-            BenefitsConsidered:
-              type: boolean
-        Service:
-          type: string
-          description: The specific service that you want recommendations for (e.g., AmazonEC2)
-        PageSize:
-          type: integer
-        NextPageToken:
-          type: string
     ErrorResponse:
       type: object
       properties:
