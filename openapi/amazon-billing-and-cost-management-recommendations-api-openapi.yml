@@ -100,31 +100,20 @@ paths:
         '400':
           $ref: '#/components/responses/LimitExceededException'
 components:
+  responses:
+    LimitExceededException:
+      description: You've exceeded the limit for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InvalidNextTokenException:
+      description: The pagination token is invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    GetRightsizingRecommendationRequest:
-      type: object
-      required:
-      - Service
-      properties:
-        Filter:
-          $ref: '#/components/schemas/Expression'
-        Configuration:
-          type: object
-          properties:
-            RecommendationTarget:
-              type: string
-              enum:
-              - SAME_INSTANCE_FAMILY
-              - CROSS_INSTANCE_FAMILY
-            BenefitsConsidered:
-              type: boolean
-        Service:
-          type: string
-          description: The specific service that you want recommendations for (e.g., AmazonEC2)
-        PageSize:
-          type: integer
-        NextPageToken:
-          type: string
     Expression:
       type: object
       description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
@@ -157,13 +146,6 @@ components:
             type: object
         Not:
           type: object
-    ErrorResponse:
-      type: object
-      properties:
-        Message:
-          type: string
-        Code:
-          type: string
     GetRightsizingRecommendationResponse:
       type: object
       properties:
@@ -177,19 +159,37 @@ components:
             type: object
         NextPageToken:
           type: string
-  responses:
-    LimitExceededException:
-      description: You've exceeded the limit for this resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InvalidNextTokenException:
-      description: The pagination token is invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
+    GetRightsizingRecommendationRequest:
+      type: object
+      required:
+      - Service
+      properties:
+        Filter:
+          $ref: '#/components/schemas/Expression'
+        Configuration:
+          type: object
+          properties:
+            RecommendationTarget:
+              type: string
+              enum:
+              - SAME_INSTANCE_FAMILY
+              - CROSS_INSTANCE_FAMILY
+            BenefitsConsidered:
+              type: boolean
+        Service:
+          type: string
+          description: The specific service that you want recommendations for (e.g., AmazonEC2)
+        PageSize:
+          type: integer
+        NextPageToken:
+          type: string
   securitySchemes:
     aws_iam:
       type: apiKey

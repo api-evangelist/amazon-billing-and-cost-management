@@ -61,20 +61,6 @@ paths:
           $ref: '#/components/responses/DataUnavailableException'
 components:
   schemas:
-    DateInterval:
-      type: object
-      required:
-      - Start
-      - End
-      properties:
-        Start:
-          type: string
-          description: Start of the time period in YYYY-MM-DD format
-          example: '2026-01-01'
-        End:
-          type: string
-          description: End of the time period in YYYY-MM-DD format
-          example: '2026-04-01'
     GetUsageForecastRequest:
       type: object
       required:
@@ -90,34 +76,20 @@ components:
           type: string
         Filter:
           $ref: '#/components/schemas/Expression'
-    GetCostForecastRequest:
+    DateInterval:
       type: object
       required:
-      - TimePeriod
-      - Metric
-      - Granularity
+      - Start
+      - End
       properties:
-        TimePeriod:
-          $ref: '#/components/schemas/DateInterval'
-        Metric:
+        Start:
           type: string
-          enum:
-          - AMORTIZED_COST
-          - BLENDED_COST
-          - NET_AMORTIZED_COST
-          - NET_UNBLENDED_COST
-          - UNBLENDED_COST
-        Granularity:
+          description: Start of the time period in YYYY-MM-DD format
+          example: '2026-01-01'
+        End:
           type: string
-          enum:
-          - DAILY
-          - MONTHLY
-        Filter:
-          $ref: '#/components/schemas/Expression'
-        PredictionIntervalLevel:
-          type: integer
-          minimum: 51
-          maximum: 99
+          description: End of the time period in YYYY-MM-DD format
+          example: '2026-04-01'
     Expression:
       type: object
       description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
@@ -150,13 +122,34 @@ components:
             type: object
         Not:
           type: object
-    ErrorResponse:
+    GetCostForecastRequest:
       type: object
+      required:
+      - TimePeriod
+      - Metric
+      - Granularity
       properties:
-        Message:
+        TimePeriod:
+          $ref: '#/components/schemas/DateInterval'
+        Metric:
           type: string
-        Code:
+          enum:
+          - AMORTIZED_COST
+          - BLENDED_COST
+          - NET_AMORTIZED_COST
+          - NET_UNBLENDED_COST
+          - UNBLENDED_COST
+        Granularity:
           type: string
+          enum:
+          - DAILY
+          - MONTHLY
+        Filter:
+          $ref: '#/components/schemas/Expression'
+        PredictionIntervalLevel:
+          type: integer
+          minimum: 51
+          maximum: 99
     GetCostForecastResponse:
       type: object
       properties:
@@ -171,6 +164,13 @@ components:
           type: array
           items:
             type: object
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
   responses:
     DataUnavailableException:
       description: The requested data is unavailable

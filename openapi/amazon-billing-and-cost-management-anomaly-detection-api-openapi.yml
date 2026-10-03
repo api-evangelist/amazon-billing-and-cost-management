@@ -83,72 +83,46 @@ paths:
           $ref: '#/components/responses/LimitExceededException'
 components:
   schemas:
-    CreateAnomalyMonitorRequest:
+    GetAnomaliesRequest:
       type: object
       required:
-      - AnomalyMonitor
+      - DateInterval
       properties:
-        AnomalyMonitor:
+        MonitorArn:
+          type: string
+        DateInterval:
+          $ref: '#/components/schemas/DateInterval'
+        Feedback:
+          type: string
+          enum:
+          - 'YES'
+          - 'NO'
+          - PLANNED_ACTIVITY
+        TotalImpact:
           type: object
-          required:
-          - MonitorName
-          - MonitorType
-          properties:
-            MonitorName:
-              type: string
-            MonitorType:
-              type: string
-              enum:
-              - DIMENSIONAL
-              - CUSTOM
-            MonitorDimension:
-              type: string
-              enum:
-              - SERVICE
-            MonitorSpecification:
-              $ref: '#/components/schemas/Expression'
-        ResourceTags:
-          type: array
-          items:
-            type: object
+        NextPageToken:
+          type: string
+        MaxResults:
+          type: integer
     CreateAnomalySubscriptionResponse:
       type: object
       properties:
         SubscriptionArn:
           type: string
-    ErrorResponse:
+    DateInterval:
       type: object
+      required:
+      - Start
+      - End
       properties:
-        Message:
+        Start:
           type: string
-        Code:
+          description: Start of the time period in YYYY-MM-DD format
+          example: '2026-01-01'
+        End:
           type: string
-    GetAnomaliesResponse:
-      type: object
-      properties:
-        Anomalies:
-          type: array
-          items:
-            type: object
-            properties:
-              AnomalyId:
-                type: string
-              AnomalyStartDate:
-                type: string
-              AnomalyEndDate:
-                type: string
-              DimensionValue:
-                type: string
-              MonitorArn:
-                type: string
-              AnomalyScore:
-                type: object
-              Impact:
-                type: object
-              Feedback:
-                type: string
-        NextPageToken:
-          type: string
+          description: End of the time period in YYYY-MM-DD format
+          example: '2026-04-01'
     Expression:
       type: object
       description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
@@ -181,27 +155,34 @@ components:
             type: object
         Not:
           type: object
-    GetAnomaliesRequest:
+    CreateAnomalyMonitorRequest:
       type: object
       required:
-      - DateInterval
+      - AnomalyMonitor
       properties:
-        MonitorArn:
-          type: string
-        DateInterval:
-          $ref: '#/components/schemas/DateInterval'
-        Feedback:
-          type: string
-          enum:
-          - true
-          - false
-          - PLANNED_ACTIVITY
-        TotalImpact:
+        AnomalyMonitor:
           type: object
-        NextPageToken:
-          type: string
-        MaxResults:
-          type: integer
+          required:
+          - MonitorName
+          - MonitorType
+          properties:
+            MonitorName:
+              type: string
+            MonitorType:
+              type: string
+              enum:
+              - DIMENSIONAL
+              - CUSTOM
+            MonitorDimension:
+              type: string
+              enum:
+              - SERVICE
+            MonitorSpecification:
+              $ref: '#/components/schemas/Expression'
+        ResourceTags:
+          type: array
+          items:
+            type: object
     CreateAnomalyMonitorResponse:
       type: object
       properties:
@@ -246,20 +227,39 @@ components:
               - WEEKLY
             SubscriptionName:
               type: string
-    DateInterval:
+    ErrorResponse:
       type: object
-      required:
-      - Start
-      - End
       properties:
-        Start:
+        Message:
           type: string
-          description: Start of the time period in YYYY-MM-DD format
-          example: '2026-01-01'
-        End:
+        Code:
           type: string
-          description: End of the time period in YYYY-MM-DD format
-          example: '2026-04-01'
+    GetAnomaliesResponse:
+      type: object
+      properties:
+        Anomalies:
+          type: array
+          items:
+            type: object
+            properties:
+              AnomalyId:
+                type: string
+              AnomalyStartDate:
+                type: string
+              AnomalyEndDate:
+                type: string
+              DimensionValue:
+                type: string
+              MonitorArn:
+                type: string
+              AnomalyScore:
+                type: object
+              Impact:
+                type: object
+              Feedback:
+                type: string
+        NextPageToken:
+          type: string
   responses:
     LimitExceededException:
       description: You've exceeded the limit for this resource

@@ -150,7 +150,47 @@ paths:
         '200':
           description: Budget deleted successfully
 components:
+  responses:
+    CreationLimitExceededException:
+      description: You've exceeded the notification or subscriber limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InvalidParameterException:
+      description: An error on the client occurred. Typically, the cause is an invalid input value.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AccessDeniedException:
+      description: You are not authorized to use this operation with the given parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    CreateBudgetRequest:
+      type: object
+      required:
+      - AccountId
+      - Budget
+      properties:
+        AccountId:
+          type: string
+        Budget:
+          $ref: '#/components/schemas/Budget'
+        NotificationsWithSubscribers:
+          type: array
+          items:
+            type: object
+            properties:
+              Notification:
+                $ref: '#/components/schemas/Notification'
+              Subscribers:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscriber'
     Notification:
       type: object
       required:
@@ -178,45 +218,6 @@ components:
           enum:
           - PERCENTAGE
           - ABSOLUTE_VALUE
-    CreateBudgetRequest:
-      type: object
-      required:
-      - AccountId
-      - Budget
-      properties:
-        AccountId:
-          type: string
-        Budget:
-          $ref: '#/components/schemas/Budget'
-        NotificationsWithSubscribers:
-          type: array
-          items:
-            type: object
-            properties:
-              Notification:
-                $ref: '#/components/schemas/Notification'
-              Subscribers:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Subscriber'
-    Subscriber:
-      type: object
-      required:
-      - SubscriptionType
-      - Address
-      properties:
-        SubscriptionType:
-          type: string
-          enum:
-          - SNS
-          - EMAIL
-        Address:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        Message:
-          type: string
     Budget:
       type: object
       required:
@@ -285,25 +286,24 @@ components:
         LastUpdatedTime:
           type: string
           format: date-time
-  responses:
-    AccessDeniedException:
-      description: You are not authorized to use this operation with the given parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    CreationLimitExceededException:
-      description: You've exceeded the notification or subscriber limit.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InvalidParameterException:
-      description: An error on the client occurred. Typically, the cause is an invalid input value.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    Subscriber:
+      type: object
+      required:
+      - SubscriptionType
+      - Address
+      properties:
+        SubscriptionType:
+          type: string
+          enum:
+          - SNS
+          - EMAIL
+        Address:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
   securitySchemes:
     aws_iam:
       type: apiKey

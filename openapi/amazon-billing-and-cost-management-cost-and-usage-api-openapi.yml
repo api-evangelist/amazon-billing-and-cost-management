@@ -94,19 +94,6 @@ paths:
         '400':
           $ref: '#/components/responses/DataUnavailableException'
 components:
-  responses:
-    DataUnavailableException:
-      description: The requested data is unavailable
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    LimitExceededException:
-      description: You've exceeded the limit for this resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     GroupDefinition:
       type: object
@@ -119,13 +106,20 @@ components:
           - COST_CATEGORY
         Key:
           type: string
-    ErrorResponse:
+    DateInterval:
       type: object
+      required:
+      - Start
+      - End
       properties:
-        Message:
+        Start:
           type: string
-        Code:
+          description: Start of the time period in YYYY-MM-DD format
+          example: '2026-01-01'
+        End:
           type: string
+          description: End of the time period in YYYY-MM-DD format
+          example: '2026-04-01'
     Expression:
       type: object
       description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
@@ -206,20 +200,26 @@ components:
           type: array
         NextPageToken:
           type: string
-    DateInterval:
+    ErrorResponse:
       type: object
-      required:
-      - Start
-      - End
       properties:
-        Start:
+        Message:
           type: string
-          description: Start of the time period in YYYY-MM-DD format
-          example: '2026-01-01'
-        End:
+        Code:
           type: string
-          description: End of the time period in YYYY-MM-DD format
-          example: '2026-04-01'
+  responses:
+    LimitExceededException:
+      description: You've exceeded the limit for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    DataUnavailableException:
+      description: The requested data is unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     aws_iam:
       type: apiKey
