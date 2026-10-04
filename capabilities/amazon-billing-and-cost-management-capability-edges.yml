@@ -1,0 +1,81 @@
+slug: amazon-billing-and-cost-management
+provider: Amazon Billing And Cost Management
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: Cost And Usage
+  spec_file: amazon-billing-and-cost-management-cost-and-usage-api-openapi.yml
+  capability_id: BC-600.80
+  capability_id_l1: BC-600
+  capability_name: IT Financial Management
+  confidence: 0.8
+  evidence: POST /GetCostAndUsage  GetCostAndUsage  Get Cost And Usage
+  reason: Querying and grouping cloud cost and usage data is core IT spend visibility under IT Financial
+    Management.
+- tag: Recommendations
+  spec_file: amazon-billing-and-cost-management-recommendations-api-openapi.yml
+  capability_id: BC-600.80
+  capability_id_l1: BC-600
+  capability_name: IT Financial Management
+  confidence: 0.8
+  evidence: POST /GetRightsizingRecommendation ... POST /GetSavingsPlansPurchaseRecommendation
+  reason: Operations return rightsizing and Savings Plans/Reservation purchase recommendations for AWS
+    spend — i.e. IT cost optimisation analysis, which is IT Financial Management (IT spend, cost optimisation).
+    Not a generic analytics capability since the subject is cloud spend.
+- tag: Budgets
+  spec_file: amazon-billing-and-cost-management-budgets-api-openapi.yml
+  capability_id: BC-600.80
+  capability_id_l1: BC-600
+  capability_name: IT Financial Management
+  confidence: 0.75
+  evidence: POST /CreateBudget  CreateBudget  Create Budget ... budgets that track AWS cost, usage, coverage,
+    and utilization
+  reason: Budgeting scoped specifically to cloud/IT consumption spend maps to IT Financial Management
+    (IT spend, chargeback, cost optimisation).
+- tag: Anomaly Detection
+  spec_file: amazon-billing-and-cost-management-anomaly-detection-api-openapi.yml
+  capability_id: BC-600.80
+  capability_id_l1: BC-600
+  capability_name: IT Financial Management
+  confidence: 0.7
+  evidence: CreateAnomalyMonitor  Create Anomaly Monitor ... The AWS Cost Explorer API provides programmatic
+    access to AWS cost and usage data
+  reason: Anomaly monitors here detect unexpected cloud spend, which is IT cost monitoring/optimisation
+    under IT Financial Management, not financial-crime or observability alerting.
+- tag: Budget Actions
+  spec_file: amazon-billing-and-cost-management-budget-actions-api-openapi.yml
+  capability_id: BC-600.80
+  capability_id_l1: BC-600
+  capability_name: IT Financial Management
+  confidence: 0.7
+  evidence: CreateBudgetAction ... custom budgets that track AWS cost, usage, coverage, and utilization
+  reason: Automated actions triggered when cloud cost budget thresholds are exceeded are IT spend control
+    (IT Financial Management) rather than corporate budgeting.
+- tag: Cost Categories
+  spec_file: amazon-billing-and-cost-management-cost-categories-api-openapi.yml
+  capability_id: BC-600.80
+  capability_id_l1: BC-600
+  capability_name: IT Financial Management
+  confidence: 0.7
+  evidence: POST /CreateCostCategoryDefinition  Create Cost Category Definition
+  reason: Defining cost categories organises cloud spend for allocation/showback, an IT Financial Management
+    activity.
+- tag: Forecasting
+  spec_file: amazon-billing-and-cost-management-forecasting-api-openapi.yml
+  capability_id: BC-600.80
+  capability_id_l1: BC-600
+  capability_name: IT Financial Management
+  confidence: 0.7
+  evidence: POST /GetCostForecast  GetCostForecast  Get Cost Forecast
+  reason: Forecasting future AWS cost and usage is IT spend planning; the scope is cloud consumption,
+    so IT Financial Management fits better than enterprise FP&A.

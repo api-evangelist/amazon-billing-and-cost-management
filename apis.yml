@@ -298,6 +298,9 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
 common:
+  - type: CapabilityMap
+    url: capabilities/amazon-billing-and-cost-management-capability-edges.yml
+    name: Amazon Billing And Cost Management Business Capability Map
   - type: Overlay
     url: overlays/amazon-billing-and-cost-management-aws-budgets-api-overlay.yaml
   - type: AgenticAccess
