@@ -61,67 +61,6 @@ paths:
           $ref: '#/components/responses/DataUnavailableException'
 components:
   schemas:
-    GetUsageForecastRequest:
-      type: object
-      required:
-      - TimePeriod
-      - Metric
-      - Granularity
-      properties:
-        TimePeriod:
-          $ref: '#/components/schemas/DateInterval'
-        Metric:
-          type: string
-        Granularity:
-          type: string
-        Filter:
-          $ref: '#/components/schemas/Expression'
-    DateInterval:
-      type: object
-      required:
-      - Start
-      - End
-      properties:
-        Start:
-          type: string
-          description: Start of the time period in YYYY-MM-DD format
-          example: '2026-01-01'
-        End:
-          type: string
-          description: End of the time period in YYYY-MM-DD format
-          example: '2026-04-01'
-    Expression:
-      type: object
-      description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
-      properties:
-        Dimensions:
-          type: object
-          properties:
-            Key:
-              type: string
-            Values:
-              type: array
-              items:
-                type: string
-        Tags:
-          type: object
-          properties:
-            Key:
-              type: string
-            Values:
-              type: array
-              items:
-                type: string
-        And:
-          type: array
-          items:
-            type: object
-        Or:
-          type: array
-          items:
-            type: object
-        Not:
-          type: object
     GetCostForecastRequest:
       type: object
       required:
@@ -164,6 +103,67 @@ components:
           type: array
           items:
             type: object
+    GetUsageForecastRequest:
+      type: object
+      required:
+      - TimePeriod
+      - Metric
+      - Granularity
+      properties:
+        TimePeriod:
+          $ref: '#/components/schemas/DateInterval'
+        Metric:
+          type: string
+        Granularity:
+          type: string
+        Filter:
+          $ref: '#/components/schemas/Expression'
+    Expression:
+      type: object
+      description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
+      properties:
+        Dimensions:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        Tags:
+          type: object
+          properties:
+            Key:
+              type: string
+            Values:
+              type: array
+              items:
+                type: string
+        And:
+          type: array
+          items:
+            type: object
+        Or:
+          type: array
+          items:
+            type: object
+        Not:
+          type: object
+    DateInterval:
+      type: object
+      required:
+      - Start
+      - End
+      properties:
+        Start:
+          type: string
+          description: Start of the time period in YYYY-MM-DD format
+          example: '2026-01-01'
+        End:
+          type: string
+          description: End of the time period in YYYY-MM-DD format
+          example: '2026-04-01'
     ErrorResponse:
       type: object
       properties:

@@ -218,6 +218,24 @@ components:
           enum:
           - PERCENTAGE
           - ABSOLUTE_VALUE
+    Subscriber:
+      type: object
+      required:
+      - SubscriptionType
+      - Address
+      properties:
+        SubscriptionType:
+          type: string
+          enum:
+          - SNS
+          - EMAIL
+        Address:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
     Budget:
       type: object
       required:
@@ -286,24 +304,6 @@ components:
         LastUpdatedTime:
           type: string
           format: date-time
-    Subscriber:
-      type: object
-      required:
-      - SubscriptionType
-      - Address
-      properties:
-        SubscriptionType:
-          type: string
-          enum:
-          - SNS
-          - EMAIL
-        Address:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        Message:
-          type: string
   securitySchemes:
     aws_iam:
       type: apiKey
