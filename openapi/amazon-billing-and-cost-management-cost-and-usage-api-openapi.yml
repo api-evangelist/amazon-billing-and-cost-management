@@ -95,6 +95,17 @@ paths:
           $ref: '#/components/responses/DataUnavailableException'
 components:
   schemas:
+    GroupDefinition:
+      type: object
+      properties:
+        Type:
+          type: string
+          enum:
+          - DIMENSION
+          - TAG
+          - COST_CATEGORY
+        Key:
+          type: string
     GetCostAndUsageResponse:
       type: object
       properties:
@@ -114,24 +125,6 @@ components:
         DimensionValueAttributes:
           type: array
         NextPageToken:
-          type: string
-    GroupDefinition:
-      type: object
-      properties:
-        Type:
-          type: string
-          enum:
-          - DIMENSION
-          - TAG
-          - COST_CATEGORY
-        Key:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        Message:
-          type: string
-        Code:
           type: string
     Expression:
       type: object
@@ -179,6 +172,13 @@ components:
           type: string
           description: End of the time period in YYYY-MM-DD format
           example: '2026-04-01'
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
+        Code:
+          type: string
     GetCostAndUsageRequest:
       type: object
       required:

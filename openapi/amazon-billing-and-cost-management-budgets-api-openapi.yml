@@ -170,27 +170,19 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    CreateBudgetRequest:
+    Subscriber:
       type: object
       required:
-      - AccountId
-      - Budget
+      - SubscriptionType
+      - Address
       properties:
-        AccountId:
+        SubscriptionType:
           type: string
-        Budget:
-          $ref: '#/components/schemas/Budget'
-        NotificationsWithSubscribers:
-          type: array
-          items:
-            type: object
-            properties:
-              Notification:
-                $ref: '#/components/schemas/Notification'
-              Subscribers:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Subscriber'
+          enum:
+          - SNS
+          - EMAIL
+        Address:
+          type: string
     Notification:
       type: object
       required:
@@ -218,24 +210,6 @@ components:
           enum:
           - PERCENTAGE
           - ABSOLUTE_VALUE
-    Subscriber:
-      type: object
-      required:
-      - SubscriptionType
-      - Address
-      properties:
-        SubscriptionType:
-          type: string
-          enum:
-          - SNS
-          - EMAIL
-        Address:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        Message:
-          type: string
     Budget:
       type: object
       required:
@@ -304,6 +278,32 @@ components:
         LastUpdatedTime:
           type: string
           format: date-time
+    CreateBudgetRequest:
+      type: object
+      required:
+      - AccountId
+      - Budget
+      properties:
+        AccountId:
+          type: string
+        Budget:
+          $ref: '#/components/schemas/Budget'
+        NotificationsWithSubscribers:
+          type: array
+          items:
+            type: object
+            properties:
+              Notification:
+                $ref: '#/components/schemas/Notification'
+              Subscribers:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscriber'
+    ErrorResponse:
+      type: object
+      properties:
+        Message:
+          type: string
   securitySchemes:
     aws_iam:
       type: apiKey

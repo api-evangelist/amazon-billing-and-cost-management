@@ -66,40 +66,6 @@ paths:
           $ref: '#/components/responses/LimitExceededException'
 components:
   schemas:
-    CreateCostCategoryRequest:
-      type: object
-      required:
-      - Name
-      - RuleVersion
-      - Rules
-      properties:
-        Name:
-          type: string
-        EffectiveStart:
-          type: string
-        RuleVersion:
-          type: string
-          enum:
-          - CostCategoryExpression.v1
-        Rules:
-          type: array
-          items:
-            type: object
-            properties:
-              Value:
-                type: string
-              Rule:
-                $ref: '#/components/schemas/Expression'
-              InheritedValue:
-                type: object
-              Type:
-                type: string
-        DefaultValue:
-          type: string
-        SplitChargeRules:
-          type: array
-          items:
-            type: object
     Expression:
       type: object
       description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
@@ -139,6 +105,40 @@ components:
           type: string
         Code:
           type: string
+    CreateCostCategoryRequest:
+      type: object
+      required:
+      - Name
+      - RuleVersion
+      - Rules
+      properties:
+        Name:
+          type: string
+        EffectiveStart:
+          type: string
+        RuleVersion:
+          type: string
+          enum:
+          - CostCategoryExpression.v1
+        Rules:
+          type: array
+          items:
+            type: object
+            properties:
+              Value:
+                type: string
+              Rule:
+                $ref: '#/components/schemas/Expression'
+              InheritedValue:
+                type: object
+              Type:
+                type: string
+        DefaultValue:
+          type: string
+        SplitChargeRules:
+          type: array
+          items:
+            type: object
   responses:
     LimitExceededException:
       description: You've exceeded the limit for this resource

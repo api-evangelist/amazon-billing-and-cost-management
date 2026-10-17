@@ -76,19 +76,6 @@ paths:
                 type: object
 components:
   schemas:
-    Subscriber:
-      type: object
-      required:
-      - SubscriptionType
-      - Address
-      properties:
-        SubscriptionType:
-          type: string
-          enum:
-          - SNS
-          - EMAIL
-        Address:
-          type: string
     CreateBudgetActionRequest:
       type: object
       required:
@@ -137,6 +124,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Subscriber'
+    Subscriber:
+      type: object
+      required:
+      - SubscriptionType
+      - Address
+      properties:
+        SubscriptionType:
+          type: string
+          enum:
+          - SNS
+          - EMAIL
+        Address:
+          type: string
   securitySchemes:
     aws_iam:
       type: apiKey

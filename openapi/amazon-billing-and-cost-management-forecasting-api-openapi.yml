@@ -61,34 +61,6 @@ paths:
           $ref: '#/components/responses/DataUnavailableException'
 components:
   schemas:
-    GetCostForecastRequest:
-      type: object
-      required:
-      - TimePeriod
-      - Metric
-      - Granularity
-      properties:
-        TimePeriod:
-          $ref: '#/components/schemas/DateInterval'
-        Metric:
-          type: string
-          enum:
-          - AMORTIZED_COST
-          - BLENDED_COST
-          - NET_AMORTIZED_COST
-          - NET_UNBLENDED_COST
-          - UNBLENDED_COST
-        Granularity:
-          type: string
-          enum:
-          - DAILY
-          - MONTHLY
-        Filter:
-          $ref: '#/components/schemas/Expression'
-        PredictionIntervalLevel:
-          type: integer
-          minimum: 51
-          maximum: 99
     GetCostForecastResponse:
       type: object
       properties:
@@ -103,21 +75,6 @@ components:
           type: array
           items:
             type: object
-    GetUsageForecastRequest:
-      type: object
-      required:
-      - TimePeriod
-      - Metric
-      - Granularity
-      properties:
-        TimePeriod:
-          $ref: '#/components/schemas/DateInterval'
-        Metric:
-          type: string
-        Granularity:
-          type: string
-        Filter:
-          $ref: '#/components/schemas/Expression'
     Expression:
       type: object
       description: Filter expression to apply to cost and usage data. Can filter by dimensions, tags, or cost categories.
@@ -171,6 +128,49 @@ components:
           type: string
         Code:
           type: string
+    GetCostForecastRequest:
+      type: object
+      required:
+      - TimePeriod
+      - Metric
+      - Granularity
+      properties:
+        TimePeriod:
+          $ref: '#/components/schemas/DateInterval'
+        Metric:
+          type: string
+          enum:
+          - AMORTIZED_COST
+          - BLENDED_COST
+          - NET_AMORTIZED_COST
+          - NET_UNBLENDED_COST
+          - UNBLENDED_COST
+        Granularity:
+          type: string
+          enum:
+          - DAILY
+          - MONTHLY
+        Filter:
+          $ref: '#/components/schemas/Expression'
+        PredictionIntervalLevel:
+          type: integer
+          minimum: 51
+          maximum: 99
+    GetUsageForecastRequest:
+      type: object
+      required:
+      - TimePeriod
+      - Metric
+      - Granularity
+      properties:
+        TimePeriod:
+          $ref: '#/components/schemas/DateInterval'
+        Metric:
+          type: string
+        Granularity:
+          type: string
+        Filter:
+          $ref: '#/components/schemas/Expression'
   responses:
     DataUnavailableException:
       description: The requested data is unavailable
