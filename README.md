@@ -64,83 +64,173 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-AWS Billing and Cost Management is a suite of tools and APIs that enables organizations to view, analyze, forecast, budget, and optimize their AWS spending. It includes AWS Cost Explorer for cost analysis and forecasting, AWS Budgets for budget tracking and automated actions, Cost Anomaly Detection for ML-powered anomaly identification, Cost Categories for spend organization, and the AWS Price List API for programmatic pricing queries.
+AWS Billing and Cost Management is a suite of tools and APIs that enables organizations to view, analyze, forecast, budget, and optimize their AWS spending. It includes AWS Cost Explorer for cost analysis, AWS Budgets for budget tracking and alerts, Cost Anomaly Detection for ML-powered anomaly identification, Cost Categories for spend organization, and the AWS Price List API for programmatic pricing queries. The suite supports consolidated billing across AWS Organizations and chargeback/showback workflows.
 
-**Human URL:** [https://aws.amazon.com/aws-cost-management/](https://aws.amazon.com/aws-cost-management/)
+**Areas:** Billing · Cost Management · Cost Explorer · Budgets · Cost Optimization · FinOps · Amazon Web Services · AWS
 
-**Console:** [https://console.aws.amazon.com/cost-management/](https://console.aws.amazon.com/cost-management/)
+## Amazon Billing And Cost Management on APIs.io
 
-## APIs
+Everything profiled for Amazon Billing And Cost Management is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-billing-and-cost-management/](https://apis.io/providers/amazon-billing-and-cost-management/)** — or go straight to one of the APIs or properties below.
 
-### AWS Cost Explorer API
-Programmatic access to query, filter, group, and analyze cost and usage data with forecasting and optimization recommendations.
+### APIs (15)
 
-**Base URL:** `https://ce.us-east-1.amazonaws.com`
+- [AWS Price List API](https://apis.io/apis/amazon-billing-and-cost-management/aws-price-list-api/) — The AWS Price List API allows programmatic querying of AWS service pricing information in JSON or CSV format. Retrieve price lists for all AWS services,…
+- [Amazon Billing And Cost Management Anomaly Detection API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-anomaly-detection-api/) — Detect and manage cost anomalies
+- [Amazon Billing And Cost Management Budget Actions API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-budget-actions-api/) — Automated actions when budget thresholds are exceeded
+- [Amazon Billing And Cost Management Budgets API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-budgets-api/) — Create and manage cost budgets
+- [Amazon Billing And Cost Management Cost And Usage API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-cost-and-usage-api/) — Query cost and usage data
+- [Amazon Billing And Cost Management Cost Categories API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-cost-categories-api/) — Organize costs with custom categories
+- [Amazon Billing And Cost Management Forecasting API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-forecasting-api/) — Generate cost and usage forecasts
+- [Amazon Billing And Cost Management Notifications API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-notifications-api/) — Manage budget alert notifications
+- [Amazon Billing And Cost Management Recommendations API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-recommendations-api/) — Cost optimization recommendations
+- [Amazon Billing And Cost Management Tags API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-tags-api/) — Manage cost allocation tags
+- [Amazon Billing And Cost Management Billing And Cost Management Anomaly Monitor API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-anomaly-monitor-api/) — The Billing And Cost Management Anomaly Monitor API from Amazon Billing And Cost Management — 3 operation(s) for billing and cost management anomaly monitor.
+- [Amazon Billing And Cost Management Billing And Cost Management Anomaly Subscription API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-anomaly-subscription-api/) — The Billing And Cost Management Anomaly Subscription API from Amazon Billing And Cost Management — 3 operation(s) for billing and cost management anomaly…
+- [Amazon Billing And Cost Management Billing And Cost Management Cost Category Definition API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-cost-category-definition-api/) — The Billing And Cost Management Cost Category Definition API from Amazon Billing And Cost Management — 3 operation(s) for billing and cost management cost…
+- [Amazon Billing And Cost Management Billing And Cost Management Operations API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-operations-api/) — The Billing And Cost Management Operations API from Amazon Billing And Cost Management — 24 operation(s) for billing and cost management operations.
+- [Amazon Billing And Cost Management Billing And Cost Management Subscriber API](https://apis.io/apis/amazon-billing-and-cost-management/amazon-billing-and-cost-management-subscriber-api/) — The Billing And Cost Management Subscriber API from Amazon Billing And Cost Management — 4 operation(s) for billing and cost management subscriber.
 
-### AWS Budgets API
-Create and manage cost, usage, and commitment coverage budgets with threshold notifications and automated enforcement actions.
+### Published properties
 
-**Base URL:** `https://budgets.amazonaws.com`
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### AWS Price List API
-Query AWS service pricing in JSON or CSV format programmatically.
+#### MCP servers (1)
 
-**Base URL:** `https://pricing.us-east-1.amazonaws.com`
+Model Context Protocol servers that expose the API to agents.
 
-#### Key Operations
+- [amazon-billing-and-cost-management-mcp.yml](https://apis.io/servers/amazon-billing-and-cost-management/amazon-billing-and-cost-management-mcp-yml/)
 
-| Operation | Description |
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Amazon Billing And Cost Management Agentic Access](https://apis.io/agentic-access/amazon-billing-and-cost-management/amazon-billing-and-cost-management-agentic-access/)
+
+#### JSON Schema (1)
+
+The data models the API reads and writes.
+
+- [AWS Budget](https://apis.io/schemas/amazon-billing-and-cost-management/cost-budget/)
+
+#### JSON Structure (1)
+
+Data models expressed in JSON Structure.
+
+- [Billing Resource Structure](https://apis.io/json-structure/amazon-billing-and-cost-management/billing-resource-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [context Context](https://apis.io/jsonld/amazon-billing-and-cost-management/context/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Create Anomaly Monitor Example](https://apis.io/examples/amazon-billing-and-cost-management/create-anomaly-monitor-example/)
+- [Create Budget Example](https://apis.io/examples/amazon-billing-and-cost-management/create-budget-example/)
+- [Get Cost And Usage Example](https://apis.io/examples/amazon-billing-and-cost-management/get-cost-and-usage-example/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [AWS Budgets Anomaly Detection API](https://apis.io/collections/amazon-billing-and-cost-management/open-amazon-billing-and-cost-management-anomaly-detection-api/)
+- [AWS Budgets Anomaly Detection Budget Actions API](https://apis.io/collections/amazon-billing-and-cost-management/open-amazon-billing-and-cost-management-budget-actions-api/)
+- [AWS Anomaly Detection Budgets API](https://apis.io/collections/amazon-billing-and-cost-management/open-amazon-billing-and-cost-management-budgets-api/)
+- [AWS Budgets Anomaly Detection Cost And Usage API](https://apis.io/collections/amazon-billing-and-cost-management/open-amazon-billing-and-cost-management-cost-and-usage-api/)
+- [AWS Budgets Anomaly Detection Cost Categories API](https://apis.io/collections/amazon-billing-and-cost-management/open-amazon-billing-and-cost-management-cost-categories-api/)
+- [AWS Budgets Anomaly Detection Forecasting API](https://apis.io/collections/amazon-billing-and-cost-management/open-amazon-billing-and-cost-management-forecasting-api/)
+- [AWS Budgets Anomaly Detection Notifications API](https://apis.io/collections/amazon-billing-and-cost-management/open-amazon-billing-and-cost-management-notifications-api/)
+- [AWS Budgets Anomaly Detection Recommendations API](https://apis.io/collections/amazon-billing-and-cost-management/open-amazon-billing-and-cost-management-recommendations-api/)
+- [AWS Budgets Anomaly Detection Tags API](https://apis.io/collections/amazon-billing-and-cost-management/open-amazon-billing-and-cost-management-tags-api/)
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Amazon Billing And Cost Management Aws Budgets Api Overlay](https://apis.io/overlays/amazon-billing-and-cost-management/amazon-billing-and-cost-management-aws-budgets-api-overlay/)
+- [Amazon Billing And Cost Management Aws Cost Explorer Api Overlay](https://apis.io/overlays/amazon-billing-and-cost-management/amazon-billing-and-cost-management-aws-cost-explorer-api-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon Billing And Cost Management — jsonschema rules](https://apis.io/rules/amazon-billing-and-cost-management/amazon-billing-and-cost-management-jsonschema-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Billing And Cost Management Authentication](https://apis.io/security/amazon-billing-and-cost-management/amazon-billing-and-cost-management-authentication/)
+- [Amazon Billing And Cost Management Domain Security](https://apis.io/security/amazon-billing-and-cost-management/amazon-billing-and-cost-management-domain-security/)
+- [Amazon Billing And Cost Management Trust Center](https://apis.io/security/amazon-billing-and-cost-management/amazon-billing-and-cost-management-trust-center/)
+- [Amazon Billing And Cost Management Vulnerability Disclosure](https://apis.io/security/amazon-billing-and-cost-management/amazon-billing-and-cost-management-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://aws.amazon.com/aws-cost-management/)
+- [Documentation](https://docs.aws.amazon.com/cost-management/latest/userguide/)
+- [Pricing](https://aws.amazon.com/aws-cost-management/pricing/)
+- [Blog](https://aws.amazon.com/blogs/aws-cloud-financial-management/)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+
+## API Evangelist rating
+
+**Kin Score 46.4** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
 |---|---|
-| GetCostAndUsage | Query cost and usage by service, account, tag, region |
-| GetCostForecast | Generate cost forecasts based on historical patterns |
-| CreateAnomalyMonitor | Set up ML-powered cost anomaly detection |
-| GetAnomalies | List detected cost anomalies |
-| GetRightsizingRecommendation | Get EC2 rightsizing recommendations |
-| GetSavingsPlansPurchaseRecommendation | Get Savings Plans recommendations |
-| CreateBudget | Create a cost or usage budget with notifications |
-| CreateBudgetAction | Automate responses when budget thresholds are exceeded |
-| CreateCostCategoryDefinition | Map costs to organizational categories |
+| Discoverability | 73.2 |
+| Contract quality | 56.9 |
+| Contract governance | 28.0 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 47.6 |
+| Access clarity | 39.5 |
 
-## Features
+**Agent readiness 19.7** — agent-aware
 
-- **Cost and Usage Analysis** — Query cost data by service, account, tag, region, and other dimensions
-- **Cost Forecasting** — ML-based cost and usage forecasts for budget planning
-- **Cost Anomaly Detection** — Automated detection of unusual spending with SNS/email alerts
-- **Budgets and Actions** — Custom budgets with automated enforcement via IAM, SCP, or SSM
-- **Rightsizing Recommendations** — Identify idle and underutilized EC2 instances
-- **Savings Plans and RI Recommendations** — Compute commitment purchase recommendations
-- **Cost Categories** — Map AWS costs to teams, projects, and environments for chargeback
-
-## Use Cases
-
-- **FinOps Cost Monitoring** — Centralized cost visibility across accounts with anomaly detection
-- **Budget Governance** — Automated spending controls with budget actions
-- **Chargeback/Showback** — Internal cost allocation by team, project, or environment
-- **Cost Optimization** — Rightsizing, Savings Plans, and Reserved Instance recommendations
-
-## Artifacts
-
-| Type | URL |
+| Agent-readiness dimension | Result |
 |---|---|
-| OpenAPI (Cost Explorer) | [openapi/aws-cost-explorer-api-openapi.yml](openapi/aws-cost-explorer-api-openapi.yml) |
-| OpenAPI (Budgets) | [openapi/aws-budgets-api-openapi.yml](openapi/aws-budgets-api-openapi.yml) |
-| JSON Schema (Budget) | [json-schema/cost-budget-schema.json](json-schema/cost-budget-schema.json) |
-| JSON Structure | [json-structure/billing-resource-structure.json](json-structure/billing-resource-structure.json) |
-| JSON-LD Context | [json-ld/context.jsonld](json-ld/context.jsonld) |
-| Spectral Ruleset | [spectral/ruleset.yml](spectral/ruleset.yml) |
-| Capabilities | [capabilities/capabilities.yml](capabilities/capabilities.yml) |
-| Vocabulary | [vocabulary/vocabulary.yml](vocabulary/vocabulary.yml) |
-| Examples | [examples/](examples/) |
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
-## Common Properties
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
 
-| Type | URL |
-|---|---|
-| Documentation | [https://docs.aws.amazon.com/cost-management/latest/userguide/](https://docs.aws.amazon.com/cost-management/latest/userguide/) |
-| Pricing | [https://aws.amazon.com/aws-cost-management/pricing/](https://aws.amazon.com/aws-cost-management/pricing/) |
-| FAQ | [https://aws.amazon.com/aws-cost-management/faqs/](https://aws.amazon.com/aws-cost-management/faqs/) |
-| Blog | [https://aws.amazon.com/blogs/aws-cloud-financial-management/](https://aws.amazon.com/blogs/aws-cloud-financial-management/) |
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-billing-and-cost-management/](https://apis.io/providers/amazon-billing-and-cost-management/).
 
-## Maintainers
+## How this profile is made
 
-**Kin Lane** — [kin@apievangelist.com](mailto:kin@apievangelist.com)
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon Billing And Cost Management: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-billing-and-cost-management/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
